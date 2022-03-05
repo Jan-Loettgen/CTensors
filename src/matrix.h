@@ -31,6 +31,5 @@ matrix_2d* matrix_2d_add(matrix_2d* mat_a, matrix_2d* mat_b);
 
 matrix_2d* matrix_2d_add_T(matrix_2d* mat_a, matrix_2d* mat_b);
 
-//void* array_add(_array_add_args* args);
 void* array_add(void* args_ptr);
 #endif
