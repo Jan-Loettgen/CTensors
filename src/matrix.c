@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #include "matrix.h"
-#define NUM_THREADS 8
+#define NUM_THREADS 13
 
 
 matrix_2d* matrix_2d_make(unsigned int num_rows, unsigned int num_cols) {
@@ -109,21 +109,25 @@ matrix_2d* matrix_2d_add_T(matrix_2d* mat_a, matrix_2d* mat_b){
 
     pthread_t threads[NUM_THREADS];
     int batch = mat_a->n_elems/NUM_THREADS;
-
-    _array_add_args args;
-    args.length = batch;
-    void *args_ptr = &args;
+    _array_add_args args_arr[NUM_THREADS];
 
     for (int i=0; i<NUM_THREADS; i++){
+        _array_add_args args;
         args.arr_1 = mat_a->data + i*batch;
         args.arr_2 = mat_b->data + i*batch;
         args.arr_out = mat_out->data+ i*batch;
         if (i == NUM_THREADS-1){
             args.length = batch+mat_a->n_elems%NUM_THREADS;
         }
-        printf("test%f %d\n", args.arr_1[0], i);
+        else{
+        args.length = batch;
+        }
+        args_arr[i] = args;
+    }
+
+    for (int i=0; i<NUM_THREADS; i++){
+        void* args_ptr = &(args_arr[i]);
         pthread_create(&(threads[i]), NULL, array_add, args_ptr);
-        sleep(0.5);
     }
 
     for (int i=0; i<NUM_THREADS; i++){
@@ -138,58 +142,34 @@ void* array_add(void* args_ptr){
     double* arr_2 = args->arr_2;
     double* arr_out = args->arr_out;
     unsigned long length = args->length;
-
-    printf("%f\n", args->arr_1[0]);
+    printf("%lu\n",length);
 
     if (arr_1 == NULL || arr_2 == NULL || arr_out == NULL){
-        printf("something is wrong");
         pthread_exit(NULL);
     }
     for (unsigned long i=0; i<length; i++){
         arr_out[i] = arr_1[i] + arr_2[i];
     }   
-    printf("About to finish\n");
     pthread_exit(NULL);
 }
 
 int main(){
 
-    int size = 8;
+    int size = 337;
 
     matrix_2d* mat1 = matrix_2d_rand(size, size);
     matrix_2d* mat2 = matrix_2d_rand(size, size);
-
+    matrix_2d* mat_d = matrix_2d_add(mat1, mat2);
     matrix_2d* mat_c =  matrix_2d_add_T(mat1, mat2);
-    // matrix_2d* mat_d =  matrix_2d_add(mat1, mat2);
-
-    _array_add_args args;
-
-    // double in1[5] = {0, 1, 2, 3, 4};
-    // double in2[5] = {0, 1, 2, 3, 4};
-    // double* out = malloc(5*sizeof(double));
-
-    // args.arr_1 = in1;
-    // args.arr_2 = in2;
-    // args.arr_out = out;
-    // args.length = 5;
-
-    // void* args_ptr = &args;
-
-    // pthread_t thread;
-
-    // pthread_create(&thread, NULL, array_add, args_ptr);
-    // pthread_join(thread, NULL);
-
-    // printf("tire %f", out[4]);
 
     matrix_2d_print(mat1);
     matrix_2d_print(mat2);
     matrix_2d_print(mat_c);
-    // matrix_2d_print(mat_d);
+    matrix_2d_print(mat_d);
 
     matrix_2d_free(&mat1);
     matrix_2d_free(&mat2);
     matrix_2d_free(&mat_c);
-    // matrix_2d_free(&mat_d);
+    matrix_2d_free(&mat_d);
     return 0;
 }
