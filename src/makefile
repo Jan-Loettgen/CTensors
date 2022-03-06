@@ -9,13 +9,13 @@ main: main.o tensor_2d.o tensor_2d_threaded.o
 	$(CC) -o main main.o tensor_2d.o tensor_2d_threaded.o -pthread
 
 main.o: main.c tensor_2d.c tensor_2d.h tensor_2d_threaded.c tensor_2d_threaded.h
-	$(CC) -c main.c
+	$(CC) -c main.c $(CFLAGS)
 
 tensor_2d.o: tensor_2d.c tensor_2d.h
-	$(CC) -c tensor_2d.c
+	$(CC) -c tensor_2d.c $(CFLAGS)
 
 tensor_2d_threaded.o: tensor_2d.c tensor_2d.h tensor_2d_threaded.c tensor_2d_threaded.h 
-	$(CC) -c tensor_2d_threaded.c -pthread
+	$(CC) -c tensor_2d_threaded.c $(CFLAGS)
 
 clean:
 	rm *.o main
