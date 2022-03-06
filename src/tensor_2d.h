@@ -9,14 +9,6 @@ typedef struct tensor_2d{
 
 } tensor_2d;
 
-typedef struct array_op_args{
-    double* arr_1;
-    double* arr_2;
-    double* arr_out;
-    long length;
-} array_op_args;
-
-
 tensor_2d* matrix_make(unsigned int num_rows, unsigned int num_cols);
 
 void matrix_free(tensor_2d** mat_ptr);

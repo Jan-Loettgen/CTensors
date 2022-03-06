@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "tensor_2d.h": "c",
+        "tensor_2d_threaded.h": "c"
+    }
+}
