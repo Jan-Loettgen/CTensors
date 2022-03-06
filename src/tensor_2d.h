@@ -1,5 +1,5 @@
-#ifndef C_MATRIX_H
-#define C_MATRIX_H
+#ifndef TENSOR_2D_H
+#define TENSOR_2D_H
 
 typedef struct tensor_2d{
     unsigned int n_rows;
@@ -29,7 +29,6 @@ void matrix_print(tensor_2d* mat);
 
 tensor_2d* matrix_add(tensor_2d* mat_a, tensor_2d* mat_b);
 
-tensor_2d* matrix_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
+tensor_2d* matrix_subtract(tensor_2d* mat_a, tensor_2d* mat_b);
 
-void* array_add(void* args_ptr);
 #endif
