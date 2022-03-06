@@ -6,28 +6,20 @@
 
 int main(){
 
-    int size = 8  ;
+    int size = 17000;
 
-    tensor_2d* mat1 = matrix_rand(size, size);
-    tensor_2d* mat2 = matrix_rand(size, size);
+    tensor_2d* mat1 = mat_rand(size, size);
+    tensor_2d* mat2 = mat_rand(size, size);
 
+    tensor_2d* mat_c = mat_mul(mat1, mat2);
 
-    tensor_2d* mat_c = matrix_add(mat1, mat2);
-    tensor_2d* mat_d =  matrix_add_T(mat1, mat2);
+    mat_print(mat1);
+    mat_print(mat2);
+    mat_print(mat_c);
 
-    tensor_2d* mat_e =  matrix_subtract(mat1, mat2);
-
-    matrix_print(mat1);
-    matrix_print(mat2);
-    //matrix_print(mat_c);
-    //matrix_print(mat_d);
-    matrix_print(mat_e);
-
-    matrix_free(&mat1);
-    matrix_free(&mat2);
-    matrix_free(&mat_c);
-    matrix_free(&mat_d);
-    matrix_free(&mat_e);
+    mat_free(&mat1);
+    mat_free(&mat2);
+    mat_free(&mat_c);
     return 0;
 
 }

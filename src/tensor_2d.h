@@ -17,10 +17,14 @@ tensor_2d* mat_zeros(unsigned int num_rows, unsigned int num_cols);
 
 tensor_2d* mat_rand(unsigned int num_rows, unsigned int num_cols);
 
+tensor_2d* mat_eye(unsigned int num_rows);
+
 void mat_print(tensor_2d* mat);
 
 tensor_2d* mat_add(tensor_2d* mat_a, tensor_2d* mat_b);
 
 tensor_2d* mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b);
+
+tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b);
 
 #endif
