@@ -3,7 +3,7 @@
 
 #include "tensor_2d.h"
 
-tensor_2d* matrix_make(unsigned int num_rows, unsigned int num_cols) {
+tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     tensor_2d* mat = malloc(sizeof(tensor_2d));
 
     if (mat == NULL){
@@ -25,15 +25,15 @@ tensor_2d* matrix_make(unsigned int num_rows, unsigned int num_cols) {
     return mat;
 }
 
-void matrix_free(tensor_2d** mat_ptr){
+void mat_free(tensor_2d** mat_ptr){
     free((*mat_ptr)->data);
     free(*mat_ptr);
 
     *mat_ptr = NULL;
 }
 
-tensor_2d* matrix_zeros(unsigned int num_rows, unsigned int num_cols){
-    tensor_2d* mat = matrix_make(num_rows, num_cols);
+tensor_2d* mat_zeros(unsigned int num_rows, unsigned int num_cols){
+    tensor_2d* mat = mat_make(num_rows, num_cols);
 
     if (mat == NULL){
         return NULL;
@@ -45,8 +45,8 @@ tensor_2d* matrix_zeros(unsigned int num_rows, unsigned int num_cols){
     return mat;
 }
 
-tensor_2d* matrix_rand(unsigned int num_rows, unsigned int num_cols){
-    tensor_2d* mat = matrix_make(num_rows, num_cols);
+tensor_2d* mat_rand(unsigned int num_rows, unsigned int num_cols){
+    tensor_2d* mat = mat_make(num_rows, num_cols);
 
     if (mat == NULL){
         return NULL;
@@ -58,7 +58,7 @@ tensor_2d* matrix_rand(unsigned int num_rows, unsigned int num_cols){
     return mat;
 }
 
-void matrix_print(tensor_2d* mat){
+void mat_print(tensor_2d* mat){
     if (mat==NULL){
         return;
     }
@@ -71,7 +71,7 @@ void matrix_print(tensor_2d* mat){
     }
 }
 
-tensor_2d* matrix_add(tensor_2d* mat_a, tensor_2d* mat_b){
+tensor_2d* mat_add(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b == NULL){
         return NULL;
     }
@@ -79,7 +79,7 @@ tensor_2d* matrix_add(tensor_2d* mat_a, tensor_2d* mat_b){
         return NULL;
     }
 
-    tensor_2d* mat_out = matrix_make(mat_a->n_cols, mat_a->n_rows);
+    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
     if (mat_out == NULL) {
         return NULL;
     }
@@ -90,7 +90,7 @@ tensor_2d* matrix_add(tensor_2d* mat_a, tensor_2d* mat_b){
     return mat_out;
 }
 
-tensor_2d* matrix_subtract(tensor_2d* mat_a, tensor_2d* mat_b){
+tensor_2d* mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b == NULL){
         return NULL;
     }
@@ -98,7 +98,7 @@ tensor_2d* matrix_subtract(tensor_2d* mat_a, tensor_2d* mat_b){
         return NULL;
     }
 
-    tensor_2d* mat_out = matrix_make(mat_a->n_cols, mat_a->n_rows);
+    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
     if (mat_out == NULL) {
         return NULL;
     }
@@ -108,3 +108,5 @@ tensor_2d* matrix_subtract(tensor_2d* mat_a, tensor_2d* mat_b){
     }
     return mat_out;
 }
+
+tensor_2d* matrix_

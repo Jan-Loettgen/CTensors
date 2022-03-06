@@ -7,7 +7,7 @@
 
 #define NUM_THREADS 13
 
-tensor_2d* matrix_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
+tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b ==NULL){
         return NULL;
     }
@@ -15,7 +15,7 @@ tensor_2d* matrix_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
         return NULL;
     }
 
-    tensor_2d* mat_out = matrix_make(mat_a->n_cols, mat_a->n_rows);
+    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
     if (mat_out == NULL) {
         return NULL;
     }

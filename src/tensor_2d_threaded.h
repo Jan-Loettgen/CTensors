@@ -8,7 +8,7 @@ typedef struct array_op_args{
     long length;
 } array_op_args;
 
-tensor_2d* matrix_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
+tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
 
 void* array_add(void* args_ptr);
 #endif
