@@ -1,35 +1,35 @@
 #ifndef C_MATRIX_H
 #define C_MATRIX_H
 
-typedef struct matrix_2d{
+typedef struct tensor_2d{
     unsigned int n_rows;
     unsigned int n_cols;
     unsigned long n_elems;
     double* data;
 
-} matrix_2d;
+} tensor_2d;
 
-typedef struct _array_add_args{
+typedef struct array_op_args{
     double* arr_1;
     double* arr_2;
     double* arr_out;
     long length;
-} _array_add_args;
+} array_op_args;
 
 
-matrix_2d* matrix_2d_make(unsigned int num_rows, unsigned int num_cols);
+tensor_2d* matrix_make(unsigned int num_rows, unsigned int num_cols);
 
-void matrix_2d_free(matrix_2d** mat_ptr);
+void matrix_free(tensor_2d** mat_ptr);
 
-matrix_2d* matrix_2d_zeros(unsigned int num_rows, unsigned int num_cols);
+tensor_2d* matrix_zeros(unsigned int num_rows, unsigned int num_cols);
 
-matrix_2d* matrix_2d_rand(unsigned int num_rows, unsigned int num_cols);
+tensor_2d* matrix_rand(unsigned int num_rows, unsigned int num_cols);
 
-void matrix_2d_print(matrix_2d* mat);
+void matrix_print(tensor_2d* mat);
 
-matrix_2d* matrix_2d_add(matrix_2d* mat_a, matrix_2d* mat_b);
+tensor_2d* matrix_add(tensor_2d* mat_a, tensor_2d* mat_b);
 
-matrix_2d* matrix_2d_add_T(matrix_2d* mat_a, matrix_2d* mat_b);
+tensor_2d* matrix_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
 
 void* array_add(void* args_ptr);
 #endif
