@@ -4,25 +4,32 @@
 #include "tensor_2d.h"
 #include "tensor_2d_threaded.h"
 
+double ReLu(double d){
+    if (d< 0.0){
+        return 0.0;
+    }
+    else {
+        return d;
+    }
+}
+
+
+
 int main(){
 
-    tensor_2d* mat1 = mat_rand(2, 5);
-    tensor_2d* mat2 = mat_rand(5, 3);
+    tensor_2d* mat1 = mat_rand(5, 5);
+    tensor_2d* mat2 = mat_rand(5, 5);
 
-    //NOTE SEGMENTATION FAULT WHEN row mat A > col MAT B
+    tensor_2d* mat_c = mat_subtract(mat1, mat2);
 
-    tensor_2d* mat_c = mat_mul(mat1, mat2);
-    tensor_2d* mat_T = mat_transpose(mat1);
+    tensor_2d* mat_d = mat_apply_func(&ReLu, mat_c);
 
-    mat_print(mat1);
-    mat_print(mat2);
     mat_print(mat_c);
-    mat_print(mat_T);
+    mat_print(mat_d);
 
     mat_free(&mat1);
     mat_free(&mat2);
     mat_free(&mat_c);
-    mat_free(&mat_T);
 
     printf("\n exiting \n");
     return 0;

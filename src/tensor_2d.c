@@ -192,3 +192,20 @@ tensor_2d* mat_transpose(tensor_2d* mat){
 
     return mat_out;
 }
+
+tensor_2d* mat_apply_func(double (func)(double d), tensor_2d* mat){
+    if (mat == NULL|| func==NULL) {
+        return NULL;
+    }
+    
+    tensor_2d* mat_out = mat_make(mat->n_rows, mat->n_cols);
+    if (mat_out == NULL) {
+        return NULL;
+    }
+
+    for (unsigned long i = 0; i<mat->n_elems; i++){
+        mat_out->data[i] = func(mat->data[i]);
+    }
+
+    return mat_out;
+}
