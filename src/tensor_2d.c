@@ -23,7 +23,7 @@ tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     }
 
     unsigned long num_elems = num_rows*num_cols;
-    //limit specfied in #define MAX_NUM_ELEMENTS 268435456.
+    //limit specfied in #define MAX_NUM_ELEMENTS.
     if (num_elems > MAX_NUM_ELEMENTS){
         printf("Requested matrix with %ld elements.\n", num_elems);
         printf("Maximum possible number of elements is: %d\n", MAX_NUM_ELEMENTS);
@@ -155,7 +155,7 @@ tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b == NULL){
         return NULL;
     }
-    else if (mat_a->n_cols != mat_b->n_rows){
+    if (mat_a->n_cols != mat_b->n_rows){
         return NULL;
     }
     tensor_2d* mat_out = mat_zeros(mat_a->n_rows, mat_b->n_cols);

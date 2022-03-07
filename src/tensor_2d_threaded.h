@@ -8,6 +8,12 @@ typedef struct array_op_args{
     unsigned long length;
 } array_op_args;
 
+typedef struct mat_mul_args{
+    double* arr;
+    tensor_2d* mat;
+    tensor_2d* mat_out;
+}
+
 tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
 
 void* array_add(void* args_ptr);
