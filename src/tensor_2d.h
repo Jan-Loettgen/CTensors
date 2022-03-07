@@ -27,4 +27,6 @@ tensor_2d* mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b);
 
 tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b);
 
+tensor_2d* mat_transpose(tensor_2d* mat);
+
 #endif

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "tensor_2d.h"
 
@@ -161,13 +162,40 @@ tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_out == NULL) {
         return NULL;
     }
+    printf("mat a num elems : %ld, num rows : %u, num cols : %u\n", mat_a->n_elems, mat_a->n_rows, mat_a->n_cols);
+    printf("mat b num elems : %ld, num rows : %u, num cols : %u\n", mat_b->n_elems, mat_b->n_rows, mat_b->n_cols);
+    printf("mat out  num elems : %ld, num rows : %u, num cols : %u\n", mat_out->n_elems, mat_out->n_rows, mat_out->n_cols);
     for (unsigned int row=0; row<mat_a->n_rows; row++){
         for (unsigned int col=0; col<mat_b->n_cols; col++){
             for (unsigned int k=0; k<mat_a->n_cols; k++){
-                mat_out->data[row*mat_out->n_cols+col] += mat_a->data[(row*mat_a->n_cols)+k]*mat_b->data[(mat_b->n_cols*k)+col];
-
+                //printf("row : %u, col : %u, k : %u \n", row, col, k);
+                int index_1 = row*mat_out->n_cols+col;
+                int index_2 = (row*mat_a->n_cols)+k;
+                int index_3 = (mat_b->n_cols*k)+col;
+                printf("index 1 : %d, index 2 : %d, index 3 : %d\n", index_1, index_2, index_3);
+                mat_out->data[row*mat_out->n_cols+col] += mat_a->data[(row*mat_a->n_cols)+k]*mat_b->data[(mat_b->n_cols*k)+col];//mat b formula is wrong
             }
         }
     }
+    printf("test");
+    return mat_out;
+}
+
+tensor_2d* mat_transpose(tensor_2d* mat){
+    if (mat == NULL){
+        return NULL;
+    }
+
+    tensor_2d* mat_out = mat_make(mat->n_cols, mat->n_rows);
+    if (mat_out == NULL) {
+        return NULL;
+    }
+
+    for (int col; col<mat->n_cols; col++){
+        for (int row; col<mat->n_rows; row++){
+            mat_out->data[row*mat->n_rows + col] = mat->data[row+ col*mat->n_cols];
+        }
+    }
+
     return mat_out;
 }
