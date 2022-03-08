@@ -179,7 +179,6 @@ void* array_mat_mul(void* args_ptr){
         for (unsigned int i = 0; i < args->mat->n_rows; i++) {
             (args->arr_out)[col] += args->arr[i] * args->mat->data[col + i*args->mat->n_cols];
         }
-        printf("Last computed double : %f\n",(args->arr_out)[col] );
     }
 
     return NULL;

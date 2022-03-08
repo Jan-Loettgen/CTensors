@@ -23,7 +23,7 @@ int main(){
     tensor_2d* mat_d = mat_mul_T(mat1, mat2);
 
 
-    mat_print(mat_c);
+    mat_print(mat2);
     mat_print(mat_d);
 
     mat_free(&mat1);
