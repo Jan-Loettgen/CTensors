@@ -7,6 +7,35 @@
 
 #define NUM_THREADS 13
 
+typedef struct array_op_args{
+    double* arr_1;
+    double* arr_2;
+    double* arr_out;
+    unsigned long length;
+} array_op_args;
+
+typedef struct array_mat_mul_args{
+    double* arr;
+    tensor_2d* mat;
+    double* arr_out;
+}array_mat_mul_args;
+
+static void* array_add(void* args_ptr){
+    array_op_args* args = (array_op_args*)args_ptr;
+    double* arr_1 = args->arr_1;
+    double* arr_2 = args->arr_2;
+    double* arr_out = args->arr_out;
+    unsigned long length = args->length;
+
+    if (arr_1 == NULL || arr_2 == NULL || arr_out == NULL){
+        return NULL;
+    }
+    for (unsigned long i=0; i<length; i++){
+        arr_out[i] = arr_1[i] + arr_2[i];
+    }   
+    return NULL;
+}
+
 tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b ==NULL){
         return NULL;
@@ -47,6 +76,23 @@ tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
         pthread_join(threads[i], NULL);
     }
     return mat_out;
+}
+
+static void* array_subtract(void* args_ptr){
+    array_op_args* args = (array_op_args*)args_ptr;
+    double* arr_1 = args->arr_1;
+    double* arr_2 = args->arr_2;
+    double* arr_out = args->arr_out;
+    unsigned long length = args->length;
+
+    if (arr_1 == NULL || arr_2 == NULL || arr_out == NULL){
+        return NULL;
+    }
+
+    for (unsigned long i=0; i<length; i++){
+        arr_out[i] = arr_1[i] - arr_2[i];
+    }   
+    return NULL;
 }
 
 tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b){
@@ -91,6 +137,25 @@ tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b){
     return mat_out;
 }
 
+static void* array_mat_mul(void* args_ptr){
+    array_mat_mul_args* args = (array_mat_mul_args*) args_ptr;
+
+    if (args == NULL) {
+        return NULL;
+    }
+    if (args->arr == NULL ||args->mat == NULL|| args->arr_out == NULL){
+        return NULL;
+    }
+    for (unsigned int col = 0; col< args->mat->n_cols; col++){
+        (args->arr_out)[col] = 0.0;
+        for (unsigned int i = 0; i < args->mat->n_rows; i++) {
+            (args->arr_out)[col] += args->arr[i] * args->mat->data[col + i*args->mat->n_cols];
+        }
+    }
+
+    return NULL;
+}
+
 tensor_2d* mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b){
     if (mat_a == NULL || mat_b ==NULL){
         return NULL;
@@ -131,56 +196,3 @@ tensor_2d* mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b){
     }
     return mat_out;
 }
-
-void* array_add(void* args_ptr){
-    array_op_args* args = (array_op_args*)args_ptr;
-    double* arr_1 = args->arr_1;
-    double* arr_2 = args->arr_2;
-    double* arr_out = args->arr_out;
-    unsigned long length = args->length;
-
-    if (arr_1 == NULL || arr_2 == NULL || arr_out == NULL){
-        return NULL;
-    }
-    for (unsigned long i=0; i<length; i++){
-        arr_out[i] = arr_1[i] + arr_2[i];
-    }   
-    return NULL;
-}
-
-void* array_subtract(void* args_ptr){
-    array_op_args* args = (array_op_args*)args_ptr;
-    double* arr_1 = args->arr_1;
-    double* arr_2 = args->arr_2;
-    double* arr_out = args->arr_out;
-    unsigned long length = args->length;
-
-    if (arr_1 == NULL || arr_2 == NULL || arr_out == NULL){
-        return NULL;
-    }
-
-    for (unsigned long i=0; i<length; i++){
-        arr_out[i] = arr_1[i] - arr_2[i];
-    }   
-    return NULL;
-}
-
-void* array_mat_mul(void* args_ptr){
-    array_mat_mul_args* args = (array_mat_mul_args*) args_ptr;
-
-    if (args == NULL) {
-        return NULL;
-    }
-    if (args->arr == NULL ||args->mat == NULL|| args->arr_out == NULL){
-        return NULL;
-    }
-    for (unsigned int col = 0; col< args->mat->n_cols; col++){
-        (args->arr_out)[col] = 0.0;
-        for (unsigned int i = 0; i < args->mat->n_rows; i++) {
-            (args->arr_out)[col] += args->arr[i] * args->mat->data[col + i*args->mat->n_cols];
-        }
-    }
-
-    return NULL;
-}
-
