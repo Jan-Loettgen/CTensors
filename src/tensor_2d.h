@@ -33,7 +33,7 @@ tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols);
  * 
  * @param[in] mat_ptr A pointer to a pointer where the 'tensor_2d' sturct is located.
  */
-void mat_free(tensor_2d** mat_ptr);
+int mat_free(tensor_2d** mat_ptr);
 
 /**
  * @brief Function returns a pointer to a matrix of specfied number of rows and columns whose elements are zero.
@@ -72,7 +72,7 @@ int mat_eye(tensor_2d* mat_out);
  * 
  * @param[in] mat A pointer to the matrix to print out.
  */
-void mat_print(tensor_2d* mat);
+int mat_print(tensor_2d* mat);
 
 /**
  * @brief Function adds two input matricies and reutrns a new matrix,.
@@ -155,6 +155,6 @@ int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out);
  * @param[in] mat  A pointer to a matrix to whose elements the function should be applied.
  * @return returns whatever the function returns after being called on final elememnt.
  */
-void* mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var);
+int mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var);
 
 #endif

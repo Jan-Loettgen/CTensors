@@ -167,7 +167,7 @@ int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     return 0;
 }
 
-int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
+int mat_transpose(tensor_2d* mat, tensor_2d* mat_out){
     if (mat == NULL || mat_out == NULL){
         return 1;
     }
@@ -182,24 +182,19 @@ int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
 }
 
 int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
-    if (mat == NULL|| func==NULL) {
-        return NULL;
-    }
-    
-    tensor_2d* mat_out = mat_make(mat->n_rows, mat->n_cols);
-    if (mat_out == NULL) {
-        return NULL;
+    if (mat == NULL|| func==NULL || mat_out == NULL) {
+        return 1;
     }
 
     for (unsigned long i = 0; i<mat->n_elems; i++){
         mat_out->data[i] = func(mat->data[i]);
     }
 
-    return mat_out;
+    return 0;
 }
-void* mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var){
+int mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var){
         if (mat == NULL|| func==NULL) {
-        return NULL;
+        return 1;
     }
     for (unsigned long i = 0; i<mat->n_elems; i++){
         if (i == (mat->n_elems-1)){
@@ -209,5 +204,5 @@ void* mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_
             func(mat->data[i], 0, out_var);
         }
     }
-    return NULL;
+    return 0;
 }
