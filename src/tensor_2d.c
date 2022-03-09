@@ -209,3 +209,17 @@ tensor_2d* mat_apply_func(double (func)(double d), tensor_2d* mat){
 
     return mat_out;
 }
+void* mat_apply_func_2(void* (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var){
+        if (mat == NULL|| func==NULL) {
+        return NULL;
+    }
+    for (unsigned long i = 0; i<mat->n_elems; i++){
+        if (i == (mat->n_elems-1)){
+            func(mat->data[i], 1, out_var);
+        }
+        else{
+            func(mat->data[i], 0, out_var);
+        }
+    }
+    return NULL;
+}

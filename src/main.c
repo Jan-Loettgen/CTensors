@@ -13,9 +13,30 @@ double ReLu(double d){
     }
 }
 
-int main(){
+void* Sum_mat(double d, int reset, void* out_var){
+    static double sum = 0;
+    sum += d;
 
-    tensor_2d* mat1 = mat_eye(5);
+    if (reset==1){
+        *((double*)out_var) = sum;
+        sum = 0;
+        return NULL;
+    }
+    else{
+        return NULL;
+    }
+}
+
+
+int main(){
+    tensor_2d* mat1 = mat_rand(5, 9);
+
+    double sum = 0;
+    double* sum_ptr = &sum;
+
+    mat_apply_func_2(&Sum_mat, mat1, sum_ptr);
+    printf("sum of matrix : %f\n",*sum_ptr);
+
     tensor_2d* mat2 = mat_rand(5, 5);
 
     tensor_2d* mat_c = mat_subtract_T(mat1, mat2);
@@ -23,8 +44,8 @@ int main(){
     tensor_2d* mat_d = mat_mul_T(mat1, mat2);
 
 
-    mat_print(mat2);
-    mat_print(mat_d);
+    // mat_print(mat2);
+    // mat_print(mat_d);
 
     mat_free(&mat1);
     mat_free(&mat2);

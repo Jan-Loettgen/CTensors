@@ -26,8 +26,8 @@ tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
  * 
  * Note function returns NULL if input matricis are NULL or of different dimensions.
  * 
- * @param mat_a A pointer to a matrix from which matrix 'mat_b' should be subtracted
- * @param mat_b A pointer to the matrix which should be subtracted from matrix 'mat_a'.
+ * @param[in] mat_a A pointer to a matrix from which matrix 'mat_b' should be subtracted
+ * @param[in] mat_b A pointer to the matrix which should be subtracted from matrix 'mat_a'.
  * @return tensor_2d* Pointer to a new matrix, whos elements are the corrspoding
  * elements in matrix 'mat_a' a minus the corresponding elements in matrix 'mat_b'.
  */
@@ -43,8 +43,8 @@ tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b);
  * Note function returns NULL if number of columns in matrix 'mat_a' is not equal to
  * Number of rows in matrix 'mat_b', or if either input matrix is a NULL pointer.
  * 
- * @param mat_a A pointer to matrix 
- * @param mat_b A pointer to a matrix
+ * @param[in] mat_a A pointer to a matrix 
+ * @param[in] mat_b A pointer to a different matrix
  * @return tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix
  * multiplication 'mat_a' * 'mat_b'
  */
