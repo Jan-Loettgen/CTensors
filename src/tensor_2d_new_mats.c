@@ -45,60 +45,64 @@ tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     return mat;
 }
 
-int mat_free(tensor_2d** mat_ptr){
+void mat_free(tensor_2d** mat_ptr){
     if (*mat_ptr == NULL){
-        return 1;
+        return;
     }
 
     free((*mat_ptr)->data);
     free(*mat_ptr);
 
     *mat_ptr = NULL;
-
-    return 0;
 }
 
-int mat_zeros(tensor_2d* mat_out){
-    if (mat_out == NULL){
-        return 1;
+tensor_2d* mat_zeros(unsigned int num_rows, unsigned int num_cols){
+    tensor_2d* mat = mat_make(num_rows, num_cols);
+
+    if (mat == NULL){
+        return NULL;
     }
 
-    for (unsigned long i=0; i < (mat_out->n_elems); i++){
-        mat_out->data[i] = 0.0;
+    for (unsigned long i=0; i < (mat->n_elems); i++){
+        mat->data[i] = 0.0;
     }
-    return 0;
+    return mat;
 }
 
-int mat_rand(tensor_2d* mat_out){
-    if (mat_out == NULL){
-        return 1;
+tensor_2d* mat_rand(unsigned int num_rows, unsigned int num_cols){
+    tensor_2d* mat = mat_make(num_rows, num_cols);
+
+    if (mat == NULL){
+        return NULL;
     }
 
-    for (unsigned long i=0; i < (mat_out->n_elems); i++){
-        mat_out->data[i] = rand() /2147483647.0;
+    for (unsigned long i=0; i < (mat->n_elems); i++){
+        mat->data[i] = rand() /2147483647.0;
     }
-    return 0;
+    return mat;
 }
 
-int mat_eye(tensor_2d* mat_out){
- if (mat_out == NULL){
-        return 1;
+tensor_2d* mat_eye(unsigned int num_rows){
+    tensor_2d* mat = mat_make(num_rows, num_rows);
+
+    if (mat == NULL){
+        return NULL;
     }
 
-    for (unsigned long i=0; i < (mat_out->n_elems); i++){
-        if (i % (mat_out->n_rows+1) == 0){
-            mat_out->data[i] = 1.0;
+    for (unsigned long i=0; i < (mat->n_elems); i++){
+        if (i % (num_rows+1) == 0){
+            mat->data[i] = 1.0;
         }
         else{
-            mat_out->data[i] = 0.0;
+            mat->data[i] = 0.0;
         }
     }
-    return 0;
+    return mat;
 }
 
-int mat_print(tensor_2d* mat){
+void mat_print(tensor_2d* mat){
     if (mat==NULL){
-        return 1;
+        return;
     }
     printf("\n");
     for (unsigned long i=0; i< (mat->n_elems); i++){
@@ -107,52 +111,56 @@ int mat_print(tensor_2d* mat){
             printf("\n");
         }
     }
-    return 0;
 }
 
-int mat_add(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
-    if (mat_a == NULL || mat_b == NULL|| mat_out == NULL){
-        return 1;
+tensor_2d* mat_add(tensor_2d* mat_a, tensor_2d* mat_b){
+    if (mat_a == NULL || mat_b == NULL){
+        return NULL;
     }
-    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_cols != mat_out->n_cols){
-        return 2;
-    }
-    else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
-        return 2;
+    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_rows != mat_b->n_rows){
+        return NULL;
     }
 
-    for (unsigned long i=0; i< mat_out->n_elems; i++){
+    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
+    if (mat_out == NULL) {
+        return NULL;
+    }
+
+    for (unsigned long i=0; i< (mat_out->n_elems); i++){
         mat_out->data[i] = mat_a->data[i] + mat_b->data[i];
     }
-    return 0;
+    return mat_out;
 }
 
-int mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
-    if (mat_a == NULL || mat_b == NULL|| mat_out == NULL){
-        return 1;
+tensor_2d* mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b){
+    if (mat_a == NULL || mat_b == NULL){
+        return NULL;
     }
-    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_cols != mat_out->n_cols){
-        return 2;
-    }
-    else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
-        return 2;
+    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_rows != mat_b->n_rows){
+        return NULL;
     }
 
-    for (unsigned long i=0; i< mat_out->n_elems; i++){
+    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
+    if (mat_out == NULL) {
+        return NULL;
+    }
+
+    for (unsigned long i=0; i<(mat_out->n_elems); i++){
         mat_out->data[i] = mat_a->data[i] - mat_b->data[i];
     }
-    return 0;
+    return mat_out;
 }
 
-int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
-    if (mat_a == NULL || mat_b == NULL || mat_out == NULL){
-        return 1;
+tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b){
+    if (mat_a == NULL || mat_b == NULL){
+        return NULL;
     }
     if (mat_a->n_cols != mat_b->n_rows){
-        return 2;
+        return NULL;
     }
-    if (mat_out->n_rows != mat_a->n_rows || mat_out->n_cols != mat_b->n_cols){
-        return 2;
+    tensor_2d* mat_out = mat_zeros(mat_a->n_rows, mat_b->n_cols);
+    if (mat_out == NULL) {
+        return NULL;
     }
 
     int mat_index;
@@ -164,24 +172,28 @@ int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
             }
         }
     }
-    return 0;
+    return mat_out;
 }
 
-int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
-    if (mat == NULL || mat_out == NULL){
-        return 1;
+tensor_2d* mat_transpose(tensor_2d* mat){
+    if (mat == NULL){
+        return NULL;
     }
 
+    tensor_2d* mat_out = mat_make(mat->n_cols, mat->n_rows);
+    if (mat_out == NULL) {
+        return NULL;
+    }
     for (unsigned int col= 0; col<mat->n_cols; col++){
         for (unsigned int row =0; row<mat->n_rows; row++){
             mat_out->data[row*mat->n_rows + col] = mat->data[row+col*mat->n_cols];
         }
     }
 
-    return 0;
+    return mat_out;
 }
 
-int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
+tensor_2d* mat_apply_func(double (func)(double d), tensor_2d* mat){
     if (mat == NULL|| func==NULL) {
         return NULL;
     }

@@ -42,7 +42,7 @@ void mat_free(tensor_2d** mat_ptr);
  * @param[in] num_cols unsigned int: the number of columns the matrix should have.
  * @return tensor_2d* A pointer to a tensor_2d object that acts as a matrix.
  */
-int mat_zeros(tensor_2d* mat_out);
+tensor_2d* mat_zeros(unsigned int num_rows, unsigned int num_cols);
 
 /**
  * @brief Function returns a pointer to matrix of specfied number of rows and columns whose elements are random numbers.
@@ -55,7 +55,7 @@ int mat_zeros(tensor_2d* mat_out);
  * @param[in] num_cols unsigned int: the number of columns the matrix should have.
  * @return tensor_2d* A pointer to a tensor_2d object that acts as a matrix.
  */
-int mat_rand(tensor_2d* mat_out);
+tensor_2d* mat_rand(unsigned int num_rows, unsigned int num_cols);
 
 
 /**
@@ -64,7 +64,7 @@ int mat_rand(tensor_2d* mat_out);
  * @param[in] num_rows  unsigned int: number of rows, and also of columns of the square identiy matrix
  * @return tensor_2d* A pointer to a tensor_2d object that acts as a matrix. 
  */
-int mat_eye(tensor_2d* mat_out);
+tensor_2d* mat_eye(unsigned int num_rows);
 
 
 /**
@@ -86,7 +86,7 @@ void mat_print(tensor_2d* mat);
  * @return tensor_2d* A pointer to a matrix, whos elements are the sum of
  * the corresponding elements in matricies a and b.
  */
-int mat_add(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
+tensor_2d* mat_add(tensor_2d* mat_a, tensor_2d* mat_b);
 
 /**
  * @brief Function subtracts second input matrix from first and reutrns a new matrix.
@@ -100,7 +100,7 @@ int mat_add(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
  * @return tensor_2d* Pointer to a new matrix, whos elements are the corrspoding
  * elements in matrix 'mat_a' a minus the corresponding elements in matrix 'mat_b'.
  */
-int mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
+tensor_2d* mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b);
 
 /**
  * @brief Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix.
@@ -114,7 +114,7 @@ int mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
  * @return tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix
  * multiplication 'mat_a' * 'mat_b'
  */
-int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
+tensor_2d* mat_mul(tensor_2d* mat_a, tensor_2d* mat_b);
 
 /**
  * @brief Function returns a pointer to a new matrix that is the tranpose of the input matrix.
@@ -126,7 +126,7 @@ int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
  * @param[in] mat A pointer to a new matrix that whose elements are trnapose relative to input matrix.
  * @return tensor_2d* A pointer to a matrix
  */
-int mat_transpose(tensor_2d* mat, tensor_2d* mat_out);
+tensor_2d* mat_transpose(tensor_2d* mat);
 
 /**
  * @brief A function used to apply an input function to every element of the input matrix.
@@ -137,7 +137,7 @@ int mat_transpose(tensor_2d* mat, tensor_2d* mat_out);
  * @param[in] mat A pointer matrix to whose elements the function should be applied
  * @return tensor_2d* A pointer to a new matrix whose elements have had the function applied to them.
  */
-int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out);
+tensor_2d* mat_apply_func(double (func)(double d), tensor_2d* mat);
 
 /**
  * @brief Applies input function to all elements, and then returns what the function returns on the last element.
