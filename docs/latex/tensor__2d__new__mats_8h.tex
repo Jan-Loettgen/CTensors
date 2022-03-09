@@ -1,0 +1,608 @@
+\hypertarget{tensor__2d__new__mats_8h}{}\doxysection{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+h File Reference}
+\label{tensor__2d__new__mats_8h}\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}
+\begin{DoxyCompactList}\small\item\em This struct implements a 2 dimensional tensor to represent a matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} \mbox{\hyperlink{tensor__2d__new__mats_8h_a30070caaa998b683c5bbc96cc0c7b337}{tensor\+\_\+2d}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a2667b0018203aabb8f0427b382d17f04}{mat\+\_\+make}} (unsigned int num\+\_\+rows, unsigned int num\+\_\+cols)
+\begin{DoxyCompactList}\small\item\em Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in \mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{tensor\+\_\+2d.\+data}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tensor__2d__new__mats_8h_a4606c74f1350372fa806e5340a306c8d}{mat\+\_\+free}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$$\ast$mat\+\_\+ptr)
+\begin{DoxyCompactList}\small\item\em Function takes in a pointer to a pointer to a matrix, and frees the memory of \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} struct Function sets the pointer that the input pointer points to NULL after freeing momeory. This function is effectivelz the counter part to \textquotesingle{}mat\+\_\+make\textquotesingle{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a2e48decd51acbf6052f329afd73a7b62}{mat\+\_\+zeros}} (unsigned int num\+\_\+rows, unsigned int num\+\_\+cols)
+\begin{DoxyCompactList}\small\item\em Function returns a pointer to a matrix of specfied number of rows and columns whose elements are zero. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a419db8572c739622856797b4ef5bb774}{mat\+\_\+rand}} (unsigned int num\+\_\+rows, unsigned int num\+\_\+cols)
+\begin{DoxyCompactList}\small\item\em Function returns a pointer to matrix of specfied number of rows and columns whose elements are random numbers. Random numbers are in the range of \mbox{[}0, 1\mbox{]}. Note, random number allocate,on is not truly random and should not be used for crytography. Function uses \textquotesingle{}rand()\textquotesingle{} from \texorpdfstring{$<$}{<}stdlib.\+h\texorpdfstring{$>$}{>} and divivdes by 2147483647.\+0 to put numbers in the range of \mbox{[}0, 1\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a786d57917d0fdd9432535e5417b226c2}{mat\+\_\+eye}} (unsigned int num\+\_\+rows)
+\begin{DoxyCompactList}\small\item\em Function reutrns a pointer to a square identity matrix with number of rows and columns specfied. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tensor__2d__new__mats_8h_a232262bdac25fd0050311a169295e6dd}{mat\+\_\+print}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat)
+\begin{DoxyCompactList}\small\item\em Function used to print all the elements of a matrix to the terminal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a181ad0d19991f5c417348074aa6ab024}{mat\+\_\+add}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function adds two input matricies and reutrns a new matrix,. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a56437a4f9cc912cc6220a7eb196b16b4}{mat\+\_\+subtract}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function subtracts second input matrix from first and reutrns a new matrix. Function subtracts matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} and returns a new matrix of the same shape as the input matricies. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a25cfc6241cfda028cce32d38560615f5}{mat\+\_\+mul}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_adf72c3e45e20cd4fd957d5143f7221f2}{mat\+\_\+transpose}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat)
+\begin{DoxyCompactList}\small\item\em Function returns a pointer to a new matrix that is the tranpose of the input matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a1bda238a30984dea1d4d126231339abe}{mat\+\_\+apply\+\_\+func}} (double(func)(double d), \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat)
+\begin{DoxyCompactList}\small\item\em A function used to apply an input function to every element of the input matrix. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{tensor__2d__new__mats_8h_a0ebced190c4ef85b6e7b5adfe4fd9c08}{mat\+\_\+apply\+\_\+func\+\_\+2}} (void $\ast$(func)(double d, int reset, void $\ast$out\+\_\+var), \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat, void $\ast$out\+\_\+var)
+\begin{DoxyCompactList}\small\item\em Applies input function to all elements, and then returns what the function returns on the last element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a30070caaa998b683c5bbc96cc0c7b337}\label{tensor__2d__new__mats_8h_a30070caaa998b683c5bbc96cc0c7b337}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!tensor\_2d@{tensor\_2d}}
+\index{tensor\_2d@{tensor\_2d}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{tensor\_2d}{tensor\_2d}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a181ad0d19991f5c417348074aa6ab024}\label{tensor__2d__new__mats_8h_a181ad0d19991f5c417348074aa6ab024}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_add@{mat\_add}}
+\index{mat\_add@{mat\_add}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_add()}{mat\_add()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function adds two input matricies and reutrns a new matrix,. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. 
+
+Note function returns NULL if input matricis are NULL or of different dimensions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to matrix a in same shape as matrix b \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to matrix b in same shape as matrix a \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a matrix, whos elements are the sum of the corresponding elements in matricies a and b. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00126}{126}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126                                                       \{}
+\DoxyCodeLine{00127     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{00128         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00129     \}}
+\DoxyCodeLine{00130     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00131         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00132     \}}
+\DoxyCodeLine{00133 }
+\DoxyCodeLine{00134     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{00135     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00136         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00137     \}}
+\DoxyCodeLine{00138 }
+\DoxyCodeLine{00139     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i< (mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00140         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] + mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i];}
+\DoxyCodeLine{00141     \}}
+\DoxyCodeLine{00142     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00143 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a1bda238a30984dea1d4d126231339abe}\label{tensor__2d__new__mats_8h_a1bda238a30984dea1d4d126231339abe}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_apply\_func@{mat\_apply\_func}}
+\index{mat\_apply\_func@{mat\_apply\_func}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_apply\_func()}{mat\_apply\_func()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+apply\+\_\+func (\begin{DoxyParamCaption}\item[{double(func)(double d)}]{,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+A function used to apply an input function to every element of the input matrix. 
+
+Note, input function is applied to all elements individually.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em func} & A pointer to a function that takes in a double and returns a double. \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat} & A pointer matrix to whose elements the function should be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a new matrix whose elements have had the function applied to them. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00206}{206}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206                                                                   \{}
+\DoxyCodeLine{00207     \textcolor{keywordflow}{if} (mat == NULL|| func==NULL) \{}
+\DoxyCodeLine{00208         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00209     \}}
+\DoxyCodeLine{00210     }
+\DoxyCodeLine{00211     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}});}
+\DoxyCodeLine{00212     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00213         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00214     \}}
+\DoxyCodeLine{00215 }
+\DoxyCodeLine{00216     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i = 0; i<mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}; i++)\{}
+\DoxyCodeLine{00217         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i]);}
+\DoxyCodeLine{00218     \}}
+\DoxyCodeLine{00219 }
+\DoxyCodeLine{00220     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00221 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a0ebced190c4ef85b6e7b5adfe4fd9c08}\label{tensor__2d__new__mats_8h_a0ebced190c4ef85b6e7b5adfe4fd9c08}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_apply\_func\_2@{mat\_apply\_func\_2}}
+\index{mat\_apply\_func\_2@{mat\_apply\_func\_2}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_apply\_func\_2()}{mat\_apply\_func\_2()}}
+{\footnotesize\ttfamily void $\ast$ mat\+\_\+apply\+\_\+func\+\_\+2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{func)(double d, int reset, void $\ast$out\+\_\+var,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat,  }\item[{void $\ast$}]{out\+\_\+var }\end{DoxyParamCaption})}
+
+
+
+Applies input function to all elements, and then returns what the function returns on the last element. 
+
+Note this function is different from function \textquotesingle{}mat\+\_\+apply\+\_\+func\textquotesingle{} because that function returns a matrix that has had the function applied to it. This function instead applies the input function to all elements and returns the function return, on the final element. This method could be used to calculate the sum of all elements of a matrix by using static variables in the input function.
+
+To accomadate static variables the function should take as input a reset value. This will be 1 on the last element of the matrix, and will be 0 otherwise.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em func} & A pointer to a Function that accepts a double, and a reset flag. \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat} & A pointer to a matrix to whose elements the function should be applied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns whatever the function returns after being called on final elememnt. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00222}{222}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00222                                                                                                        \{}
+\DoxyCodeLine{00223         \textcolor{keywordflow}{if} (mat == NULL|| func==NULL) \{}
+\DoxyCodeLine{00224         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00225     \}}
+\DoxyCodeLine{00226     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i = 0; i<mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}; i++)\{}
+\DoxyCodeLine{00227         \textcolor{keywordflow}{if} (i == (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}-\/1))\{}
+\DoxyCodeLine{00228             func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i], 1, out\_var);}
+\DoxyCodeLine{00229         \}}
+\DoxyCodeLine{00230         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00231             func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i], 0, out\_var);}
+\DoxyCodeLine{00232         \}}
+\DoxyCodeLine{00233     \}}
+\DoxyCodeLine{00234     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00235 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a786d57917d0fdd9432535e5417b226c2}\label{tensor__2d__new__mats_8h_a786d57917d0fdd9432535e5417b226c2}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_eye@{mat\_eye}}
+\index{mat\_eye@{mat\_eye}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_eye()}{mat\_eye()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+eye (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+\_\+rows }\end{DoxyParamCaption})}
+
+
+
+Function reutrns a pointer to a square identity matrix with number of rows and columns specfied. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+\_\+rows} & unsigned int\+: number of rows, and also of columns of the square identiy matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} object that acts as a matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00095}{95}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095                                          \{}
+\DoxyCodeLine{00096     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_rows);}
+\DoxyCodeLine{00097 }
+\DoxyCodeLine{00098     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{00099         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00100     \}}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00103         \textcolor{keywordflow}{if} (i \% (num\_rows+1) == 0)\{}
+\DoxyCodeLine{00104             mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 1.0;}
+\DoxyCodeLine{00105         \}}
+\DoxyCodeLine{00106         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00107             mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 0.0;}
+\DoxyCodeLine{00108         \}}
+\DoxyCodeLine{00109     \}}
+\DoxyCodeLine{00110     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{00111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a4606c74f1350372fa806e5340a306c8d}\label{tensor__2d__new__mats_8h_a4606c74f1350372fa806e5340a306c8d}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_free@{mat\_free}}
+\index{mat\_free@{mat\_free}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_free()}{mat\_free()}}
+{\footnotesize\ttfamily void mat\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$$\ast$}]{mat\+\_\+ptr }\end{DoxyParamCaption})}
+
+
+
+Function takes in a pointer to a pointer to a matrix, and frees the memory of \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} struct Function sets the pointer that the input pointer points to NULL after freeing momeory. This function is effectivelz the counter part to \textquotesingle{}mat\+\_\+make\textquotesingle{}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+ptr} & A pointer to a pointer where the \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} sturct is located.\\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+ptr} & A pointer to a pointer where the \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} sturct is located. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointer points to NULL. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d_8c_source_l00048}{48}} of file \mbox{\hyperlink{tensor__2d_8c_source}{tensor\+\_\+2d.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048                                  \{}
+\DoxyCodeLine{00049     \textcolor{keywordflow}{if} (*mat\_ptr == NULL)\{}
+\DoxyCodeLine{00050         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00051     \}}
+\DoxyCodeLine{00052 }
+\DoxyCodeLine{00053     free((*mat\_ptr)-\/>data);}
+\DoxyCodeLine{00054     free(*mat\_ptr);}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056     *mat\_ptr = NULL;}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00059 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a2667b0018203aabb8f0427b382d17f04}\label{tensor__2d__new__mats_8h_a2667b0018203aabb8f0427b382d17f04}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_make@{mat\_make}}
+\index{mat\_make@{mat\_make}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_make()}{mat\_make()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+make (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+\_\+rows,  }\item[{unsigned int}]{num\+\_\+cols }\end{DoxyParamCaption})}
+
+
+
+Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in \mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{tensor\+\_\+2d.\+data}}. 
+
+Note matrix variables are note initalised to any specfic value!!! Maximum allowed matrix size is specfied by \textquotesingle{}MAX\+\_\+\+NUM\+\_\+\+ELEMENTS\textquotesingle{} in \textquotesingle{}\mbox{\hyperlink{tensor__2d_8c}{tensor\+\_\+2d.\+c}}\textquotesingle{} as 268435456. Corresponding to a matrix of 16384 rows and 16384 columns, using 0.\+25\+GB of ram, to store.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+\_\+rows} & unsigned int\+: the number of rows the matrix should have. \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+cols} & unsigned int\+: the number of columns the matrix should have. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} object that acts as a matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d_8c_source_l00010}{10}} of file \mbox{\hyperlink{tensor__2d_8c_source}{tensor\+\_\+2d.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010                                                                   \{}
+\DoxyCodeLine{00011     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}));}
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{00014         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00015     \}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} ull\_num\_elems = num\_rows*num\_cols;}
+\DoxyCodeLine{00018     \textcolor{comment}{//limit because unsigned long cannot hold a number greater than 4294967295.}}
+\DoxyCodeLine{00019     \textcolor{keywordflow}{if} (ull\_num\_elems > 4294967295)\{}
+\DoxyCodeLine{00020         printf(\textcolor{stringliteral}{"{}Requested matrix with \%lld elements.\(\backslash\)n"{}}, ull\_num\_elems);}
+\DoxyCodeLine{00021         printf(\textcolor{stringliteral}{"{}Maximum possible number of elements is: \%ld\(\backslash\)n"{}}, 4294967295);}
+\DoxyCodeLine{00022         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{00024 }
+\DoxyCodeLine{00025     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} num\_elems = num\_rows*num\_cols;}
+\DoxyCodeLine{00026     \textcolor{comment}{//limit specfied in \#define MAX\_NUM\_ELEMENTS.}}
+\DoxyCodeLine{00027     \textcolor{keywordflow}{if} (num\_elems > \mbox{\hyperlink{tensor__2d_8c_a63649d1769e1ed482025cd15b43da0f7}{MAX\_NUM\_ELEMENTS}})\{}
+\DoxyCodeLine{00028         printf(\textcolor{stringliteral}{"{}Requested matrix with \%ld elements.\(\backslash\)n"{}}, num\_elems);}
+\DoxyCodeLine{00029         printf(\textcolor{stringliteral}{"{}Maximum possible number of elements is: \%d\(\backslash\)n"{}}, \mbox{\hyperlink{tensor__2d_8c_a63649d1769e1ed482025cd15b43da0f7}{MAX\_NUM\_ELEMENTS}});}
+\DoxyCodeLine{00030         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00031     \}}
+\DoxyCodeLine{00032 }
+\DoxyCodeLine{00033     mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}} = num\_elems;}
+\DoxyCodeLine{00034     mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} = num\_rows;}
+\DoxyCodeLine{00035     mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} = num\_cols;}
+\DoxyCodeLine{00036 }
+\DoxyCodeLine{00037     \textcolor{keywordtype}{double}* data = malloc(num\_elems*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{00038 }
+\DoxyCodeLine{00039     \textcolor{keywordflow}{if} (data == NULL)\{}
+\DoxyCodeLine{00040         free(mat);}
+\DoxyCodeLine{00041         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00042     \}}
+\DoxyCodeLine{00043 }
+\DoxyCodeLine{00044     mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} = data;}
+\DoxyCodeLine{00045     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{00046 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a25cfc6241cfda028cce32d38560615f5}\label{tensor__2d__new__mats_8h_a25cfc6241cfda028cce32d38560615f5}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_mul@{mat\_mul}}
+\index{mat\_mul@{mat\_mul}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_mul()}{mat\_mul()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+mul (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{}. 
+
+Note function returns NULL if number of columns in matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} is not equal to Number of rows in matrix \textquotesingle{}mat\+\_\+b\textquotesingle{}, or if either input matrix is a NULL pointer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to a matrix \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to a different matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a new matrix, whose elements are the results of the matrix multiplication \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00164}{164}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00164                                                       \{}
+\DoxyCodeLine{00165     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{00166         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00167     \}}
+\DoxyCodeLine{00168     \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00169         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00170     \}}
+\DoxyCodeLine{00171     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2e48decd51acbf6052f329afd73a7b62}{mat\_zeros}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}, mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}});}
+\DoxyCodeLine{00172     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00173         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00174     \}}
+\DoxyCodeLine{00175 }
+\DoxyCodeLine{00176     \textcolor{keywordtype}{int} mat\_index;}
+\DoxyCodeLine{00177     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row=0; row<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{00178         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col=0; col<mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; col++)\{}
+\DoxyCodeLine{00179             mat\_index = row*mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}+col;}
+\DoxyCodeLine{00180             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; k++)\{}
+\DoxyCodeLine{00181                 mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[mat\_index] += mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[(row*mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}})+k]*mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[(mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}*k)+col];}
+\DoxyCodeLine{00182             \}}
+\DoxyCodeLine{00183         \}}
+\DoxyCodeLine{00184     \}}
+\DoxyCodeLine{00185     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00186 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a232262bdac25fd0050311a169295e6dd}\label{tensor__2d__new__mats_8h_a232262bdac25fd0050311a169295e6dd}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_print@{mat\_print}}
+\index{mat\_print@{mat\_print}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_print()}{mat\_print()}}
+{\footnotesize\ttfamily void mat\+\_\+print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+Function used to print all the elements of a matrix to the terminal. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat} & A pointer to the matrix to print out.\\
+\hline
+\mbox{\texttt{ in}}  & {\em mat} & A pointer to the matrix to print out. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointer points to NULL 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d_8c_source_l00099}{99}} of file \mbox{\hyperlink{tensor__2d_8c_source}{tensor\+\_\+2d.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099                              \{}
+\DoxyCodeLine{00100     \textcolor{keywordflow}{if} (mat==NULL)\{}
+\DoxyCodeLine{00101         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00102     \}}
+\DoxyCodeLine{00103     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00104     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i< (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00105         printf(\textcolor{stringliteral}{"{}\%f\(\backslash\)t"{}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i]);}
+\DoxyCodeLine{00106         \textcolor{keywordflow}{if} ((i+1) \% mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} == 0)\{}
+\DoxyCodeLine{00107             printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00108         \}}
+\DoxyCodeLine{00109     \}}
+\DoxyCodeLine{00110     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a419db8572c739622856797b4ef5bb774}\label{tensor__2d__new__mats_8h_a419db8572c739622856797b4ef5bb774}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_rand@{mat\_rand}}
+\index{mat\_rand@{mat\_rand}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_rand()}{mat\_rand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+rand (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+\_\+rows,  }\item[{unsigned int}]{num\+\_\+cols }\end{DoxyParamCaption})}
+
+
+
+Function returns a pointer to matrix of specfied number of rows and columns whose elements are random numbers. Random numbers are in the range of \mbox{[}0, 1\mbox{]}. Note, random number allocate,on is not truly random and should not be used for crytography. Function uses \textquotesingle{}rand()\textquotesingle{} from \texorpdfstring{$<$}{<}stdlib.\+h\texorpdfstring{$>$}{>} and divivdes by 2147483647.\+0 to put numbers in the range of \mbox{[}0, 1\mbox{]}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+\_\+rows} & unsigned int\+: the number of rows the matrix should have. \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+cols} & unsigned int\+: the number of columns the matrix should have. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} object that acts as a matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00082}{82}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082                                                                  \{}
+\DoxyCodeLine{00083     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_cols);}
+\DoxyCodeLine{00084 }
+\DoxyCodeLine{00085     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{00086         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00087     \}}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00090         mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = rand() /2147483647.0;}
+\DoxyCodeLine{00091     \}}
+\DoxyCodeLine{00092     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{00093 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a56437a4f9cc912cc6220a7eb196b16b4}\label{tensor__2d__new__mats_8h_a56437a4f9cc912cc6220a7eb196b16b4}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_subtract@{mat\_subtract}}
+\index{mat\_subtract@{mat\_subtract}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_subtract()}{mat\_subtract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+subtract (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function subtracts second input matrix from first and reutrns a new matrix. Function subtracts matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} and returns a new matrix of the same shape as the input matricies. 
+
+Note function returns NULL if input matricis are NULL or of different dimensions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to a matrix from which matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} should be subtracted \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to the matrix which should be subtracted from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ Pointer to a new matrix, whos elements are the corrspoding elements in matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} a minus the corresponding elements in matrix \textquotesingle{}mat\+\_\+b\textquotesingle{}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00145}{145}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00145                                                            \{}
+\DoxyCodeLine{00146     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{00147         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00148     \}}
+\DoxyCodeLine{00149     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00150         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00151     \}}
+\DoxyCodeLine{00152 }
+\DoxyCodeLine{00153     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{00154     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00155         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00156     \}}
+\DoxyCodeLine{00157 }
+\DoxyCodeLine{00158     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i<(mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00159         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] -\/ mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i];}
+\DoxyCodeLine{00160     \}}
+\DoxyCodeLine{00161     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00162 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_adf72c3e45e20cd4fd957d5143f7221f2}\label{tensor__2d__new__mats_8h_adf72c3e45e20cd4fd957d5143f7221f2}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_transpose@{mat\_transpose}}
+\index{mat\_transpose@{mat\_transpose}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_transpose()}{mat\_transpose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+transpose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+Function returns a pointer to a new matrix that is the tranpose of the input matrix. 
+
+i.\+e. new matrix has the same number of rows as the input matrix has columns, and same number of columns as input matrix has rows. Elements are the tranpose of the input matrix.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat} & A pointer to a new matrix that whose elements are trnapose relative to input matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a matrix 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00188}{188}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00188                                         \{}
+\DoxyCodeLine{00189     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{00190         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00191     \}}
+\DoxyCodeLine{00192 }
+\DoxyCodeLine{00193     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{00194     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00195         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00196     \}}
+\DoxyCodeLine{00197     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col= 0; col<mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; col++)\{}
+\DoxyCodeLine{00198         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row =0; row<mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{00199             mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row*mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} + col] = mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row+col*mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}];}
+\DoxyCodeLine{00200         \}}
+\DoxyCodeLine{00201     \}}
+\DoxyCodeLine{00202 }
+\DoxyCodeLine{00203     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00204 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__new__mats_8h_a2e48decd51acbf6052f329afd73a7b62}\label{tensor__2d__new__mats_8h_a2e48decd51acbf6052f329afd73a7b62}} 
+\index{tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}!mat\_zeros@{mat\_zeros}}
+\index{mat\_zeros@{mat\_zeros}!tensor\_2d\_new\_mats.h@{tensor\_2d\_new\_mats.h}}
+\doxysubsubsection{\texorpdfstring{mat\_zeros()}{mat\_zeros()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+zeros (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+\_\+rows,  }\item[{unsigned int}]{num\+\_\+cols }\end{DoxyParamCaption})}
+
+
+
+Function returns a pointer to a matrix of specfied number of rows and columns whose elements are zero. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+\_\+rows} & unsigned int\+: the number of rows the matrix should have. \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+cols} & unsigned int\+: the number of columns the matrix should have. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} object that acts as a matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__new__mats_8c_source_l00069}{69}} of file \mbox{\hyperlink{tensor__2d__new__mats_8c_source}{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069                                                                   \{}
+\DoxyCodeLine{00070     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_cols);}
+\DoxyCodeLine{00071 }
+\DoxyCodeLine{00072     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{00073         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00074     \}}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{00077         mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 0.0;}
+\DoxyCodeLine{00078     \}}
+\DoxyCodeLine{00079     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{00080 \}}
+
+\end{DoxyCode}

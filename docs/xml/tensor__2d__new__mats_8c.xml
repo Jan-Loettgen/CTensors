@@ -1,0 +1,762 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="tensor__2d__new__mats_8c" kind="file" language="C++">
+    <compoundname>tensor_2d_new_mats.c</compoundname>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">unistd.h</includes>
+    <includes refid="tensor__2d_8h" local="yes">tensor_2d.h</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>tensor_2d.h</label>
+        <link refid="tensor__2d_8h"/>
+      </node>
+      <node id="1">
+        <label>tensor_2d_new_mats.c</label>
+        <link refid="tensor__2d__new__mats_8c"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>stdio.h</label>
+      </node>
+      <node id="2">
+        <label>stdlib.h</label>
+      </node>
+      <node id="4">
+        <label>unistd.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="tensor__2d__new__mats_8c_1a63649d1769e1ed482025cd15b43da0f7" prot="public" static="no">
+        <name>MAX_NUM_ELEMENTS</name>
+        <initializer>268435456</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="18" column="9" bodyfile="src/tensor_2d_new_mats.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_make</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in <ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">tensor_2d.data</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note matrix variables are note initalised to any specfic value!!! Maximum allowed matrix size is specfied by &apos;MAX_NUM_ELEMENTS&apos; in &apos;<ref refid="tensor__2d_8c" kindref="compound">tensor_2d.c</ref>&apos; as 268435456. Corresponding to a matrix of 16384 rows and 16384 columns, using 0.25GB of ram, to store.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="20" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="20" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a4606c74f1350372fa806e5340a306c8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mat_free</definition>
+        <argsstring>(tensor_2d **mat_ptr)</argsstring>
+        <name>mat_free</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> **</type>
+          <declname>mat_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Function takes in a pointer to a pointer to a matrix, and frees the memory of &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; struct Function sets the pointer that the input pointer points to NULL after freeing momeory. This function is effectivelz the counter part to &apos;mat_make&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a pointer where the &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct is located. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="58" column="6" bodyfile="src/tensor_2d_new_mats.c" bodystart="58" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a2e48decd51acbf6052f329afd73a7b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_zeros</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_zeros</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to a matrix of specfied number of rows and columns whose elements are zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="69" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="69" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a419db8572c739622856797b4ef5bb774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_rand</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_rand</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to matrix of specfied number of rows and columns whose elements are random numbers. Random numbers are in the range of [0, 1]. Note, random number allocate,on is not truly random and should not be used for crytography. Function uses &apos;rand()&apos; from &lt;stdlib.h&gt; and divivdes by 2147483647.0 to put numbers in the range of [0, 1]. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="82" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="82" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a786d57917d0fdd9432535e5417b226c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_eye</definition>
+        <argsstring>(unsigned int num_rows)</argsstring>
+        <name>mat_eye</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <briefdescription>
+<para>Function reutrns a pointer to a square identity matrix with number of rows and columns specfied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: number of rows, and also of columns of the square identiy matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="95" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="95" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a232262bdac25fd0050311a169295e6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mat_print</definition>
+        <argsstring>(tensor_2d *mat)</argsstring>
+        <name>mat_print</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Function used to print all the elements of a matrix to the terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix to print out. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="113" column="6" bodyfile="src/tensor_2d_new_mats.c" bodystart="113" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a181ad0d19991f5c417348074aa6ab024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_add</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_add</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function adds two input matricies and reutrns a new matrix,. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix a in same shape as matrix b </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix b in same shape as matrix a </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a matrix, whos elements are the sum of the corresponding elements in matricies a and b. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="126" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="126" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a56437a4f9cc912cc6220a7eb196b16b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_subtract</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_subtract</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function subtracts second input matrix from first and reutrns a new matrix. Function subtracts matrix &apos;mat_b&apos; from matrix &apos;mat_a&apos; and returns a new matrix of the same shape as the input matricies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix from which matrix &apos;mat_b&apos; should be subtracted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix which should be subtracted from matrix &apos;mat_a&apos;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* Pointer to a new matrix, whos elements are the corrspoding elements in matrix &apos;mat_a&apos; a minus the corresponding elements in matrix &apos;mat_b&apos;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="145" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="145" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a25cfc6241cfda028cce32d38560615f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_mul</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_mul</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order &apos;mat_a&apos; * &apos;mat_b&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if number of columns in matrix &apos;mat_a&apos; is not equal to Number of rows in matrix &apos;mat_b&apos;, or if either input matrix is a NULL pointer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a different matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix multiplication &apos;mat_a&apos; * &apos;mat_b&apos; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="164" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="164" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1adf72c3e45e20cd4fd957d5143f7221f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_transpose</definition>
+        <argsstring>(tensor_2d *mat)</argsstring>
+        <name>mat_transpose</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to a new matrix that is the tranpose of the input matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>i.e. new matrix has the same number of rows as the input matrix has columns, and same number of columns as input matrix has rows. Elements are the tranpose of the input matrix.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a new matrix that whose elements are trnapose relative to input matrix. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a matrix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="188" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="188" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a1bda238a30984dea1d4d126231339abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_apply_func</definition>
+        <argsstring>(double(func)(double d), tensor_2d *mat)</argsstring>
+        <name>mat_apply_func</name>
+        <param>
+          <type>double(func)(double d)</type>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>A function used to apply an input function to every element of the input matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note, input function is applied to all elements individually.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a function that takes in a double and returns a double. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer matrix to whose elements the function should be applied </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix whose elements have had the function applied to them. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="206" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="206" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8c_1a0ebced190c4ef85b6e7b5adfe4fd9c08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * mat_apply_func_2</definition>
+        <argsstring>(void *(func)(double d, int reset, void *out_var), tensor_2d *mat, void *out_var)</argsstring>
+        <name>mat_apply_func_2</name>
+        <param>
+          <type>void *</type>
+          <array>func)(double d, int reset, void *out_var</array>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>out_var</declname>
+        </param>
+        <briefdescription>
+<para>Applies input function to all elements, and then returns what the function returns on the last element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note this function is different from function &apos;mat_apply_func&apos; because that function returns a matrix that has had the function applied to it. This function instead applies the input function to all elements and returns the function return, on the final element. This method could be used to calculate the sum of all elements of a matrix by using static variables in the input function.</para>
+<para>To accomadate static variables the function should take as input a reset value. This will be 1 on the last element of the matrix, and will be 0 otherwise.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a Function that accepts a double, and a reset flag. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix to whose elements the function should be applied. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>returns whatever the function returns after being called on final elememnt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.c" line="222" column="6" bodyfile="src/tensor_2d_new_mats.c" bodystart="222" bodyend="235"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This file contais function definitons that operate on &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; structs declared in &apos;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&apos;, but are different to the methods declared there because these methods create new matricies, rather than requiring input matricies. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jan Luca Loettgen (<ulink url="mailto:janlucaloettgen@gmail.com">janlucaloettgen@gmail.com</ulink>) </para>
+</simplesect>
+<simplesect kind="version"><para>0.1 </para>
+</simplesect>
+<simplesect kind="date"><para>09-03-2022</para>
+</simplesect>
+<simplesect kind="copyright"><para>Copyright (c) 2022 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//corresponds<sp/>to<sp/>a<sp/>matrix<sp/>of<sp/>16384<sp/>x<sp/>16384,<sp/>will<sp/>use<sp/>0.25<sp/>GB<sp/>of<sp/>RAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="tensor__2d__new__mats_8c_1a63649d1769e1ed482025cd15b43da0f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_ELEMENTS<sp/>268435456</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ull_num_elems<sp/>=<sp/>num_rows*num_cols;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//limit<sp/>because<sp/>unsigned<sp/>long<sp/>cannot<sp/>hold<sp/>a<sp/>number<sp/>greater<sp/>than<sp/>4294967295.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ull_num_elems<sp/>&gt;<sp/>4294967295){</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Requested<sp/>matrix<sp/>with<sp/>%lld<sp/>elements.\n&quot;</highlight><highlight class="normal">,<sp/>ull_num_elems);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Maximum<sp/>possible<sp/>number<sp/>of<sp/>elements<sp/>is:<sp/>%ld\n&quot;</highlight><highlight class="normal">,<sp/>4294967295);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>num_elems<sp/>=<sp/>num_rows*num_cols;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//limit<sp/>specfied<sp/>in<sp/>#define<sp/>MAX_NUM_ELEMENTS.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_elems<sp/>&gt;<sp/><ref refid="tensor__2d__new__mats_8c_1a63649d1769e1ed482025cd15b43da0f7" kindref="member">MAX_NUM_ELEMENTS</ref>){</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Requested<sp/>matrix<sp/>with<sp/>%ld<sp/>elements.\n&quot;</highlight><highlight class="normal">,<sp/>num_elems);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Maximum<sp/>possible<sp/>number<sp/>of<sp/>elements<sp/>is:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="tensor__2d__new__mats_8c_1a63649d1769e1ed482025cd15b43da0f7" kindref="member">MAX_NUM_ELEMENTS</ref>);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref><sp/>=<sp/>num_elems;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>=<sp/>num_rows;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>=<sp/>num_cols;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>data<sp/>=<sp/>malloc(num_elems*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(data<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(mat);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="tensor__2d__new__mats_8c_1a4606c74f1350372fa806e5340a306c8d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__new__mats_8c_1a4606c74f1350372fa806e5340a306c8d" kindref="member">mat_free</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>**<sp/>mat_ptr){</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*mat_ptr<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>free((*mat_ptr)-&gt;data);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>free(*mat_ptr);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>*mat_ptr<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="tensor__2d__new__mats_8c_1a2e48decd51acbf6052f329afd73a7b62" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a2e48decd51acbf6052f329afd73a7b62" kindref="member">mat_zeros</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols){</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(num_rows,<sp/>num_cols);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="tensor__2d__new__mats_8c_1a419db8572c739622856797b4ef5bb774" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a419db8572c739622856797b4ef5bb774" kindref="member">mat_rand</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols){</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(num_rows,<sp/>num_cols);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>rand()<sp/>/2147483647.0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="tensor__2d__new__mats_8c_1a786d57917d0fdd9432535e5417b226c2" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a786d57917d0fdd9432535e5417b226c2" kindref="member">mat_eye</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows){</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(num_rows,<sp/>num_rows);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>%<sp/>(num_rows+1)<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="tensor__2d__new__mats_8c_1a232262bdac25fd0050311a169295e6dd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__new__mats_8c_1a232262bdac25fd0050311a169295e6dd" kindref="member">mat_print</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat){</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat==NULL){</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%f\t&quot;</highlight><highlight class="normal">,<sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((i+1)<sp/>%<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="tensor__2d__new__mats_8c_1a181ad0d19991f5c417348074aa6ab024" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a181ad0d19991f5c417348074aa6ab024" kindref="member">mat_add</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>,<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>+<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="tensor__2d__new__mats_8c_1a56437a4f9cc912cc6220a7eb196b16b4" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a56437a4f9cc912cc6220a7eb196b16b4" kindref="member">mat_subtract</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>,<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>-<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="tensor__2d__new__mats_8c_1a25cfc6241cfda028cce32d38560615f5" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a25cfc6241cfda028cce32d38560615f5" kindref="member">mat_mul</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2e48decd51acbf6052f329afd73a7b62" kindref="member">mat_zeros</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>,<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mat_index;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row=0;<sp/>row&lt;mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col=0;<sp/>col&lt;mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_index<sp/>=<sp/>row*mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>+col;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=0;<sp/>k&lt;mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>k++){</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[mat_index]<sp/>+=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[(row*mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>)+k]*mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[(mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>*k)+col];</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="tensor__2d__new__mats_8c_1adf72c3e45e20cd4fd957d5143f7221f2" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1adf72c3e45e20cd4fd957d5143f7221f2" kindref="member">mat_transpose</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat){</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>,<sp/>mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col=<sp/>0;<sp/>col&lt;mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row<sp/>=0;<sp/>row&lt;mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row*mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>+<sp/>col]<sp/>=<sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row+col*mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>];</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="tensor__2d__new__mats_8c_1a1bda238a30984dea1d4d126231339abe" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8c_1a1bda238a30984dea1d4d126231339abe" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat){</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>,<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="222" refid="tensor__2d__new__mats_8c_1a0ebced190c4ef85b6e7b5adfe4fd9c08" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="tensor__2d__new__mats_8c_1a0ebced190c4ef85b6e7b5adfe4fd9c08" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var){</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>-1)){</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i],<sp/>1,<sp/>out_var);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i],<sp/>0,<sp/>out_var);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/tensor_2d_new_mats.c"/>
+  </compounddef>
+</doxygen>

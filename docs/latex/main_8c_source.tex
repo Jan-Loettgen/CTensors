@@ -1,0 +1,65 @@
+\hypertarget{main_8c_source}{}\doxysection{main.\+c}
+\label{main_8c_source}\index{main.c@{main.c}}
+\mbox{\hyperlink{main_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tensor__2d_8h}{tensor\_2d.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tensor__2d__threaded_8h}{tensor\_2d\_threaded.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}\mbox{\hyperlink{main_8c_ac41ccea697e346f2e1a8451a7633797b}{00035}} \textcolor{keywordtype}{double} \mbox{\hyperlink{main_8c_ac41ccea697e346f2e1a8451a7633797b}{ReLu}}(\textcolor{keywordtype}{double} d)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036     \textcolor{keywordflow}{if} (d< 0.0)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037         \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040         \textcolor{keywordflow}{return} d;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}\mbox{\hyperlink{main_8c_ac85965540442908b58fb8d90546dc5d0}{00044}} \textcolor{keywordtype}{void}* \mbox{\hyperlink{main_8c_ac85965540442908b58fb8d90546dc5d0}{Sum\_mat}}(\textcolor{keywordtype}{double} d, \textcolor{keywordtype}{int} reset, \textcolor{keywordtype}{void}* out\_var)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045     \textcolor{keyword}{static} \textcolor{keywordtype}{double} sum = 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046     sum += d;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048     \textcolor{keywordflow}{if} (reset==1)\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049         *((\textcolor{keywordtype}{double}*)out\_var) = sum;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050         sum = 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}00051         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}\mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00059}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat1 = \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\_rand}}(5, 9);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062     \textcolor{keywordtype}{double} sum = 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063     \textcolor{keywordtype}{double}* sum\_ptr = \&sum;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065     \mbox{\hyperlink{tensor__2d_8c_ada02f47e919e61813c57d8b990ed4ce0}{mat\_apply\_func\_2}}(\&\mbox{\hyperlink{main_8c_ac85965540442908b58fb8d90546dc5d0}{Sum\_mat}}, mat1, sum\_ptr);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066     printf(\textcolor{stringliteral}{"{}sum of matrix : \%f\(\backslash\)n"{}},*sum\_ptr);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat2 = \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\_rand}}(5, 5);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00070}00070     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_c = \mbox{\hyperlink{tensor__2d__threaded_8c_a0a77f99c45633f5aae091384070a1307}{mat\_subtract\_T}}(mat1, mat2);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00072}00072     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_d = \mbox{\hyperlink{tensor__2d__threaded_8c_ae43ea7fdeaf2fc2a0718aafd6050e315}{mat\_mul\_T}}(mat1, mat2);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00075}00075     \textcolor{comment}{// mat\_print(mat2);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00076}00076     \textcolor{comment}{// mat\_print(mat\_d);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00078}00078     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat1);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00079}00079     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat2);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00080}00080     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat\_c);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00081}00081     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat\_d);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00083}00083     printf(\textcolor{stringliteral}{"{}\(\backslash\)n exiting \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00084}00084     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00086}00086 \}}
+
+\end{DoxyCode}

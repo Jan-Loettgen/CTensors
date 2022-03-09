@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structarray__mat__mul__args" kind="struct" language="C++" prot="public">
+    <compoundname>array_mat_mul_args</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* array_mat_mul_args::arr</definition>
+        <argsstring></argsstring>
+        <name>arr</name>
+        <qualifiedname>array_mat_mul_args::arr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.c" line="18" column="12" bodyfile="src/tensor_2d_threaded.c" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" prot="public" static="no" mutable="no">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d* array_mat_mul_args::mat</definition>
+        <argsstring></argsstring>
+        <name>mat</name>
+        <qualifiedname>array_mat_mul_args::mat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.c" line="19" column="15" bodyfile="src/tensor_2d_threaded.c" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* array_mat_mul_args::arr_out</definition>
+        <argsstring></argsstring>
+        <name>arr_out</name>
+        <qualifiedname>array_mat_mul_args::arr_out</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.c" line="20" column="12" bodyfile="src/tensor_2d_threaded.c" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>array_mat_mul_args</label>
+        <link refid="structarray__mat__mul__args"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>mat</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tensor_2d</label>
+        <link refid="structtensor__2d"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/tensor_2d_threaded.c" line="17" column="1" bodyfile="src/tensor_2d_threaded.c" bodystart="17" bodyend="21"/>
+    <listofallmembers>
+      <member refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" prot="public" virt="non-virtual"><scope>array_mat_mul_args</scope><name>arr</name></member>
+      <member refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" prot="public" virt="non-virtual"><scope>array_mat_mul_args</scope><name>arr_out</name></member>
+      <member refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" prot="public" virt="non-virtual"><scope>array_mat_mul_args</scope><name>mat</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

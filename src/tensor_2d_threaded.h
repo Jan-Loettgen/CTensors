@@ -48,5 +48,5 @@ tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b);
  * @return tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix
  * multiplication 'mat_a' * 'mat_b'
  */
-tensor_2d* mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b);   
+int mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);   
 #endif

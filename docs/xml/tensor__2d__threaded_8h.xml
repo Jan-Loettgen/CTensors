@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="tensor__2d__threaded_8h" kind="file" language="C++">
+    <compoundname>tensor_2d_threaded.h</compoundname>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <includedby refid="tensor__2d__threaded_8c" local="yes">tensor_2d_threaded.c</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+      </node>
+      <node id="3">
+        <label>tensor_2d_threaded.c</label>
+        <link refid="tensor__2d__threaded_8c"/>
+      </node>
+      <node id="1">
+        <label>tensor_2d_threaded.h</label>
+        <link refid="tensor__2d__threaded_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tensor__2d__threaded_8h_1a3297fdae3fbc4a0f8a36f5de24b7994b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_add_T</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_add_T</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_add&apos; function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix a in same shape as matrix b </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix b in same shape as matrix a </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a matrix, whos elements are the sum of the corresponding elements in matricies a and b. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.h" line="18" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="39" bodyend="79" declfile="src/tensor_2d_threaded.h" declline="18" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__threaded_8h_1a0a77f99c45633f5aae091384070a1307" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_subtract_T</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_subtract_T</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix &apos;mat_b&apos; from matrix &apos;mat_a&apos; and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_subtract&apos; function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix from which matrix &apos;mat_b&apos; should be subtracted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix which should be subtracted from matrix &apos;mat_a&apos;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* Pointer to a new matrix, whos elements are the corrspoding elements in matrix &apos;mat_a&apos; a minus the corresponding elements in matrix &apos;mat_b&apos;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.h" line="34" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="98" bodyend="138" declfile="src/tensor_2d_threaded.h" declline="34" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__threaded_8h_1ae43ea7fdeaf2fc2a0718aafd6050e315" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_mul_T</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_mul_T</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order &apos;mat_a&apos; * &apos;mat_b&apos;. The multiplication is row threaded for matrix &apos;mat_a&apos;, meaning each thread computes one of the rows of the output matrix. This may decrease computation time, for matricies with a large number of rows, relative to the function &apos;mat_mul&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if number of columns in matrix &apos;mat_a&apos; is not equal to Number of rows in matrix &apos;mat_b&apos;, or if either input matrix is a NULL pointer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a different matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix multiplication &apos;mat_a&apos; * &apos;mat_b&apos; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.h" line="51" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="159" bodyend="198" declfile="src/tensor_2d_threaded.h" declline="51" declcolumn="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TENSOR_2D_THREADED_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TENSOR_2D_THREADED_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8h_1a3297fdae3fbc4a0f8a36f5de24b7994b" kindref="member">mat_add_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8h_1a0a77f99c45633f5aae091384070a1307" kindref="member">mat_subtract_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8h_1ae43ea7fdeaf2fc2a0718aafd6050e315" kindref="member">mat_mul_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/tensor_2d_threaded.h"/>
+  </compounddef>
+</doxygen>

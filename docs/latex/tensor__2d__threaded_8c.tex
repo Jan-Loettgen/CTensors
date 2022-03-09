@@ -1,0 +1,278 @@
+\hypertarget{tensor__2d__threaded_8c}{}\doxysection{tensor\+\_\+2d\+\_\+threaded.\+c File Reference}
+\label{tensor__2d__threaded_8c}\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tensor\+\_\+2d.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tensor\+\_\+2d\+\_\+threaded.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structarray__op__args}{array\+\_\+op\+\_\+args}}
+\item 
+struct \mbox{\hyperlink{structarray__mat__mul__args}{array\+\_\+mat\+\_\+mul\+\_\+args}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\+\_\+\+THREADS}}~13
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structarray__op__args}{array\+\_\+op\+\_\+args}} \mbox{\hyperlink{tensor__2d__threaded_8c_aca78a11d086ce891f7a8b9db2d9ed2d7}{array\+\_\+op\+\_\+args}}
+\item 
+typedef struct \mbox{\hyperlink{structarray__mat__mul__args}{array\+\_\+mat\+\_\+mul\+\_\+args}} \mbox{\hyperlink{tensor__2d__threaded_8c_a70eb961a476aa58a32264d34dea7b43d}{array\+\_\+mat\+\_\+mul\+\_\+args}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__threaded_8c_a3297fdae3fbc4a0f8a36f5de24b7994b}{mat\+\_\+add\+\_\+T}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+add\textquotesingle{} function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__threaded_8c_a0a77f99c45633f5aae091384070a1307}{mat\+\_\+subtract\+\_\+T}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+subtract\textquotesingle{} function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{tensor__2d__threaded_8c_ae43ea7fdeaf2fc2a0718aafd6050e315}{mat\+\_\+mul\+\_\+T}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{}. The multiplication is row threaded for matrix \textquotesingle{}mat\+\_\+a\textquotesingle{}, meaning each thread computes one of the rows of the output matrix. This may decrease computation time, for matricies with a large number of rows, relative to the function \textquotesingle{}mat\+\_\+mul\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}\label{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!NUM\_THREADS@{NUM\_THREADS}}
+\index{NUM\_THREADS@{NUM\_THREADS}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{NUM\_THREADS}{NUM\_THREADS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+THREADS~13}
+
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__threaded_8c_source_l00008}{8}} of file \mbox{\hyperlink{tensor__2d__threaded_8c_source}{tensor\+\_\+2d\+\_\+threaded.\+c}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{tensor__2d__threaded_8c_a70eb961a476aa58a32264d34dea7b43d}\label{tensor__2d__threaded_8c_a70eb961a476aa58a32264d34dea7b43d}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!array\_mat\_mul\_args@{array\_mat\_mul\_args}}
+\index{array\_mat\_mul\_args@{array\_mat\_mul\_args}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{array\_mat\_mul\_args}{array\_mat\_mul\_args}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structarray__mat__mul__args}{array\+\_\+mat\+\_\+mul\+\_\+args}} \mbox{\hyperlink{structarray__mat__mul__args}{array\+\_\+mat\+\_\+mul\+\_\+args}}}
+
+\mbox{\Hypertarget{tensor__2d__threaded_8c_aca78a11d086ce891f7a8b9db2d9ed2d7}\label{tensor__2d__threaded_8c_aca78a11d086ce891f7a8b9db2d9ed2d7}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!array\_op\_args@{array\_op\_args}}
+\index{array\_op\_args@{array\_op\_args}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{array\_op\_args}{array\_op\_args}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structarray__op__args}{array\+\_\+op\+\_\+args}} \mbox{\hyperlink{structarray__op__args}{array\+\_\+op\+\_\+args}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{tensor__2d__threaded_8c_a3297fdae3fbc4a0f8a36f5de24b7994b}\label{tensor__2d__threaded_8c_a3297fdae3fbc4a0f8a36f5de24b7994b}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!mat\_add\_T@{mat\_add\_T}}
+\index{mat\_add\_T@{mat\_add\_T}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{mat\_add\_T()}{mat\_add\_T()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+add\+\_\+T (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+add\textquotesingle{} function. 
+
+Note function returns NULL if input matricis are NULL or of different dimensions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to matrix a in same shape as matrix b \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to matrix b in same shape as matrix a \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a matrix, whos elements are the sum of the corresponding elements in matricies a and b. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__threaded_8c_source_l00039}{39}} of file \mbox{\hyperlink{tensor__2d__threaded_8c_source}{tensor\+\_\+2d\+\_\+threaded.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039                                                         \{}
+\DoxyCodeLine{00040     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b ==NULL)\{}
+\DoxyCodeLine{00041         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00042     \}}
+\DoxyCodeLine{00043     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00044         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00045     \}}
+\DoxyCodeLine{00046 }
+\DoxyCodeLine{00047     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{00048     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00049         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00050     \}}
+\DoxyCodeLine{00051 }
+\DoxyCodeLine{00052     pthread\_t threads[\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}];}
+\DoxyCodeLine{00053     \textcolor{keywordtype}{int} batch = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}/\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}};}
+\DoxyCodeLine{00054     \mbox{\hyperlink{structarray__op__args}{array\_op\_args}} args\_arr[\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}];}
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00057         \mbox{\hyperlink{structarray__op__args}{array\_op\_args}} args;}
+\DoxyCodeLine{00058         args.\mbox{\hyperlink{structarray__op__args_aafe6b04ac054443a9526cd9ededecf83}{arr\_1}} = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} + i*batch;}
+\DoxyCodeLine{00059         args.\mbox{\hyperlink{structarray__op__args_a82e13449271d083fbdd32c94f567789c}{arr\_2}} = mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} + i*batch;}
+\DoxyCodeLine{00060         args.\mbox{\hyperlink{structarray__op__args_a5695b4a702cd818e9602f73110df476e}{arr\_out}} = mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}+ i*batch;}
+\DoxyCodeLine{00061         \textcolor{keywordflow}{if} (i == \mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}-\/1)\{}
+\DoxyCodeLine{00062             args.\mbox{\hyperlink{structarray__op__args_a9d50a6471ff7d40764a6a7d59806db50}{length}} = batch+mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}\%\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}};}
+\DoxyCodeLine{00063         \}}
+\DoxyCodeLine{00064         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00065         args.\mbox{\hyperlink{structarray__op__args_a9d50a6471ff7d40764a6a7d59806db50}{length}} = batch;}
+\DoxyCodeLine{00066         \}}
+\DoxyCodeLine{00067         args\_arr[i] = args;}
+\DoxyCodeLine{00068     \}}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00070     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00071         \textcolor{keywordtype}{void}* args\_ptr = \&(args\_arr[i]);}
+\DoxyCodeLine{00072         pthread\_create(\&(threads[i]), NULL, array\_add, args\_ptr);}
+\DoxyCodeLine{00073     \}}
+\DoxyCodeLine{00074 }
+\DoxyCodeLine{00075     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00076         pthread\_join(threads[i], NULL);}
+\DoxyCodeLine{00077     \}}
+\DoxyCodeLine{00078     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00079 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__threaded_8c_ae43ea7fdeaf2fc2a0718aafd6050e315}\label{tensor__2d__threaded_8c_ae43ea7fdeaf2fc2a0718aafd6050e315}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!mat\_mul\_T@{mat\_mul\_T}}
+\index{mat\_mul\_T@{mat\_mul\_T}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{mat\_mul\_T()}{mat\_mul\_T()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+mul\+\_\+T (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{}. The multiplication is row threaded for matrix \textquotesingle{}mat\+\_\+a\textquotesingle{}, meaning each thread computes one of the rows of the output matrix. This may decrease computation time, for matricies with a large number of rows, relative to the function \textquotesingle{}mat\+\_\+mul\textquotesingle{}. 
+
+Note function returns NULL if number of columns in matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} is not equal to Number of rows in matrix \textquotesingle{}mat\+\_\+b\textquotesingle{}, or if either input matrix is a NULL pointer.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to a matrix \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to a different matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ A pointer to a new matrix, whose elements are the results of the matrix multiplication \textquotesingle{}mat\+\_\+a\textquotesingle{} $\ast$ \textquotesingle{}mat\+\_\+b\textquotesingle{} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__threaded_8c_source_l00159}{159}} of file \mbox{\hyperlink{tensor__2d__threaded_8c_source}{tensor\+\_\+2d\+\_\+threaded.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00159                                                         \{}
+\DoxyCodeLine{00160     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b ==NULL)\{}
+\DoxyCodeLine{00161         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00162     \}}
+\DoxyCodeLine{00163     \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00164         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00165     \}}
+\DoxyCodeLine{00166     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d_8c_ae908690f3acf39314e6bf3f944f5ca98}{mat\_zeros}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}, mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}});}
+\DoxyCodeLine{00167     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00168         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00169     \}}
+\DoxyCodeLine{00170 }
+\DoxyCodeLine{00171     \textcolor{comment}{// if (mat\_a-\/>n\_rows < NUM\_THREADS) \{}}
+\DoxyCodeLine{00172     \textcolor{comment}{//     unsigned int num\_threads = mat\_a-\/>n\_rows;}}
+\DoxyCodeLine{00173     \textcolor{comment}{// \}}}
+\DoxyCodeLine{00174     \textcolor{comment}{// else\{}}
+\DoxyCodeLine{00175     \textcolor{comment}{//     unsigned int num\_threads = NUM\_THREADS;}}
+\DoxyCodeLine{00176     \textcolor{comment}{// \}}}
+\DoxyCodeLine{00177 }
+\DoxyCodeLine{00178     pthread\_t threads[mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}];}
+\DoxyCodeLine{00179     \mbox{\hyperlink{structarray__mat__mul__args}{array\_mat\_mul\_args}} args\_arr[mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}];}
+\DoxyCodeLine{00180 }
+\DoxyCodeLine{00181     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row=0; row<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{00182         \mbox{\hyperlink{structarray__mat__mul__args}{array\_mat\_mul\_args}} args;}
+\DoxyCodeLine{00183         args.\mbox{\hyperlink{structarray__mat__mul__args_a06fbdde7fca4cd3be5d7d25c72ce636b}{arr}} = \&(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row*mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}]);}
+\DoxyCodeLine{00184         args.\mbox{\hyperlink{structarray__mat__mul__args_a1387f2e09d7a18b51692c3fc4d44486e}{mat}} = mat\_b;}
+\DoxyCodeLine{00185         args.\mbox{\hyperlink{structarray__mat__mul__args_a70f1c4c2f583f4f48da867563148d512}{arr\_out}} = \&(mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row*mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}]);}
+\DoxyCodeLine{00186 }
+\DoxyCodeLine{00187         args\_arr[row] = args;}
+\DoxyCodeLine{00188     \}}
+\DoxyCodeLine{00189     \textcolor{comment}{//consider combing these later}}
+\DoxyCodeLine{00190     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row=0; row<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{00191         \textcolor{keywordtype}{void}* args\_ptr = \&(args\_arr[row]);}
+\DoxyCodeLine{00192         pthread\_create(\&(threads[row]), NULL, array\_mat\_mul, args\_ptr);}
+\DoxyCodeLine{00193     \}}
+\DoxyCodeLine{00194     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row=0; row<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{00195         pthread\_join(threads[row], NULL);}
+\DoxyCodeLine{00196     \}}
+\DoxyCodeLine{00197     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00198 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{tensor__2d__threaded_8c_a0a77f99c45633f5aae091384070a1307}\label{tensor__2d__threaded_8c_a0a77f99c45633f5aae091384070a1307}} 
+\index{tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}!mat\_subtract\_T@{mat\_subtract\_T}}
+\index{mat\_subtract\_T@{mat\_subtract\_T}!tensor\_2d\_threaded.c@{tensor\_2d\_threaded.c}}
+\doxysubsubsection{\texorpdfstring{mat\_subtract\_T()}{mat\_subtract\_T()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ mat\+\_\+subtract\+\_\+T (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+a,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+subtract\textquotesingle{} function. 
+
+Note function returns NULL if input matricis are NULL or of different dimensions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat\+\_\+a} & A pointer to a matrix from which matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} should be subtracted \\
+\hline
+\mbox{\texttt{ in}}  & {\em mat\+\_\+b} & A pointer to the matrix which should be subtracted from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tensor\+\_\+2d$\ast$ Pointer to a new matrix, whos elements are the corrspoding elements in matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} a minus the corresponding elements in matrix \textquotesingle{}mat\+\_\+b\textquotesingle{}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{tensor__2d__threaded_8c_source_l00098}{98}} of file \mbox{\hyperlink{tensor__2d__threaded_8c_source}{tensor\+\_\+2d\+\_\+threaded.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098                                                              \{}
+\DoxyCodeLine{00099     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b ==NULL)\{}
+\DoxyCodeLine{00100         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00101     \}}
+\DoxyCodeLine{00102     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00103         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00104     \}}
+\DoxyCodeLine{00105 }
+\DoxyCodeLine{00106     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{00107     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{00108         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00109     \}}
+\DoxyCodeLine{00110 }
+\DoxyCodeLine{00111     pthread\_t threads[\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}];}
+\DoxyCodeLine{00112     \textcolor{keywordtype}{int} batch = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}/\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}};}
+\DoxyCodeLine{00113     \mbox{\hyperlink{structarray__op__args}{array\_op\_args}} args\_arr[\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}];}
+\DoxyCodeLine{00114 }
+\DoxyCodeLine{00115     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00116         \mbox{\hyperlink{structarray__op__args}{array\_op\_args}} args;}
+\DoxyCodeLine{00117         args.\mbox{\hyperlink{structarray__op__args_aafe6b04ac054443a9526cd9ededecf83}{arr\_1}} = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} + i*batch;}
+\DoxyCodeLine{00118         args.\mbox{\hyperlink{structarray__op__args_a82e13449271d083fbdd32c94f567789c}{arr\_2}} = mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} + i*batch;}
+\DoxyCodeLine{00119         args.\mbox{\hyperlink{structarray__op__args_a5695b4a702cd818e9602f73110df476e}{arr\_out}} = mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}+ i*batch;}
+\DoxyCodeLine{00120         \textcolor{keywordflow}{if} (i == \mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}-\/1)\{}
+\DoxyCodeLine{00121             args.\mbox{\hyperlink{structarray__op__args_a9d50a6471ff7d40764a6a7d59806db50}{length}} = batch+mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}\%\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}};}
+\DoxyCodeLine{00122         \}}
+\DoxyCodeLine{00123         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00124         args.\mbox{\hyperlink{structarray__op__args_a9d50a6471ff7d40764a6a7d59806db50}{length}} = batch;}
+\DoxyCodeLine{00125         \}}
+\DoxyCodeLine{00126         args\_arr[i] = args;}
+\DoxyCodeLine{00127     \}}
+\DoxyCodeLine{00128 }
+\DoxyCodeLine{00129     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00130         \textcolor{keywordtype}{void}* args\_ptr = \&(args\_arr[i]);}
+\DoxyCodeLine{00131         pthread\_create(\&(threads[i]), NULL, array\_subtract, args\_ptr);}
+\DoxyCodeLine{00132     \}}
+\DoxyCodeLine{00133 }
+\DoxyCodeLine{00134     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<\mbox{\hyperlink{tensor__2d__threaded_8c_a7735206bdfad487588bba2126b806ab7}{NUM\_THREADS}}; i++)\{}
+\DoxyCodeLine{00135         pthread\_join(threads[i], NULL);}
+\DoxyCodeLine{00136     \}}
+\DoxyCodeLine{00137     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{00138 \}}
+
+\end{DoxyCode}

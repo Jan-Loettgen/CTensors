@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="main_8c">main.c</innerfile>
+    <innerfile refid="tensor__2d_8c">tensor_2d.c</innerfile>
+    <innerfile refid="tensor__2d_8h">tensor_2d.h</innerfile>
+    <innerfile refid="tensor__2d__new__mats_8c">tensor_2d_new_mats.c</innerfile>
+    <innerfile refid="tensor__2d__new__mats_8h">tensor_2d_new_mats.h</innerfile>
+    <innerfile refid="tensor__2d__threaded_8c">tensor_2d_threaded.c</innerfile>
+    <innerfile refid="tensor__2d__threaded_8h">tensor_2d_threaded.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

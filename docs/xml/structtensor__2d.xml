@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structtensor__2d" kind="struct" language="C++" prot="public">
+    <compoundname>tensor_2d</compoundname>
+    <includes refid="tensor__2d_8h" local="no">tensor_2d.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tensor_2d::n_rows</definition>
+        <argsstring></argsstring>
+        <name>n_rows</name>
+        <qualifiedname>tensor_2d::n_rows</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d.h" line="19" column="18" bodyfile="src/tensor_2d.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tensor_2d::n_cols</definition>
+        <argsstring></argsstring>
+        <name>n_cols</name>
+        <qualifiedname>tensor_2d::n_cols</qualifiedname>
+        <briefdescription>
+<para>Number of rows in the matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d.h" line="20" column="18" bodyfile="src/tensor_2d.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" prot="public" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long tensor_2d::n_elems</definition>
+        <argsstring></argsstring>
+        <name>n_elems</name>
+        <qualifiedname>tensor_2d::n_elems</qualifiedname>
+        <briefdescription>
+<para>Number of columns in the matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d.h" line="21" column="19" bodyfile="src/tensor_2d.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double * tensor_2d::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>tensor_2d::data</qualifiedname>
+        <briefdescription>
+<para>Total number of elements stored in matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d.h" line="22" column="12" bodyfile="src/tensor_2d.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This struct implements a 2 dimensional tensor to represent a matrix. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tensor_2d.h" line="18" column="1" bodyfile="src/tensor_2d.h" bodystart="18" bodyend="24"/>
+    <listofallmembers>
+      <member refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>data</name></member>
+      <member refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_cols</name></member>
+      <member refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_elems</name></member>
+      <member refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_rows</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

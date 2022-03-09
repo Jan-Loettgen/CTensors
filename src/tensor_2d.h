@@ -1,9 +1,9 @@
 /**
  * @file tensor_2d.h
- * @author Jan Loettgen (janlucaloettgen@gmail.com)
+ * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
  * @brief This file contains the struct definition 'tensor_2d', which acts as a matrix, and function declarations that operate on this struct.
  * @version 0.1
- * @date 2022-03-09
+ * @date 09-03-2022
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -23,7 +23,6 @@ typedef struct tensor_2d{
 
 } tensor_2d;
 
-
 /**
  * @brief Function reutrns a pointer to a matrix, with specfied number of rows and columns.
  * Function uses malloc to allocate memory for a 'tensor_2d' sturct which acts as a 2 
@@ -38,7 +37,6 @@ typedef struct tensor_2d{
  * @return tensor_2d* A pointer to a tensor_2d object that acts as a matrix.
  */
 tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols);
-
 
 /**
  * @brief Function takes in a pointer to a pointer to a matrix, and frees the memory of 'tensor_2d' struct
@@ -71,7 +69,6 @@ int mat_zeros(tensor_2d* mat_out);
  */
 int mat_rand(tensor_2d* mat_out, double scale);
 
-
 /**
  * @brief Takes an input matrix and sets its elements to that of an identiy matrix of the same size.
  * 
@@ -81,7 +78,6 @@ int mat_rand(tensor_2d* mat_out, double scale);
  * @return int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrix is not square.  
  */
 int mat_eye(tensor_2d* mat_out);
-
 
 /**
  * @brief Function used to print all the elements of a matrix to the terminal
@@ -115,7 +111,7 @@ int mat_add(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
  * @param[out] mat_out 'tensor_2d' Pointer to a matrix that stores the subtraction of elements in 'mat_b' from elements in 'mat_a'.
  * @return int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrices have different dimensions. 
  */
-int mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
+int mat_sub(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
 
 /**
  * @brief Function multiplies to matricies, and stores result in 'mat_out'.
@@ -189,23 +185,3 @@ int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out);
 int mat_apply_func_2(void (func)(double d, int reset, void* out_var), tensor_2d* mat, void* out_var);
 
 #endif
-
-
-
-
-/**
- * @brief Applies input function to all elements, and then returns what the function returns on the last element.
- * 
- * Note this function is different from function 'mat_apply_func' because that function returns
- * a matrix that has had the function applied to it. This function instead applies the input function
- * to all elements and returns the function return, on the final element. This method could be used to
- * calculate the sum of all elements of a matrix by using static variables in the input function.
- * 
- * To accomadate static variables the function should take as input a reset value.
- * This will be 1 on the last element of the matrix, and will be 0 otherwise.
- * 
- * 
- * @param[in] func A pointer to a Function that accepts a double, and a reset flag.
- * @param[in] mat  A pointer to a matrix to whose elements the function should be applied.
- * @return returns whatever the function returns after being called on final elememnt.
- */

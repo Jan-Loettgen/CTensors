@@ -127,7 +127,7 @@ int mat_add(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     return 0;
 }
 
-int mat_subtract(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
+int mat_sub(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     if (mat_a == NULL || mat_b == NULL|| mat_out == NULL){
         return 1;
     }

@@ -1,0 +1,554 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="tensor__2d__new__mats_8h" kind="file" language="C++">
+    <compoundname>tensor_2d_new_mats.h</compoundname>
+    <innerclass refid="structtensor__2d" prot="public">tensor_2d</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="tensor__2d__new__mats_8h_1a30070caaa998b683c5bbc96cc0c7b337" prot="public" static="no">
+        <type>struct <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref></type>
+        <definition>typedef struct tensor_2d tensor_2d</definition>
+        <argsstring></argsstring>
+        <name>tensor_2d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="10" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a2667b0018203aabb8f0427b382d17f04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_make</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in <ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">tensor_2d.data</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note matrix variables are note initalised to any specfic value!!! Maximum allowed matrix size is specfied by &apos;MAX_NUM_ELEMENTS&apos; in &apos;<ref refid="tensor__2d_8c" kindref="compound">tensor_2d.c</ref>&apos; as 268435456. Corresponding to a matrix of 16384 rows and 16384 columns, using 0.25GB of ram, to store.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="26" column="11" bodyfile="src/tensor_2d.c" bodystart="10" bodyend="46" declfile="src/tensor_2d_new_mats.h" declline="26" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a4606c74f1350372fa806e5340a306c8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mat_free</definition>
+        <argsstring>(tensor_2d **mat_ptr)</argsstring>
+        <name>mat_free</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> **</type>
+          <declname>mat_ptr</declname>
+        </param>
+        <briefdescription>
+<para>Function takes in a pointer to a pointer to a matrix, and frees the memory of &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; struct Function sets the pointer that the input pointer points to NULL after freeing momeory. This function is effectivelz the counter part to &apos;mat_make&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a pointer where the &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct is located.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_ptr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a pointer where the &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct is located. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="36" column="6" bodyfile="src/tensor_2d.c" bodystart="48" bodyend="59" declfile="src/tensor_2d_new_mats.h" declline="36" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a2e48decd51acbf6052f329afd73a7b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_zeros</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_zeros</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to a matrix of specfied number of rows and columns whose elements are zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="45" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="69" bodyend="80" declfile="src/tensor_2d_new_mats.h" declline="45" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a419db8572c739622856797b4ef5bb774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_rand</definition>
+        <argsstring>(unsigned int num_rows, unsigned int num_cols)</argsstring>
+        <name>mat_rand</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to matrix of specfied number of rows and columns whose elements are random numbers. Random numbers are in the range of [0, 1]. Note, random number allocate,on is not truly random and should not be used for crytography. Function uses &apos;rand()&apos; from &lt;stdlib.h&gt; and divivdes by 2147483647.0 to put numbers in the range of [0, 1]. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of rows the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: the number of columns the matrix should have. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="58" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="82" bodyend="93" declfile="src/tensor_2d_new_mats.h" declline="58" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a786d57917d0fdd9432535e5417b226c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_eye</definition>
+        <argsstring>(unsigned int num_rows)</argsstring>
+        <name>mat_eye</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_rows</declname>
+        </param>
+        <briefdescription>
+<para>Function reutrns a pointer to a square identity matrix with number of rows and columns specfied. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int: number of rows, and also of columns of the square identiy matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a <ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> object that acts as a matrix. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="67" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="95" bodyend="111" declfile="src/tensor_2d_new_mats.h" declline="67" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a232262bdac25fd0050311a169295e6dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mat_print</definition>
+        <argsstring>(tensor_2d *mat)</argsstring>
+        <name>mat_print</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Function used to print all the elements of a matrix to the terminal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix to print out.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix to print out. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="75" column="6" bodyfile="src/tensor_2d.c" bodystart="99" bodyend="111" declfile="src/tensor_2d_new_mats.h" declline="75" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a181ad0d19991f5c417348074aa6ab024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_add</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_add</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function adds two input matricies and reutrns a new matrix,. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix a in same shape as matrix b </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to matrix b in same shape as matrix a </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a matrix, whos elements are the sum of the corresponding elements in matricies a and b. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="89" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="126" bodyend="143" declfile="src/tensor_2d_new_mats.h" declline="89" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a56437a4f9cc912cc6220a7eb196b16b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_subtract</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_subtract</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function subtracts second input matrix from first and reutrns a new matrix. Function subtracts matrix &apos;mat_b&apos; from matrix &apos;mat_a&apos; and returns a new matrix of the same shape as the input matricies. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix from which matrix &apos;mat_b&apos; should be subtracted </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the matrix which should be subtracted from matrix &apos;mat_a&apos;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* Pointer to a new matrix, whos elements are the corrspoding elements in matrix &apos;mat_a&apos; a minus the corresponding elements in matrix &apos;mat_b&apos;. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="103" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="145" bodyend="162" declfile="src/tensor_2d_new_mats.h" declline="103" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a25cfc6241cfda028cce32d38560615f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_mul</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+        <name>mat_mul</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_a</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_b</declname>
+        </param>
+        <briefdescription>
+<para>Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order &apos;mat_a&apos; * &apos;mat_b&apos;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note function returns NULL if number of columns in matrix &apos;mat_a&apos; is not equal to Number of rows in matrix &apos;mat_b&apos;, or if either input matrix is a NULL pointer.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat_b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a different matrix </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix multiplication &apos;mat_a&apos; * &apos;mat_b&apos; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="117" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="164" bodyend="186" declfile="src/tensor_2d_new_mats.h" declline="117" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1adf72c3e45e20cd4fd957d5143f7221f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_transpose</definition>
+        <argsstring>(tensor_2d *mat)</argsstring>
+        <name>mat_transpose</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>Function returns a pointer to a new matrix that is the tranpose of the input matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>i.e. new matrix has the same number of rows as the input matrix has columns, and same number of columns as input matrix has rows. Elements are the tranpose of the input matrix.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a new matrix that whose elements are trnapose relative to input matrix. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a matrix </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="129" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="188" bodyend="204" declfile="src/tensor_2d_new_mats.h" declline="129" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a1bda238a30984dea1d4d126231339abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+        <definition>tensor_2d * mat_apply_func</definition>
+        <argsstring>(double(func)(double d), tensor_2d *mat)</argsstring>
+        <name>mat_apply_func</name>
+        <param>
+          <type>double(func)(double d)</type>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <briefdescription>
+<para>A function used to apply an input function to every element of the input matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note, input function is applied to all elements individually.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a function that takes in a double and returns a double. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer matrix to whose elements the function should be applied </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix whose elements have had the function applied to them. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="140" column="11" bodyfile="src/tensor_2d_new_mats.c" bodystart="206" bodyend="221" declfile="src/tensor_2d_new_mats.h" declline="140" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d__new__mats_8h_1a0ebced190c4ef85b6e7b5adfe4fd9c08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * mat_apply_func_2</definition>
+        <argsstring>(void *(func)(double d, int reset, void *out_var), tensor_2d *mat, void *out_var)</argsstring>
+        <name>mat_apply_func_2</name>
+        <param>
+          <type>void *</type>
+          <array>func)(double d, int reset, void *out_var</array>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>out_var</declname>
+        </param>
+        <briefdescription>
+<para>Applies input function to all elements, and then returns what the function returns on the last element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note this function is different from function &apos;mat_apply_func&apos; because that function returns a matrix that has had the function applied to it. This function instead applies the input function to all elements and returns the function return, on the final element. This method could be used to calculate the sum of all elements of a matrix by using static variables in the input function.</para>
+<para>To accomadate static variables the function should take as input a reset value. This will be 1 on the last element of the matrix, and will be 0 otherwise.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a Function that accepts a double, and a reset flag. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a matrix to whose elements the function should be applied. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>returns whatever the function returns after being called on final elememnt. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_new_mats.h" line="158" column="6" bodyfile="src/tensor_2d_new_mats.c" bodystart="222" bodyend="235" declfile="src/tensor_2d_new_mats.h" declline="158" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TENSOR_2D_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TENSOR_2D_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="tensor__2d__new__mats_8h_1a30070caaa998b683c5bbc96cc0c7b337" refkind="member"><highlight class="normal">}<sp/><ref refid="tensor__2d__new__mats_8h_1a30070caaa998b683c5bbc96cc0c7b337" kindref="member">tensor_2d</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__new__mats_8h_1a4606c74f1350372fa806e5340a306c8d" kindref="member">mat_free</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>**<sp/>mat_ptr);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a2e48decd51acbf6052f329afd73a7b62" kindref="member">mat_zeros</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a419db8572c739622856797b4ef5bb774" kindref="member">mat_rand</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a786d57917d0fdd9432535e5417b226c2" kindref="member">mat_eye</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__new__mats_8h_1a232262bdac25fd0050311a169295e6dd" kindref="member">mat_print</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a181ad0d19991f5c417348074aa6ab024" kindref="member">mat_add</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a56437a4f9cc912cc6220a7eb196b16b4" kindref="member">mat_subtract</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a25cfc6241cfda028cce32d38560615f5" kindref="member">mat_mul</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1adf72c3e45e20cd4fd957d5143f7221f2" kindref="member">mat_transpose</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__new__mats_8h_1a1bda238a30984dea1d4d126231339abe" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="tensor__2d__new__mats_8h_1a0ebced190c4ef85b6e7b5adfe4fd9c08" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/tensor_2d_new_mats.h"/>
+  </compounddef>
+</doxygen>

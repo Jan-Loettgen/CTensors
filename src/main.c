@@ -1,3 +1,31 @@
+/**
+ * @file main.c
+ * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
+ * @brief 
+ * @version 0.1
+ * @date 09-03-2022
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+/**
+ * @mainpage CTensors Documentation
+ * @section Overview Overview
+ * ladida
+ * 
+ * @section Explaining_packages Included Packages
+ * This is an explanation of the various files
+ * 
+ * @section how_to Instructions
+ * testing
+ * 
+ * @date 09-03-2022
+ * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 

@@ -36,49 +36,7 @@ static void* array_add(void* args_ptr){
     return NULL;
 }
 
-tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b){
-    if (mat_a == NULL || mat_b ==NULL){
-        return NULL;
-    }
-    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_rows != mat_b->n_rows){
-        return NULL;
-    }
-
-    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
-    if (mat_out == NULL) {
-        return NULL;
-    }
-
-    pthread_t threads[NUM_THREADS];
-    int batch = mat_a->n_elems/NUM_THREADS;
-    array_op_args args_arr[NUM_THREADS];
-
-    for (int i=0; i<NUM_THREADS; i++){
-        array_op_args args;
-        args.arr_1 = mat_a->data + i*batch;
-        args.arr_2 = mat_b->data + i*batch;
-        args.arr_out = mat_out->data+ i*batch;
-        if (i == NUM_THREADS-1){
-            args.length = batch+mat_a->n_elems%NUM_THREADS;
-        }
-        else{
-        args.length = batch;
-        }
-        args_arr[i] = args;
-    }
-
-    for (int i=0; i<NUM_THREADS; i++){
-        void* args_ptr = &(args_arr[i]);
-        pthread_create(&(threads[i]), NULL, array_add, args_ptr);
-    }
-
-    for (int i=0; i<NUM_THREADS; i++){
-        pthread_join(threads[i], NULL);
-    }
-    return mat_out;
-}
-
-static void* array_subtract(void* args_ptr){
+static void* array_sub(void* args_ptr){
     array_op_args* args = (array_op_args*)args_ptr;
     double* arr_1 = args->arr_1;
     double* arr_2 = args->arr_2;
@@ -95,19 +53,16 @@ static void* array_subtract(void* args_ptr){
     return NULL;
 }
 
-tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b){
-    if (mat_a == NULL || mat_b ==NULL){
-        return NULL;
+int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
+    if (mat_a == NULL || mat_b == NULL|| mat_out == NULL){
+        return 1;
     }
-    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_rows != mat_b->n_rows){
-        return NULL;
+    else if (mat_a->n_cols != mat_b->n_cols || mat_a->n_cols != mat_out->n_cols){
+        return 2;
     }
-
-    tensor_2d* mat_out = mat_make(mat_a->n_cols, mat_a->n_rows);
-    if (mat_out == NULL) {
-        return NULL;
+    else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
+        return 2;
     }
-
     pthread_t threads[NUM_THREADS];
     int batch = mat_a->n_elems/NUM_THREADS;
     array_op_args args_arr[NUM_THREADS];
@@ -128,14 +83,15 @@ tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b){
 
     for (int i=0; i<NUM_THREADS; i++){
         void* args_ptr = &(args_arr[i]);
-        pthread_create(&(threads[i]), NULL, array_subtract, args_ptr);
+        pthread_create(&(threads[i]), NULL, array_sub, args_ptr);
     }
 
     for (int i=0; i<NUM_THREADS; i++){
         pthread_join(threads[i], NULL);
     }
-    return mat_out;
+    return 0;
 }
+
 
 static void* array_mat_mul(void* args_ptr){
     array_mat_mul_args* args = (array_mat_mul_args*) args_ptr;
@@ -156,24 +112,16 @@ static void* array_mat_mul(void* args_ptr){
     return NULL;
 }
 
-tensor_2d* mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b){
-    if (mat_a == NULL || mat_b ==NULL){
-        return NULL;
+int mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
+    if (mat_a == NULL || mat_b == NULL || mat_out == NULL){
+        return 1;
     }
     if (mat_a->n_cols != mat_b->n_rows){
-        return NULL;
+        return 2;
     }
-    tensor_2d* mat_out = mat_zeros(mat_a->n_rows, mat_b->n_cols);
-    if (mat_out == NULL) {
-        return NULL;
+    if (mat_out->n_rows != mat_a->n_rows || mat_out->n_cols != mat_b->n_cols){
+        return 2;
     }
-
-    // if (mat_a->n_rows < NUM_THREADS) {
-    //     unsigned int num_threads = mat_a->n_rows;
-    // }
-    // else{
-    //     unsigned int num_threads = NUM_THREADS;
-    // }
 
     pthread_t threads[mat_a->n_rows];
     array_mat_mul_args args_arr[mat_a->n_rows];
@@ -186,13 +134,25 @@ tensor_2d* mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b){
 
         args_arr[row] = args;
     }
-    //consider combing these later
+
+    if (mat_a->n_rows < NUM_THREADS) {
+        unsigned int num_threads = mat_a->n_rows;
+    }
+    else{
+        unsigned int num_threads = NUM_THREADS;
+    }
+
+    int active_threads = 0;
+
     for (unsigned int row=0; row<mat_a->n_rows; row++){
+
+
+        if active_threads
         void* args_ptr = &(args_arr[row]);
         pthread_create(&(threads[row]), NULL, array_mat_mul, args_ptr);
     }
     for (unsigned int row=0; row<mat_a->n_rows; row++){
         pthread_join(threads[row], NULL);
     }
-    return mat_out;
+    return 0;
 }

@@ -1,0 +1,232 @@
+\hypertarget{tensor__2d__new__mats_8c_source}{}\doxysection{tensor\+\_\+2d\+\_\+new\+\_\+mats.\+c}
+\label{tensor__2d__new__mats_8c_source}\index{tensor\_2d\_new\_mats.c@{tensor\_2d\_new\_mats.c}}
+\mbox{\hyperlink{tensor__2d__new__mats_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00011}00011 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00012}00012 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00013}00013 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tensor__2d_8h}{tensor\_2d.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00017}00017 \textcolor{comment}{//corresponds to a matrix of 16384 x 16384, will use 0.25 GB of RAM}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00018}\mbox{\hyperlink{tensor__2d__new__mats_8c_a63649d1769e1ed482025cd15b43da0f7}{00018}} \textcolor{preprocessor}{\#define MAX\_NUM\_ELEMENTS 268435456}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00020}\mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{00020}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_rows, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_cols) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00021}00021     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}));}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00023}00023     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00024}00024         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00027}00027     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} ull\_num\_elems = num\_rows*num\_cols;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00028}00028     \textcolor{comment}{//limit because unsigned long cannot hold a number greater than 4294967295.}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00029}00029     \textcolor{keywordflow}{if} (ull\_num\_elems > 4294967295)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00030}00030         printf(\textcolor{stringliteral}{"{}Requested matrix with \%lld elements.\(\backslash\)n"{}}, ull\_num\_elems);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00031}00031         printf(\textcolor{stringliteral}{"{}Maximum possible number of elements is: \%ld\(\backslash\)n"{}}, 4294967295);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00032}00032         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00033}00033     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00035}00035     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} num\_elems = num\_rows*num\_cols;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00036}00036     \textcolor{comment}{//limit specfied in \#define MAX\_NUM\_ELEMENTS.}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00037}00037     \textcolor{keywordflow}{if} (num\_elems > \mbox{\hyperlink{tensor__2d__new__mats_8c_a63649d1769e1ed482025cd15b43da0f7}{MAX\_NUM\_ELEMENTS}})\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00038}00038         printf(\textcolor{stringliteral}{"{}Requested matrix with \%ld elements.\(\backslash\)n"{}}, num\_elems);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00039}00039         printf(\textcolor{stringliteral}{"{}Maximum possible number of elements is: \%d\(\backslash\)n"{}}, \mbox{\hyperlink{tensor__2d__new__mats_8c_a63649d1769e1ed482025cd15b43da0f7}{MAX\_NUM\_ELEMENTS}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00040}00040         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00043}00043     mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}} = num\_elems;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00044}00044     mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} = num\_rows;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00045}00045     mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} = num\_cols;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00047}00047     \textcolor{keywordtype}{double}* data = malloc(num\_elems*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00049}00049     \textcolor{keywordflow}{if} (data == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00050}00050         free(mat);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00051}00051         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00052}00052     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00054}00054     mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}} = data;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00055}00055     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00058}\mbox{\hyperlink{tensor__2d__new__mats_8c_a4606c74f1350372fa806e5340a306c8d}{00058}} \textcolor{keywordtype}{void} \mbox{\hyperlink{tensor__2d__new__mats_8c_a4606c74f1350372fa806e5340a306c8d}{mat\_free}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}** mat\_ptr)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00059}00059     \textcolor{keywordflow}{if} (*mat\_ptr == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00060}00060         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00063}00063     free((*mat\_ptr)-\/>data);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00064}00064     free(*mat\_ptr);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00066}00066     *mat\_ptr = NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00067}00067 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00069}\mbox{\hyperlink{tensor__2d__new__mats_8c_a2e48decd51acbf6052f329afd73a7b62}{00069}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a2e48decd51acbf6052f329afd73a7b62}{mat\_zeros}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_rows, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_cols)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00070}00070     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_cols);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00072}00072     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00073}00073         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00074}00074     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00076}00076     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00077}00077         mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 0.0;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00079}00079     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00080}00080 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00082}\mbox{\hyperlink{tensor__2d__new__mats_8c_a419db8572c739622856797b4ef5bb774}{00082}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a419db8572c739622856797b4ef5bb774}{mat\_rand}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_rows, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_cols)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00083}00083     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_cols);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00085}00085     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00086}00086         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00089}00089     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00090}00090         mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = rand() /2147483647.0;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00091}00091     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00092}00092     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00093}00093 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00095}\mbox{\hyperlink{tensor__2d__new__mats_8c_a786d57917d0fdd9432535e5417b226c2}{00095}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a786d57917d0fdd9432535e5417b226c2}{mat\_eye}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_rows)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00096}00096     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_rows, num\_rows);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00098}00098     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00099}00099         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00100}00100     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00102}00102     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00103}00103         \textcolor{keywordflow}{if} (i \% (num\_rows+1) == 0)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00104}00104             mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 1.0;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00105}00105         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00106}00106         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00107}00107             mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = 0.0;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00108}00108         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00109}00109     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00110}00110     \textcolor{keywordflow}{return} mat;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00111}00111 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00113}\mbox{\hyperlink{tensor__2d__new__mats_8c_a232262bdac25fd0050311a169295e6dd}{00113}} \textcolor{keywordtype}{void} \mbox{\hyperlink{tensor__2d__new__mats_8c_a232262bdac25fd0050311a169295e6dd}{mat\_print}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00114}00114     \textcolor{keywordflow}{if} (mat==NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00115}00115         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00116}00116     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00117}00117     printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00118}00118     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i< (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00119}00119         printf(\textcolor{stringliteral}{"{}\%f\(\backslash\)t"{}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i]);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00120}00120         \textcolor{keywordflow}{if} ((i+1) \% mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} == 0)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00121}00121             printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00122}00122         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00123}00123     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00124}00124 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00126}\mbox{\hyperlink{tensor__2d__new__mats_8c_a181ad0d19991f5c417348074aa6ab024}{00126}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a181ad0d19991f5c417348074aa6ab024}{mat\_add}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_a, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_b)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00127}00127     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00128}00128         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00129}00129     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00130}00130     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00131}00131         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00132}00132     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00134}00134     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00135}00135     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00136}00136         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00137}00137     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00139}00139     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i< (mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00140}00140         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] + mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i];}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00141}00141     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00142}00142     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00143}00143 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00145}\mbox{\hyperlink{tensor__2d__new__mats_8c_a56437a4f9cc912cc6220a7eb196b16b4}{00145}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a56437a4f9cc912cc6220a7eb196b16b4}{mat\_subtract}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_a, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_b)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00146}00146     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00147}00147         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00148}00148     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00149}00149     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} || mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00150}00150         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00151}00151     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00153}00153     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00154}00154     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00155}00155         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00156}00156     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00158}00158     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i<(mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00159}00159         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] -\/ mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i];}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00160}00160     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00161}00161     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00162}00162 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00164}\mbox{\hyperlink{tensor__2d__new__mats_8c_a25cfc6241cfda028cce32d38560615f5}{00164}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a25cfc6241cfda028cce32d38560615f5}{mat\_mul}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_a, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_b)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00165}00165     \textcolor{keywordflow}{if} (mat\_a == NULL || mat\_b == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00166}00166         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00167}00167     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00168}00168     \textcolor{keywordflow}{if} (mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00169}00169         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00170}00170     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00171}00171     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2e48decd51acbf6052f329afd73a7b62}{mat\_zeros}}(mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}, mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00172}00172     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00173}00173         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00174}00174     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00176}00176     \textcolor{keywordtype}{int} mat\_index;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00177}00177     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row=0; row<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00178}00178         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col=0; col<mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; col++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00179}00179             mat\_index = row*mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}+col;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00180}00180             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} k=0; k<mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; k++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00181}00181                 mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[mat\_index] += mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[(row*mat\_a-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}})+k]*mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[(mat\_b-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}*k)+col];}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00182}00182             \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00183}00183         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00184}00184     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00185}00185     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00186}00186 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00188}\mbox{\hyperlink{tensor__2d__new__mats_8c_adf72c3e45e20cd4fd957d5143f7221f2}{00188}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_adf72c3e45e20cd4fd957d5143f7221f2}{mat\_transpose}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00189}00189     \textcolor{keywordflow}{if} (mat == NULL)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00190}00190         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00191}00191     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00193}00193     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00194}00194     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00195}00195         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00196}00196     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00197}00197     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} col= 0; col<mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}; col++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00198}00198         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} row =0; row<mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}; row++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00199}00199             mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row*mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} + col] = mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[row+col*mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}];}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00200}00200         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00201}00201     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00203}00203     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00204}00204 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00206}\mbox{\hyperlink{tensor__2d__new__mats_8c_a1bda238a30984dea1d4d126231339abe}{00206}} \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a1bda238a30984dea1d4d126231339abe}{mat\_apply\_func}}(\textcolor{keywordtype}{double} (func)(\textcolor{keywordtype}{double} d), \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00207}00207     \textcolor{keywordflow}{if} (mat == NULL|| func==NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00208}00208         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00209}00209     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00210}00210     }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00211}00211     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d__new__mats_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}}, mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}});}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00212}00212     \textcolor{keywordflow}{if} (mat\_out == NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00213}00213         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00214}00214     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00216}00216     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i = 0; i<mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}; i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00217}00217         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i] = func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i]);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00218}00218     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00220}00220     \textcolor{keywordflow}{return} mat\_out;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00221}00221 \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00222}\mbox{\hyperlink{tensor__2d__new__mats_8c_a0ebced190c4ef85b6e7b5adfe4fd9c08}{00222}} \textcolor{keywordtype}{void}* \mbox{\hyperlink{tensor__2d__new__mats_8c_a0ebced190c4ef85b6e7b5adfe4fd9c08}{mat\_apply\_func\_2}}(\textcolor{keywordtype}{void}* (func)(\textcolor{keywordtype}{double} d, \textcolor{keywordtype}{int} reset, \textcolor{keywordtype}{void}* out\_var), \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat, \textcolor{keywordtype}{void}* out\_var)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00223}00223         \textcolor{keywordflow}{if} (mat == NULL|| func==NULL) \{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00224}00224         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00225}00225     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00226}00226     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i = 0; i<mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}; i++)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00227}00227         \textcolor{keywordflow}{if} (i == (mat-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}-\/1))\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00228}00228             func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i], 1, out\_var);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00229}00229         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00230}00230         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00231}00231             func(mat-\/>\mbox{\hyperlink{structtensor__2d_a6492607aca3c85d57b8bcc4326db876d}{data}}[i], 0, out\_var);}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00232}00232         \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00233}00233     \}}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00234}00234     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{tensor__2d__new__mats_8c_source_l00235}00235 \}}
+
+\end{DoxyCode}
