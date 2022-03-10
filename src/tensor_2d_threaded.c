@@ -5,7 +5,8 @@
 #include "tensor_2d.h"
 #include "tensor_2d_threaded.h"
 
-#define NUM_THREADS 13
+#define MAX_NUM_THREADS 13 /// Maximum number of threads allowed to exist simultaneously.
+#define MIN_BATCH 32 /// Minmum number of operations that a single thread should do.
 
 typedef struct array_op_args{
     double* arr_1;
@@ -46,17 +47,25 @@ int mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
         return 2;
     }
-    pthread_t threads[NUM_THREADS];
-    int batch = mat_a->n_elems/NUM_THREADS;
-    array_op_args args_arr[NUM_THREADS];
 
-    for (int i=0; i<NUM_THREADS; i++){
+
+    int batch = mat_a->n_elems/MAX_NUM_THREADS;
+    if (batch<MIN_BATCH){
+        batch = MIN_BATCH;
+    }
+
+    int num_threads = mat_a->n_elems/batch;
+
+    pthread_t threads[num_threads];
+    array_op_args args_arr[num_threads];
+
+    for (int i=0; i<num_threads; i++){
         array_op_args args;
         args.arr_1 = mat_a->data + i*batch;
         args.arr_2 = mat_b->data + i*batch;
         args.arr_out = mat_out->data+ i*batch;
-        if (i == NUM_THREADS-1){
-            args.length = batch+mat_a->n_elems%NUM_THREADS;
+        if (i == num_threads-1){
+            args.length = batch+mat_a->n_elems%num_threads;
         }
         else{
         args.length = batch;
@@ -64,12 +73,13 @@ int mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
         args_arr[i] = args;
     }
 
-    for (int i=0; i<NUM_THREADS; i++){
+    pthread_t threads[num_threads];
+    for (int i=0; i<num_threads; i++){
         void* args_ptr = &(args_arr[i]);
         pthread_create(&(threads[i]), NULL, array_add, args_ptr);
     }
 
-    for (int i=0; i<NUM_THREADS; i++){
+    for (int i=0; i<num_threads; i++){
         pthread_join(threads[i], NULL);
     }
     return 0;
@@ -102,17 +112,25 @@ int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
         return 2;
     }
-    pthread_t threads[NUM_THREADS];
-    int batch = mat_a->n_elems/NUM_THREADS;
-    array_op_args args_arr[NUM_THREADS];
 
-    for (int i=0; i<NUM_THREADS; i++){
+
+    int batch = mat_a->n_elems/MAX_NUM_THREADS;
+    if (batch<MIN_BATCH){
+        batch = MIN_BATCH;
+    }
+
+    int num_threads = mat_a->n_elems/batch;
+    
+    pthread_t threads[num_threads];
+    array_op_args args_arr[num_threads];
+
+    for (int i=0; i<num_threads; i++){
         array_op_args args;
         args.arr_1 = mat_a->data + i*batch;
         args.arr_2 = mat_b->data + i*batch;
         args.arr_out = mat_out->data+ i*batch;
-        if (i == NUM_THREADS-1){
-            args.length = batch+mat_a->n_elems%NUM_THREADS;
+        if (i == num_threads-1){
+            args.length = batch+mat_a->n_elems%num_threads;
         }
         else{
         args.length = batch;
@@ -120,12 +138,13 @@ int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
         args_arr[i] = args;
     }
 
-    for (int i=0; i<NUM_THREADS; i++){
+    pthread_t threads[num_threads];
+    for (int i=0; i<num_threads; i++){
         void* args_ptr = &(args_arr[i]);
         pthread_create(&(threads[i]), NULL, array_sub, args_ptr);
     }
 
-    for (int i=0; i<NUM_THREADS; i++){
+    for (int i=0; i<num_threads; i++){
         pthread_join(threads[i], NULL);
     }
     return 0;

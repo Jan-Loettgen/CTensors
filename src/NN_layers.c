@@ -1,0 +1,14 @@
+#include "tensor_2d.h"
+
+
+
+typedef struct dense_layer{
+    int num_neurons;
+    int num_neurons_prev;
+    tensor_2d* weights;
+    tensor_2d* bias;
+    tensor_2d* Y;
+    tensor_2d Z;
+    void* (*function_pointer)(double d);
+
+}dense_layer;
