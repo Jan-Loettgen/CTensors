@@ -30,16 +30,6 @@
 #include <stdio.h>
 
 #include "tensor_2d.h"
-#include "tensor_2d_threaded.h"
-
-double ReLu(double d){
-    if (d< 0.0){
-        return 0.0;
-    }
-    else {
-        return d;
-    }
-}
 
 void* Sum_mat(double d, int reset, void* out_var){
     static double sum = 0;
@@ -58,10 +48,6 @@ void* Sum_mat(double d, int reset, void* out_var){
 
 int main(){
 
-    unsigned long num_elems = 2198025;
-    int t = num_elems/523523532;
-
-    printf("int : %d", t);
     // tensor_2d* mat1 = mat_rand(5, 9);
 
     // double sum = 0;

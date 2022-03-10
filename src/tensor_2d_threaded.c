@@ -48,7 +48,6 @@ int mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
         return 2;
     }
 
-
     int batch = mat_a->n_elems/MAX_NUM_THREADS;
     if (batch<MIN_BATCH){
         batch = MIN_BATCH;
@@ -112,7 +111,6 @@ int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     else if (mat_a->n_rows != mat_b->n_rows || mat_a->n_rows != mat_out->n_rows){
         return 2;
     }
-
 
     int batch = mat_a->n_elems/MAX_NUM_THREADS;
     if (batch<MIN_BATCH){
