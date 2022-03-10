@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include "tensor_2d.h"
 
