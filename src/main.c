@@ -57,30 +57,35 @@ void* Sum_mat(double d, int reset, void* out_var){
 
 
 int main(){
-    tensor_2d* mat1 = mat_rand(5, 9);
 
-    double sum = 0;
-    double* sum_ptr = &sum;
+    unsigned long num_elems = 2198025;
+    int t = num_elems/523523532;
 
-    mat_apply_func_2(&Sum_mat, mat1, sum_ptr);
-    printf("sum of matrix : %f\n",*sum_ptr);
+    printf("int : %d", t);
+    // tensor_2d* mat1 = mat_rand(5, 9);
 
-    tensor_2d* mat2 = mat_rand(5, 5);
+    // double sum = 0;
+    // double* sum_ptr = &sum;
 
-    tensor_2d* mat_c = mat_subtract_T(mat1, mat2);
+    // mat_apply_func_2(&Sum_mat, mat1, sum_ptr);
+    // printf("sum of matrix : %f\n",*sum_ptr);
 
-    tensor_2d* mat_d = mat_mul_T(mat1, mat2);
+    // tensor_2d* mat2 = mat_rand(5, 5);
+
+    // tensor_2d* mat_c = mat_subtract_T(mat1, mat2);
+
+    // tensor_2d* mat_d = mat_mul_T(mat1, mat2);
 
 
-    // mat_print(mat2);
-    // mat_print(mat_d);
+    // // mat_print(mat2);
+    // // mat_print(mat_d);
 
-    mat_free(&mat1);
-    mat_free(&mat2);
-    mat_free(&mat_c);
-    mat_free(&mat_d);
+    // mat_free(&mat1);
+    // mat_free(&mat2);
+    // mat_free(&mat_c);
+    // mat_free(&mat_d);
 
-    printf("\n exiting \n");
-    return 0;
+    // printf("\n exiting \n");
+    // return 0;
 
 }

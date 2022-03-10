@@ -15,7 +15,7 @@
  * @return tensor_2d* A pointer to a matrix, whos elements are the sum of
  * the corresponding elements in matricies a and b.
  */
-tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
+int mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
 
 /**
  * @brief Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded.
@@ -31,7 +31,7 @@ tensor_2d* mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b);
  * @return tensor_2d* Pointer to a new matrix, whos elements are the corrspoding
  * elements in matrix 'mat_a' a minus the corresponding elements in matrix 'mat_b'.
  */
-tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b);
+int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
 
 /**
  * @brief Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix.
@@ -48,5 +48,5 @@ tensor_2d* mat_subtract_T(tensor_2d* mat_a, tensor_2d* mat_b);
  * @return tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix
  * multiplication 'mat_a' * 'mat_b'
  */
-int mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);   
+// int mat_mul_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);   
 #endif
