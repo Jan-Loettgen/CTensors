@@ -143,6 +143,15 @@ int mat_mul(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out);
 int mat_transpose(tensor_2d* mat, tensor_2d* mat_out);
 
 /**
+ * @brief Function copies contents of the input 'mat' matrix into the 'mat_out' matrix. 
+ * 
+ * @param[in] mat 
+ * @param[out] mat_out 
+ * @return int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrices have wrong dimensions.  
+ */
+int mat_copy(tensor_2d* mat, tensor_2d* mat_out);
+
+/**
  * @brief Function used to apply a given input function to all elements of an input matrix, and storing the result in other input matrix.
  *
  * Function iterates over data stored in 'mat' and applies the input function to every element,

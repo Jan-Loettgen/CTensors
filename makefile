@@ -6,7 +6,7 @@ SDIR = src
 ODIR = obj
 BDIR = bin
 
-OBJS = $(ODIR)/main.o $(ODIR)/tensor_2d.o $(ODIR)/tensor_2d_threaded.o
+OBJS = $(ODIR)/main.o $(ODIR)/tensor_2d.o $(ODIR)/tensor_2d_threaded.o $(ODIR)/NN_activations.o $(ODIR)/NN_layers.o
 
 $(SDIR)/main: $(OBJS)
 	$(CC) -o $(BDIR)/main $(OBJS) -pthread

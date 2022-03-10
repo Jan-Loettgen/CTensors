@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "tensor_2d.h": "c",
-        "tensor_2d_threaded.h": "c"
+        "tensor_2d_threaded.h": "c",
+        "stdlib.h": "c",
+        "nn_layer.h": "c"
     }
 }

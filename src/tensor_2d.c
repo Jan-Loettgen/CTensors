@@ -171,6 +171,9 @@ int mat_transpose(tensor_2d* mat, tensor_2d* mat_out){
     if (mat == NULL || mat_out == NULL){
         return 1;
     }
+    if (mat->n_rows != mat_out->n_rows || mat->n_cols != mat_out->n_cols){
+        return 2;
+    }
 
     for (unsigned int col= 0; col<mat->n_cols; col++){
         for (unsigned int row =0; row<mat->n_rows; row++){
@@ -181,9 +184,28 @@ int mat_transpose(tensor_2d* mat, tensor_2d* mat_out){
     return 0;
 }
 
+int mat_copy(tensor_2d* mat, tensor_2d* mat_out){
+    if (mat == NULL || mat_out == NULL){
+        return 1;
+    }
+    if (mat->n_rows != mat_out->n_rows || mat->n_cols != mat_out->n_cols){
+        return 2;
+    }
+
+    for (unsigned long i = 0; i<mat->n_elems; i++){
+        mat_out->data[i] = mat->data[i];
+    }
+
+    return 0;
+
+}
+
 int mat_apply_func(double (func)(double d), tensor_2d* mat, tensor_2d* mat_out){
     if (mat == NULL|| func==NULL || mat_out == NULL) {
         return 1;
+    }
+    if (mat->n_rows != mat_out->n_rows || mat->n_cols != mat_out->n_cols){
+        return 2;
     }
 
     for (unsigned long i = 0; i<mat->n_elems; i++){

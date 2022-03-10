@@ -54,8 +54,6 @@ int mat_add_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     }
 
     int num_threads = mat_a->n_elems/batch;
-
-    pthread_t threads[num_threads];
     array_op_args args_arr[num_threads];
 
     for (int i=0; i<num_threads; i++){
@@ -119,7 +117,6 @@ int mat_sub_T(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
 
     int num_threads = mat_a->n_elems/batch;
     
-    pthread_t threads[num_threads];
     array_op_args args_arr[num_threads];
 
     for (int i=0; i<num_threads; i++){
