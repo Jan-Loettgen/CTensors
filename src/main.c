@@ -30,7 +30,7 @@
 #include <stdio.h>
 
 #include "tensor_2d.h"
-#include "tensor_2d_threaded.h"
+#include "NN_layers.h"
 
 void* Sum_mat(double d, int reset, void* out_var){
     static double sum = 0;
@@ -49,27 +49,11 @@ void* Sum_mat(double d, int reset, void* out_var){
 
 int main(){
     
-    tensor_2d* mat1 = mat_make(5,5);
-    tensor_2d* mat2 = mat_make(5,5);
+    Dense_layer dense_layer = dense_init(4, 10, "relu");
+    dense_set_rand(dense_layer);
 
-    tensor_2d* mata = mat_make(5,5);
-    tensor_2d* matb = mat_make(5,5);
-    
-    mat_eye(mat1);
-    mat_rand(mat2, 1);
+    dense_forward();
 
-    mat_mul(mat1, mat2, mata);
-    mat_add(mat1, mat2, matb);
-
-
-    // mat_print(mat2);
-    mat_print(mata);
-    mat_print(matb);
-
-    mat_free(&mat1);
-    mat_free(&mat2);
-    mat_free(&mata);
-    mat_free(&matb);
 
     printf("\n exiting \n");
     return 0;

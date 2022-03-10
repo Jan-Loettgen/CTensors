@@ -1,7 +1,7 @@
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
 #include "tensor_2d.h"
-
+#include "NN_layers.c"
 typedef struct Dense_layer{
     int num_neurons;
     int num_inputs;
@@ -13,11 +13,11 @@ typedef struct Dense_layer{
 
 }Dense_layer;
 
-int dense_init(unsigned int num_neurons, unsigned int num_inputs, char activation[]);
+Dense_layer* dense_init(unsigned int num_neurons, unsigned int num_inputs, char activation[]);
 
-int dense_init_random();
+int dense_set_rand(Dense_layer* Dense_layer);
 
-int dense_set();
+int dense_set(Dense_layer* Dense_layer);
 
 int dense_forward(Dense_layer* Dense_layer, tensor_2d* mat_in, tensor_2d* mat_out);
 
