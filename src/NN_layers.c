@@ -2,7 +2,7 @@
 
 
 
-typedef struct dense_layer{
+typedef struct Dense_layer{
     int num_neurons;
     int num_neurons_prev;
     tensor_2d* weights;
@@ -11,4 +11,14 @@ typedef struct dense_layer{
     tensor_2d Z;
     void* (*function_pointer)(double d);
 
-}dense_layer;
+}Dense_layer;
+
+
+int dense_forward(Dense_layer* Dense_layer, tensor_2d* mat_in, tensor_2d* mat_out){
+
+    
+
+
+
+
+}
