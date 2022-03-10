@@ -1,7 +1,8 @@
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
 #include "tensor_2d.h"
-#include "NN_layers.c"
+//#include "NN_layers.c"
+
 typedef struct Dense_layer{
     int num_neurons;
     int num_inputs;
