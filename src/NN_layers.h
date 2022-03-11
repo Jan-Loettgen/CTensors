@@ -12,21 +12,22 @@
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
 #include <stdbool.h>
-#include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
 
+
+#include "tensor_2d.h" ///< this library is necessary as it provides the backend matrix functionality required for a neural network.
 /**
  * @brief This struct defines a Dense layer.
  * 
  * A dense layer is a neural network layer where all neurons are connected to all neurons in the previous layer.
  */
 typedef struct Dense_layer{
-    int num_neurons; //! Number of neurons in this dense layer
-    int num_inputs; //! number of inputs, required to create weights of this layer to inputs.
-    tensor_2d* weights; //! A matrix containing the weights of the neurons of this layer to the inuts.
-    tensor_2d* bias; //! The bias of each neuron that are added to the weighted sum of inputs.
-    tensor_2d* Y; //! This matrix stores the output of the layer before the activation function is applied.
-    tensor_2d* Z; //! this matrix stores the final output of the layer, so Y after activation function is applied.
-    int (*activation_ptr)(tensor_2d* mat, tensor_2d* mat_out); //! a function pointer to the activation function applied to Y.
+    int num_neurons; ///< Number of neurons in this dense layer
+    int num_inputs; ///< number of inputs, required to create weights of this layer to inputs.
+    tensor_2d* weights; ///< A matrix containing the weights of the neurons of this layer to the inuts.
+    tensor_2d* bias; ///< The bias of each neuron that are added to the weighted sum of inputs.
+    tensor_2d* Y; ///< This matrix stores the output of the layer before the activation function is applied.
+    tensor_2d* Z; ///< this matrix stores the final output of the layer, so Y after activation function is applied.
+    int (*activation_ptr)(tensor_2d* mat, tensor_2d* mat_out); ///< a function pointer to the activation function applied to Y.
 
 }Dense_layer;
 

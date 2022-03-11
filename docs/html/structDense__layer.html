@@ -70,7 +70,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>this library is necessary as it provides the backend matrix functionality required for a neural network.  
+<p>&lt; this library is necessary as it provides the backend matrix functionality required for a neural network.  
  <a href="structDense__layer.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>&gt;</code></p>
@@ -78,32 +78,33 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac76aa362e051cccf8e6f7ed93a2379a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#ac76aa362e051cccf8e6f7ed93a2379a6">num_neurons</a></td></tr>
+<tr class="memdesc:ac76aa362e051cccf8e6f7ed93a2379a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of neurons in this dense layer.  <a href="structDense__layer.html#ac76aa362e051cccf8e6f7ed93a2379a6">More...</a><br /></td></tr>
 <tr class="separator:ac76aa362e051cccf8e6f7ed93a2379a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b2e070659ff1714333c86beba2d779c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#a6b2e070659ff1714333c86beba2d779c">num_inputs</a></td></tr>
-<tr class="memdesc:a6b2e070659ff1714333c86beba2d779c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of neurons in this dense layer.  <a href="structDense__layer.html#a6b2e070659ff1714333c86beba2d779c">More...</a><br /></td></tr>
+<tr class="memdesc:a6b2e070659ff1714333c86beba2d779c"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of inputs, required to create weights of this layer to inputs.  <a href="structDense__layer.html#a6b2e070659ff1714333c86beba2d779c">More...</a><br /></td></tr>
 <tr class="separator:a6b2e070659ff1714333c86beba2d779c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7f1c485520fb725f0549420905c8240"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#ae7f1c485520fb725f0549420905c8240">weights</a></td></tr>
-<tr class="memdesc:ae7f1c485520fb725f0549420905c8240"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of inputs, required to create weights of this layer to inputs.  <a href="structDense__layer.html#ae7f1c485520fb725f0549420905c8240">More...</a><br /></td></tr>
+<tr class="memdesc:ae7f1c485520fb725f0549420905c8240"><td class="mdescLeft">&#160;</td><td class="mdescRight">A matrix containing the weights of the neurons of this layer to the inuts.  <a href="structDense__layer.html#ae7f1c485520fb725f0549420905c8240">More...</a><br /></td></tr>
 <tr class="separator:ae7f1c485520fb725f0549420905c8240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31225d6adccfa475c2c9614789aaaea9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#a31225d6adccfa475c2c9614789aaaea9">bias</a></td></tr>
-<tr class="memdesc:a31225d6adccfa475c2c9614789aaaea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">A matrix containing the weights of the neurons of this layer to the inuts.  <a href="structDense__layer.html#a31225d6adccfa475c2c9614789aaaea9">More...</a><br /></td></tr>
+<tr class="memdesc:a31225d6adccfa475c2c9614789aaaea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bias of each neuron that are added to the weighted sum of inputs.  <a href="structDense__layer.html#a31225d6adccfa475c2c9614789aaaea9">More...</a><br /></td></tr>
 <tr class="separator:a31225d6adccfa475c2c9614789aaaea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7443971fc4303ae79f5e8134fe2283d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#a7443971fc4303ae79f5e8134fe2283d7">Y</a></td></tr>
-<tr class="memdesc:a7443971fc4303ae79f5e8134fe2283d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bias of each neuron that are added to the weighted sum of inputs.  <a href="structDense__layer.html#a7443971fc4303ae79f5e8134fe2283d7">More...</a><br /></td></tr>
+<tr class="memdesc:a7443971fc4303ae79f5e8134fe2283d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This matrix stores the output of the layer before the activation function is applied.  <a href="structDense__layer.html#a7443971fc4303ae79f5e8134fe2283d7">More...</a><br /></td></tr>
 <tr class="separator:a7443971fc4303ae79f5e8134fe2283d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1520651f0835910fe8ce3a05b16cdfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#ae1520651f0835910fe8ce3a05b16cdfd">Z</a></td></tr>
-<tr class="memdesc:ae1520651f0835910fe8ce3a05b16cdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This matrix stores the output of the layer before the activation function is applied.  <a href="structDense__layer.html#ae1520651f0835910fe8ce3a05b16cdfd">More...</a><br /></td></tr>
+<tr class="memdesc:ae1520651f0835910fe8ce3a05b16cdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">this matrix stores the final output of the layer, so Y after activation function is applied.  <a href="structDense__layer.html#ae1520651f0835910fe8ce3a05b16cdfd">More...</a><br /></td></tr>
 <tr class="separator:ae1520651f0835910fe8ce3a05b16cdfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40d2787799fb771ef9b2192fa0de4678"><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDense__layer.html#a40d2787799fb771ef9b2192fa0de4678">activation_ptr</a> )(<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
-<tr class="memdesc:a40d2787799fb771ef9b2192fa0de4678"><td class="mdescLeft">&#160;</td><td class="mdescRight">this matrix stores the final output of the layer, so Y after activation function is applied.  <a href="structDense__layer.html#a40d2787799fb771ef9b2192fa0de4678">More...</a><br /></td></tr>
+<tr class="memdesc:a40d2787799fb771ef9b2192fa0de4678"><td class="mdescLeft">&#160;</td><td class="mdescRight">a function pointer to the activation function applied to Y.  <a href="structDense__layer.html#a40d2787799fb771ef9b2192fa0de4678">More...</a><br /></td></tr>
 <tr class="separator:a40d2787799fb771ef9b2192fa0de4678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >this library is necessary as it provides the backend matrix functionality required for a neural network. </p>
+<div class="textblock"><p >&lt; this library is necessary as it provides the backend matrix functionality required for a neural network. </p>
 <p >This struct defines a Dense layer.</p>
 <p >A dense layer is a neural network layer where all neurons are connected to all neurons in the previous layer. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00022">22</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00023">23</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a40d2787799fb771ef9b2192fa0de4678" name="a40d2787799fb771ef9b2192fa0de4678"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40d2787799fb771ef9b2192fa0de4678">&#9670;&nbsp;</a></span>activation_ptr</h2>
@@ -117,9 +118,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>this matrix stores the final output of the layer, so Y after activation function is applied. </p>
+<p>a function pointer to the activation function applied to Y. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00029">29</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00030">30</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -135,9 +136,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A matrix containing the weights of the neurons of this layer to the inuts. </p>
+<p>The bias of each neuron that are added to the weighted sum of inputs. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00026">26</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00027">27</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -153,9 +154,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of neurons in this dense layer. </p>
+<p>number of inputs, required to create weights of this layer to inputs. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00024">24</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00025">25</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -171,7 +172,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00023">23</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p>Number of neurons in this dense layer. </p>
+
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00024">24</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -187,9 +190,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>number of inputs, required to create weights of this layer to inputs. </p>
+<p>A matrix containing the weights of the neurons of this layer to the inuts. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00025">25</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00026">26</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -205,9 +208,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The bias of each neuron that are added to the weighted sum of inputs. </p>
+<p>This matrix stores the output of the layer before the activation function is applied. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00027">27</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00028">28</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>
@@ -223,9 +226,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This matrix stores the output of the layer before the activation function is applied. </p>
+<p>this matrix stores the final output of the layer, so Y after activation function is applied. </p>
 
-<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00028">28</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="NN__layers_8h_source.html#l00029">29</a> of file <a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>.</p>
 
 </div>
 </div>

@@ -12,7 +12,7 @@
 
 #ifndef NN_ACTIVATIONS_H
 #define NN_ACTIVATIONS_H
-#include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
+#include "tensor_2d.h" ///< this library is necessary as it provides the backend matrix functionality required for a neural network.
 
 /**
  * @brief Rectified linear function, any elements in the 'mat' matrix that are less than 0.0 are set to 0.0 in the mat_out matrix.

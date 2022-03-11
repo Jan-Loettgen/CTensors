@@ -43,7 +43,7 @@
           <declname>mat_out</declname>
         </param>
         <briefdescription>
-<para>this library is necessary as it provides the backend matrix functionality required for a neural network. </para>
+<para>&lt; this library is necessary as it provides the backend matrix functionality required for a neural network. </para>
         </briefdescription>
         <detaileddescription>
 <para>Rectified linear function, any elements in the &apos;mat&apos; matrix that are less than 0.0 are set to 0.0 in the mat_out matrix.</para>

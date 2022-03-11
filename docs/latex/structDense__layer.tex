@@ -2,7 +2,7 @@
 \label{structDense__layer}\index{Dense\_layer@{Dense\_layer}}
 
 
-this library is necessary as it provides the backend matrix functionality required for a neural network.  
+\texorpdfstring{$<$}{<} this library is necessary as it provides the backend matrix functionality required for a neural network.  
 
 
 
@@ -13,29 +13,29 @@ this library is necessary as it provides the backend matrix functionality requir
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}{num\+\_\+neurons}}
-\item 
-int \mbox{\hyperlink{structDense__layer_a6b2e070659ff1714333c86beba2d779c}{num\+\_\+inputs}}
 \begin{DoxyCompactList}\small\item\em Number of neurons in this dense layer. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}}
+int \mbox{\hyperlink{structDense__layer_a6b2e070659ff1714333c86beba2d779c}{num\+\_\+inputs}}
 \begin{DoxyCompactList}\small\item\em number of inputs, required to create weights of this layer to inputs. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}}
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}}
 \begin{DoxyCompactList}\small\item\em A matrix containing the weights of the neurons of this layer to the inuts. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}}
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}}
 \begin{DoxyCompactList}\small\item\em The bias of each neuron that are added to the weighted sum of inputs. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}}
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}}
 \begin{DoxyCompactList}\small\item\em This matrix stores the output of the layer before the activation function is applied. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$ \mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}}
+\begin{DoxyCompactList}\small\item\em this matrix stores the final output of the layer, so Y after activation function is applied. \end{DoxyCompactList}\item 
 int($\ast$ \mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{activation\+\_\+ptr}} )(\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
-\begin{DoxyCompactList}\small\item\em this matrix stores the final output of the layer, so Y after activation function is applied. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em a function pointer to the activation function applied to Y. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-this library is necessary as it provides the backend matrix functionality required for a neural network. 
+\texorpdfstring{$<$}{<} this library is necessary as it provides the backend matrix functionality required for a neural network. 
 
 This struct defines a Dense layer.
 
 A dense layer is a neural network layer where all neurons are connected to all neurons in the previous layer. 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00022}{22}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00023}{23}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 
 
@@ -48,11 +48,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00022}{22}} of file \m
 
 
 
-this matrix stores the final output of the layer, so Y after activation function is applied. 
+a function pointer to the activation function applied to Y. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00029}{29}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00030}{30}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}\label{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}} 
 \index{Dense\_layer@{Dense\_layer}!bias@{bias}}
@@ -62,11 +62,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00029}{29}} of file \m
 
 
 
-A matrix containing the weights of the neurons of this layer to the inuts. 
+The bias of each neuron that are added to the weighted sum of inputs. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00026}{26}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00027}{27}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_a6b2e070659ff1714333c86beba2d779c}\label{structDense__layer_a6b2e070659ff1714333c86beba2d779c}} 
 \index{Dense\_layer@{Dense\_layer}!num\_inputs@{num\_inputs}}
@@ -76,11 +76,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00026}{26}} of file \m
 
 
 
-Number of neurons in this dense layer. 
+number of inputs, required to create weights of this layer to inputs. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00024}{24}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00025}{25}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}\label{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}} 
 \index{Dense\_layer@{Dense\_layer}!num\_neurons@{num\_neurons}}
@@ -90,7 +90,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00024}{24}} of file \m
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00023}{23}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Number of neurons in this dense layer. 
+
+
+
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00024}{24}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_ae7f1c485520fb725f0549420905c8240}\label{structDense__layer_ae7f1c485520fb725f0549420905c8240}} 
 \index{Dense\_layer@{Dense\_layer}!weights@{weights}}
@@ -100,11 +104,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00023}{23}} of file \m
 
 
 
-number of inputs, required to create weights of this layer to inputs. 
+A matrix containing the weights of the neurons of this layer to the inuts. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00025}{25}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00026}{26}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}\label{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}} 
 \index{Dense\_layer@{Dense\_layer}!Y@{Y}}
@@ -114,11 +118,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00025}{25}} of file \m
 
 
 
-The bias of each neuron that are added to the weighted sum of inputs. 
+This matrix stores the output of the layer before the activation function is applied. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00027}{27}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00028}{28}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 \mbox{\Hypertarget{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}\label{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}} 
 \index{Dense\_layer@{Dense\_layer}!Z@{Z}}
@@ -128,11 +132,11 @@ Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00027}{27}} of file \m
 
 
 
-This matrix stores the output of the layer before the activation function is applied. 
+this matrix stores the final output of the layer, so Y after activation function is applied. 
 
 
 
-Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00028}{28}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+Definition at line \mbox{\hyperlink{NN__layers_8h_source_l00029}{29}} of file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
 
 
 

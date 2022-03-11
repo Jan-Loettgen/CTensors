@@ -13,13 +13,13 @@ This struct implements a 2 dimensional tensor to represent a matrix.
 \begin{DoxyCompactItemize}
 \item 
 unsigned int \mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\+\_\+rows}}
-\item 
-unsigned int \mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\+\_\+cols}}
 \begin{DoxyCompactList}\small\item\em Number of rows in the matrix. \end{DoxyCompactList}\item 
-unsigned long \mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\+\_\+elems}}
+unsigned int \mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\+\_\+cols}}
 \begin{DoxyCompactList}\small\item\em Number of columns in the matrix. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\+\_\+elems}}
+\begin{DoxyCompactList}\small\item\em Total number of elements stored in matrix. \end{DoxyCompactList}\item 
 double $\ast$ \mbox{\hyperlink{structtensor__2d_a4e4247a26be28cb685b4ebbfb0108f3e}{data}}
-\begin{DoxyCompactList}\small\item\em Total number of elements stored in matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A pointer to an array of doubles that stores the flattened matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -38,7 +38,7 @@ Definition at line \mbox{\hyperlink{tensor__2d_8h_source_l00018}{18}} of file \m
 
 
 
-Total number of elements stored in matrix. 
+A pointer to an array of doubles that stores the flattened matrix. 
 
 
 
@@ -52,7 +52,7 @@ Definition at line \mbox{\hyperlink{tensor__2d_8h_source_l00022}{22}} of file \m
 
 
 
-Number of rows in the matrix. 
+Number of columns in the matrix. 
 
 
 
@@ -66,7 +66,7 @@ Definition at line \mbox{\hyperlink{tensor__2d_8h_source_l00020}{20}} of file \m
 
 
 
-Number of columns in the matrix. 
+Total number of elements stored in matrix. 
 
 
 
@@ -77,6 +77,10 @@ Definition at line \mbox{\hyperlink{tensor__2d_8h_source_l00021}{21}} of file \m
 \index{n\_rows@{n\_rows}!tensor\_2d@{tensor\_2d}}
 \doxysubsubsection{\texorpdfstring{n\_rows}{n\_rows}}
 {\footnotesize\ttfamily unsigned int tensor\+\_\+2d\+::n\+\_\+rows}
+
+
+
+Number of rows in the matrix. 
 
 
 

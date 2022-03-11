@@ -11,6 +11,7 @@
         <name>n_rows</name>
         <qualifiedname>tensor_2d::n_rows</qualifiedname>
         <briefdescription>
+<para>Number of rows in the matrix. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -25,7 +26,7 @@
         <name>n_cols</name>
         <qualifiedname>tensor_2d::n_cols</qualifiedname>
         <briefdescription>
-<para>Number of rows in the matrix. </para>
+<para>Number of columns in the matrix. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -40,7 +41,7 @@
         <name>n_elems</name>
         <qualifiedname>tensor_2d::n_elems</qualifiedname>
         <briefdescription>
-<para>Number of columns in the matrix. </para>
+<para>Total number of elements stored in matrix. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -55,7 +56,7 @@
         <name>data</name>
         <qualifiedname>tensor_2d::data</qualifiedname>
         <briefdescription>
-<para>Total number of elements stored in matrix. </para>
+<para>A pointer to an array of doubles that stores the flattened matrix. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

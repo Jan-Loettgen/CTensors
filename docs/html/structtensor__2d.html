@@ -78,15 +78,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a809ce78f21bd51f42dc21a0881e0eb33"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtensor__2d.html#a809ce78f21bd51f42dc21a0881e0eb33">n_rows</a></td></tr>
+<tr class="memdesc:a809ce78f21bd51f42dc21a0881e0eb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows in the matrix.  <a href="structtensor__2d.html#a809ce78f21bd51f42dc21a0881e0eb33">More...</a><br /></td></tr>
 <tr class="separator:a809ce78f21bd51f42dc21a0881e0eb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74f3fe7324753175d7a4af46c6588d38"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtensor__2d.html#a74f3fe7324753175d7a4af46c6588d38">n_cols</a></td></tr>
-<tr class="memdesc:a74f3fe7324753175d7a4af46c6588d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of rows in the matrix.  <a href="structtensor__2d.html#a74f3fe7324753175d7a4af46c6588d38">More...</a><br /></td></tr>
+<tr class="memdesc:a74f3fe7324753175d7a4af46c6588d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of columns in the matrix.  <a href="structtensor__2d.html#a74f3fe7324753175d7a4af46c6588d38">More...</a><br /></td></tr>
 <tr class="separator:a74f3fe7324753175d7a4af46c6588d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55ed2709aa79847a1dbd09e87e08deeb"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtensor__2d.html#a55ed2709aa79847a1dbd09e87e08deeb">n_elems</a></td></tr>
-<tr class="memdesc:a55ed2709aa79847a1dbd09e87e08deeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of columns in the matrix.  <a href="structtensor__2d.html#a55ed2709aa79847a1dbd09e87e08deeb">More...</a><br /></td></tr>
+<tr class="memdesc:a55ed2709aa79847a1dbd09e87e08deeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of elements stored in matrix.  <a href="structtensor__2d.html#a55ed2709aa79847a1dbd09e87e08deeb">More...</a><br /></td></tr>
 <tr class="separator:a55ed2709aa79847a1dbd09e87e08deeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e4247a26be28cb685b4ebbfb0108f3e"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e">data</a></td></tr>
-<tr class="memdesc:a4e4247a26be28cb685b4ebbfb0108f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of elements stored in matrix.  <a href="structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e">More...</a><br /></td></tr>
+<tr class="memdesc:a4e4247a26be28cb685b4ebbfb0108f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to an array of doubles that stores the flattened matrix.  <a href="structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e">More...</a><br /></td></tr>
 <tr class="separator:a4e4247a26be28cb685b4ebbfb0108f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -106,7 +107,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Total number of elements stored in matrix. </p>
+<p>A pointer to an array of doubles that stores the flattened matrix. </p>
 
 <p class="definition">Definition at line <a class="el" href="tensor__2d_8h_source.html#l00022">22</a> of file <a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>.</p>
 
@@ -124,7 +125,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of rows in the matrix. </p>
+<p>Number of columns in the matrix. </p>
 
 <p class="definition">Definition at line <a class="el" href="tensor__2d_8h_source.html#l00020">20</a> of file <a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>.</p>
 
@@ -142,7 +143,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Number of columns in the matrix. </p>
+<p>Total number of elements stored in matrix. </p>
 
 <p class="definition">Definition at line <a class="el" href="tensor__2d_8h_source.html#l00021">21</a> of file <a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>.</p>
 
@@ -159,6 +160,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Number of rows in the matrix. </p>
 
 <p class="definition">Definition at line <a class="el" href="tensor__2d_8h_source.html#l00019">19</a> of file <a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>.</p>
 

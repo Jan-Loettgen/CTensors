@@ -16,10 +16,10 @@
  * @brief This struct implements a 2 dimensional tensor to represent a matrix.
  */
 typedef struct tensor_2d{
-    unsigned int n_rows; //! Number of rows in the matrix.
-    unsigned int n_cols; //! Number of columns in the matrix.
-    unsigned long n_elems; //! Total number of elements stored in matrix
-    double* data; //! A pointer to an array of doubles that stores the flattened matrix.
+    unsigned int n_rows; ///< Number of rows in the matrix.
+    unsigned int n_cols; ///< Number of columns in the matrix.
+    unsigned long n_elems; ///< Total number of elements stored in matrix
+    double* data; ///< A pointer to an array of doubles that stores the flattened matrix.
 
 } tensor_2d;
 
