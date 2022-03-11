@@ -1,7 +1,11 @@
+
+
+
+
+
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
-#include "tensor_2d.h"
-//#include "NN_layers.c"
+#include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
 
 typedef struct Dense_layer{
     int num_neurons;
