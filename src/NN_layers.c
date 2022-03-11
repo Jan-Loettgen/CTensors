@@ -84,7 +84,7 @@ int dense_set_rand(double low, double high,Dense_layer* dense_layer){
 
 int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_out, bool training){
 
-    if (dense_free == NULL || mat_in == NULL || mat_out == NULL){
+    if (dense_layer == NULL || mat_in == NULL || mat_out == NULL){
         return 1;
     }
 

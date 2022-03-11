@@ -1,7 +1,7 @@
 /**
  * @file NN_model.h
  * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
- * @brief 
+ * @brief This file defines a Sequential neural network model.
  * @version 0.1
  * @date 11-03-2022
  * 
@@ -14,7 +14,7 @@
 
 #define MAX_NUM_LAYERS 100 ///< maximmum number of layers that a sequential object can ahve.
 
-#include "NN_layers.h"///< this dependency is required for management of the layers.
+#include "NN_layers.h" ///< this dependency is required for management of the layers.
 
 typedef struct Sequential{
     int num_layers; ///< number of layers that this sequential struct has.
@@ -26,6 +26,6 @@ Sequential* sequential_make();
 
 int sequential_free(Sequential* sequential);
 
-int sequential_push(Sequential* sequential, )
+int sequential_push(Sequential* sequential, void* layer);
 
 #endif
