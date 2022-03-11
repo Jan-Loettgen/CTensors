@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-
-
-
-
-
-#ifndef DENSE_LAYER_H
-#define DENSE_LAYER_H
-=======
 /**
  * @file NN_layers.h
  * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
@@ -21,7 +12,6 @@
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
 #include <stdbool.h>
->>>>>>> 8778104cd252077be89a48181abe8b1bb4a15633
 #include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
 
 /**
