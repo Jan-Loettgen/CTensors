@@ -29,16 +29,17 @@
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_in = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, 10);}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053     \mbox{\hyperlink{tensor__2d_8c_ae908690f3acf39314e6bf3f944f5ca98}{mat\_zeros}}(mat\_in);}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, 4);}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055     \mbox{\hyperlink{structDense__layer}{Dense\_layer}}* dense\_layer = \mbox{\hyperlink{NN__layers_8c_a80a33d520a9591339962cc53f35870fa}{dense\_init}}(4, 10, \textcolor{stringliteral}{"{}relu"{}});}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056     \mbox{\hyperlink{NN__layers_8c_aa8baa0f75d579f6f4196b46e4ba315a9}{dense\_set\_rand}}(dense\_layer);}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058     \mbox{\hyperlink{NN__layers_8c_abeccd1b1d72eaf2d37c2367838c83e90}{dense\_forward}}(dense\_layer,mat\_in, mat\_out);}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059 }
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060     \mbox{\hyperlink{tensor__2d_8c_adeaac7723f2ea3c6d7019ba1c3faabd5}{mat\_print}}(mat\_out);}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062     printf(\textcolor{stringliteral}{"{}\(\backslash\)n exiting \(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064 }
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065 \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055     \mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{mat\_rand}}(-\/100, 25, mat\_out);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056     \textcolor{comment}{//Dense\_layer* dense\_layer = dense\_init(4, 10, "{}relu"{});}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057     \textcolor{comment}{//dense\_set\_rand(dense\_layer);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059     \textcolor{comment}{//sdense\_forward(dense\_layer,mat\_in, mat\_out);}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061     \mbox{\hyperlink{tensor__2d_8c_adeaac7723f2ea3c6d7019ba1c3faabd5}{mat\_print}}(mat\_out);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063     printf(\textcolor{stringliteral}{"{}\(\backslash\)n exiting \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066 \}}
 
 \end{DoxyCode}

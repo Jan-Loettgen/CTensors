@@ -4,15 +4,16 @@
     <compoundname>NN_layers.c</compoundname>
     <includes local="no">stdlib.h</includes>
     <includes local="no">stdio.h</includes>
+    <includes local="no">stdbool.h</includes>
     <includes local="no">string.h</includes>
     <includes refid="tensor__2d_8h" local="yes">tensor_2d.h</includes>
     <includes refid="NN__layers_8h" local="yes">NN_layers.h</includes>
     <includes refid="NN__activations_8h" local="yes">NN_activations.h</includes>
     <incdepgraph>
-      <node id="7">
+      <node id="8">
         <label>NN_activations.h</label>
         <link refid="NN__activations_8h"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -30,16 +31,23 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>NN_layers.h</label>
-        <link refid="NN__layers_8h"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="7">
+        <label>NN_layers.h</label>
+        <link refid="NN__layers_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
         <label>tensor_2d.h</label>
         <link refid="tensor__2d_8h"/>
+      </node>
+      <node id="4">
+        <label>stdbool.h</label>
       </node>
       <node id="3">
         <label>stdio.h</label>
@@ -47,16 +55,16 @@
       <node id="2">
         <label>stdlib.h</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>string.h</label>
       </node>
     </incdepgraph>
       <sectiondef kind="func">
-      <memberdef kind="function" id="NN__layers_8c_1a80a33d520a9591339962cc53f35870fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="NN__layers_8c_1ad57cc00b888a6e34dd7cda77f0859c47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
-        <definition>Dense_layer * dense_init</definition>
+        <definition>Dense_layer * dense_make</definition>
         <argsstring>(unsigned int num_neurons, unsigned int num_inputs, char activation[])</argsstring>
-        <name>dense_init</name>
+        <name>dense_make</name>
         <param>
           <type>unsigned int</type>
           <declname>num_neurons</declname>
@@ -71,36 +79,133 @@
           <array>[]</array>
         </param>
         <briefdescription>
+<para>Function returns a dense layer struct instance, this function is used to initalise a dense layer. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_neurons</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int : Number of neurons in this dense layer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_inputs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unsigned int : number of inputs, required to create weights of this layer to inputs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">activation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>function pointer int*(func_ptr)*(mat_in, mat_out), a pointer to the activation function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Dense_layer* A struct defining the dense layer </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/NN_layers.c" line="9" column="13" bodyfile="src/NN_layers.c" bodystart="9" bodyend="53"/>
+        <location file="src/NN_layers.c" line="10" column="13" bodyfile="src/NN_layers.c" bodystart="10" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="NN__layers_8c_1aa8baa0f75d579f6f4196b46e4ba315a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="NN__layers_8c_1a29b58829b8032d6455095a97ee40e160" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int dense_free</definition>
+        <argsstring>(Dense_layer **dense_layer)</argsstring>
+        <name>dense_free</name>
+        <param>
+          <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> **</type>
+          <declname>dense_layer</declname>
+        </param>
+        <briefdescription>
+<para>This function is used to free the memory allocated for a dense layer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is the counter part to the function &apos;dense_make&apos;.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dense_layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a pointer to a dense layer that is to be freed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_layers.c" line="56" column="5" bodyfile="src/NN_layers.c" bodystart="56" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__layers_8c_1a02ed8661062be087e1407077387478c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int dense_set_rand</definition>
-        <argsstring>(Dense_layer *dense_layer)</argsstring>
+        <argsstring>(double low, double high, Dense_layer *dense_layer)</argsstring>
         <name>dense_set_rand</name>
+        <param>
+          <type>double</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>high</declname>
+        </param>
         <param>
           <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
           <declname>dense_layer</declname>
         </param>
         <briefdescription>
+<para>Function sets weights of dense layers to random values in the range of low, high. Biases are set to 0. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>low</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lower limit of the random number generation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>high</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Upper limit of random number generation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dense_layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> pointer whose weights should be set to 0. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
-<para>sets weights to random values between 0 and 0.1</para>
+<para>sets weights to random values in the range [0, scale]</para>
 <para>sets bias of layer to 0.</para>
         </inbodydescription>
-        <location file="src/NN_layers.c" line="55" column="5" bodyfile="src/NN_layers.c" bodystart="55" bodyend="63"/>
+        <location file="src/NN_layers.c" line="73" column="5" bodyfile="src/NN_layers.c" bodystart="73" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="NN__layers_8c_1abeccd1b1d72eaf2d37c2367838c83e90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="NN__layers_8c_1a1c0547d8e31b12285bfcee00339e96c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int dense_forward</definition>
-        <argsstring>(Dense_layer *dense_layer, tensor_2d *mat_in, tensor_2d *mat_out)</argsstring>
+        <argsstring>(Dense_layer *dense_layer, tensor_2d *mat_in, tensor_2d *mat_out, bool training)</argsstring>
         <name>dense_forward</name>
         <param>
           <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
@@ -114,16 +219,59 @@
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_out</declname>
         </param>
+        <param>
+          <type>bool</type>
+          <declname>training</declname>
+        </param>
         <briefdescription>
+<para>Function used to make a dense layer forward pass. </para>
         </briefdescription>
         <detaileddescription>
+<para>input &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; with multiple inputs stacked along columns, and multiple batch inputs along rows. input shape should be (batch_size, number of inputs).</para>
+<para>output &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; a matrix to which to write the final layer outputs, shape should be (1, num_neurons).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dense_layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the &apos;<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>&apos; struct making the forward pass. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mat_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a tensor of inputs, inputs should be stacked along columns </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a output tensor to which to write the final layer outputs. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>training</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A boolean flag that indicates whether the layer should keep track of gradients for this forward pass. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointers point to NULL, 3 if one of the underlying matrix operations fails. </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
 <para>X*W = Y</para>
 <para>Y + B = Y</para>
 <para>f(Y) = Z</para>
         </inbodydescription>
-        <location file="src/NN_layers.c" line="67" column="5" bodyfile="src/NN_layers.c" bodystart="67" bodyend="86"/>
+        <location file="src/NN_layers.c" line="85" column="5" bodyfile="src/NN_layers.c" bodystart="85" bodyend="110"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -133,90 +281,114 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NN__layers_8h" kindref="compound">NN_layers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NN__activations_8h" kindref="compound">NN_activations.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9" refid="NN__layers_8c_1a80a33d520a9591339962cc53f35870fa" refkind="member"><highlight class="normal"><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="NN__layers_8c_1a80a33d520a9591339962cc53f35870fa" kindref="member">dense_init</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_neurons,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_inputs,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>activation[]){</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>));</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(activation,<sp/></highlight><highlight class="stringliteral">&quot;relu&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0){</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref><sp/>=<sp/>&amp;<ref refid="NN__activations_8c_1a9751908cb376a60abef0cfa5ce502177" kindref="member">relu</ref>;</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(activation,<sp/></highlight><highlight class="stringliteral">&quot;linear&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0){</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref><sp/>=<sp/>&amp;<ref refid="NN__activations_8c_1a8b078f5708697759ed1d4a3ed591c58d" kindref="member">linear</ref>;</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ac76aa362e051cccf8e6f7ed93a2379a6" kindref="member">num_neurons</ref><sp/>=<sp/>num_neurons;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a6b2e070659ff1714333c86beba2d779c" kindref="member">num_inputs</ref><sp/>=<sp/>num_inputs;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(num_inputs,<sp/>num_neurons);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref><sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref><sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref><sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref><sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>);</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dense_layer;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="NN__layers_8c_1aa8baa0f75d579f6f4196b46e4ba315a9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8c_1aa8baa0f75d579f6f4196b46e4ba315a9" kindref="member">dense_set_rand</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer){</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer<sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1a1baab197f83282e2cefec25af573e4af" kindref="member">mat_rand</ref>(dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>,<sp/>0.1);<sp/></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ae908690f3acf39314e6bf3f944f5ca98" kindref="member">mat_zeros</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);<sp/></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>int<sp/>dense_set();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdbool.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NN__layers_8h" kindref="compound">NN_layers.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NN__activations_8h" kindref="compound">NN_activations.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="NN__layers_8c_1ad57cc00b888a6e34dd7cda77f0859c47" refkind="member"><highlight class="normal"><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="NN__layers_8c_1ad57cc00b888a6e34dd7cda77f0859c47" kindref="member">dense_make</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_neurons,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_inputs,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>activation[]){</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>));</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(activation,<sp/></highlight><highlight class="stringliteral">&quot;relu&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref><sp/>=<sp/>&amp;<ref refid="NN__activations_8c_1a9751908cb376a60abef0cfa5ce502177" kindref="member">relu</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strcmp(activation,<sp/></highlight><highlight class="stringliteral">&quot;linear&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0){</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref><sp/>=<sp/>&amp;<ref refid="NN__activations_8c_1a8b078f5708697759ed1d4a3ed591c58d" kindref="member">linear</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ac76aa362e051cccf8e6f7ed93a2379a6" kindref="member">num_neurons</ref><sp/>=<sp/>num_neurons;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a6b2e070659ff1714333c86beba2d779c" kindref="member">num_inputs</ref><sp/>=<sp/>num_inputs;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(num_inputs,<sp/>num_neurons);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref><sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref><sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref><sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref><sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(1,<sp/>num_neurons);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref><sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dense_layer;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="NN__layers_8c_1a29b58829b8032d6455095a97ee40e160" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8c_1a29b58829b8032d6455095a97ee40e160" kindref="member">dense_free</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>**<sp/>dense_layer){</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*dense_layer<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;((*dense_layer)-&gt;weights));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;((*dense_layer)-&gt;bias));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;((*dense_layer)-&gt;Y));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" kindref="member">mat_free</ref>(&amp;((*dense_layer)-&gt;Z));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>free(dense_layer);</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="NN__layers_8c_1abeccd1b1d72eaf2d37c2367838c83e90" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8c_1abeccd1b1d72eaf2d37c2367838c83e90" kindref="member">dense_forward</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_in,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>(*dense_layer)<sp/>=<sp/>NULL;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>return_code;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="tensor__2d_8c_1a574ba2646f2cf52aec9655161f3d9607" kindref="member">mat_mul</ref>(mat_in,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>);<sp/></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="tensor__2d_8c_1a9ae20928f936d462d68cf5b1596283e2" kindref="member">mat_add</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>);</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" kindref="member">mat_copy</ref>(dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>,<sp/>mat_out);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="NN__layers_8c_1a02ed8661062be087e1407077387478c2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8c_1a02ed8661062be087e1407077387478c2" kindref="member">dense_set_rand</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>low,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>high,<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer){</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dense_layer<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1a2b806e3d6872c2617c3c820b0337fdfd" kindref="member">mat_rand</ref>(low,<sp/>high,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>);<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="tensor__2d_8c_1ae908690f3acf39314e6bf3f944f5ca98" kindref="member">mat_zeros</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>);<sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>int<sp/>dense_set();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="NN__layers_8c_1a1c0547d8e31b12285bfcee00339e96c4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8c_1a1c0547d8e31b12285bfcee00339e96c4" kindref="member">dense_forward</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/>dense_layer,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_in,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>training){</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="NN__layers_8c_1a29b58829b8032d6455095a97ee40e160" kindref="member">dense_free</ref><sp/>==<sp/>NULL<sp/>||<sp/>mat_in<sp/>==<sp/>NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>return_code;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="tensor__2d_8c_1a574ba2646f2cf52aec9655161f3d9607" kindref="member">mat_mul</ref>(mat_in,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>);<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="tensor__2d_8c_1a9ae20928f936d462d68cf5b1596283e2" kindref="member">mat_add</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/>dense_layer-&gt;<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref>(dense_layer-&gt;<ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>,<sp/>dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code!=0){</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>return_code<sp/>=<sp/><ref refid="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" kindref="member">mat_copy</ref>(dense_layer-&gt;<ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>,<sp/>mat_out);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(return_code<sp/>!=0){</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/NN_layers.c"/>
   </compounddef>

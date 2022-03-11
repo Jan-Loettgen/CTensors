@@ -18,8 +18,8 @@ int \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\+\_\+f
 \begin{DoxyCompactList}\small\item\em Function takes in a pointer to a pointer to a matrix, and frees the memory of \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} struct Function sets the pointer that the input pointer points to NULL after freeing momeory. This function is effectivelz the counter part to \textquotesingle{}mat\+\_\+make\textquotesingle{}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{tensor__2d_8c_ae908690f3acf39314e6bf3f944f5ca98}{mat\+\_\+zeros}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
 \begin{DoxyCompactList}\small\item\em Sets all elements of input matrix to zero. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\+\_\+rand}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out, double scale)
-\begin{DoxyCompactList}\small\item\em Sets all elements of input matrix to value in the range of \mbox{[}0, scale\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{mat\+\_\+rand}} (double low, double high, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Sets all elements of input matrix to value in the range of \mbox{[}low, high\mbox{]}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{tensor__2d_8c_a957359600527bb5755783f637bcedbb8}{mat\+\_\+eye}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
 \begin{DoxyCompactList}\small\item\em Takes an input matrix and sets its elements to that of an identiy matrix of the same size. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{tensor__2d_8c_adeaac7723f2ea3c6d7019ba1c3faabd5}{mat\+\_\+print}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat)
@@ -492,23 +492,25 @@ Definition at line \mbox{\hyperlink{tensor__2d_8c_source_l00099}{99}} of file \m
 \DoxyCodeLine{00111 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}\label{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}} 
+\mbox{\Hypertarget{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}\label{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}} 
 \index{tensor\_2d.c@{tensor\_2d.c}!mat\_rand@{mat\_rand}}
 \index{mat\_rand@{mat\_rand}!tensor\_2d.c@{tensor\_2d.c}}
 \doxysubsubsection{\texorpdfstring{mat\_rand()}{mat\_rand()}}
-{\footnotesize\ttfamily int mat\+\_\+rand (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+out,  }\item[{double}]{scale }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int mat\+\_\+rand (\begin{DoxyParamCaption}\item[{double}]{low,  }\item[{double}]{high,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+out }\end{DoxyParamCaption})}
 
 
 
-Sets all elements of input matrix to value in the range of \mbox{[}0, scale\mbox{]}. 
+Sets all elements of input matrix to value in the range of \mbox{[}low, high\mbox{]}. 
 
 Note, random number allocate,on is not truly random and should not be used for crytography. Function uses \textquotesingle{}rand()\textquotesingle{} from \texorpdfstring{$<$}{<}stdlib.\+h\texorpdfstring{$>$}{>} and divivdes by 2147483647.\+0 to put numbers in the range of \mbox{[}0, 1\mbox{]}
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ out}}  & {\em mat\+\_\+out} & \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} pointer whose values will be set to random numbers. \\
+\mbox{\texttt{ in}}  & {\em low} & double \+: defining the lower limit of the random numbers. \\
 \hline
-\mbox{\texttt{ in}}  & {\em scale} & double\+: Defines the uper limit of the range of random numbers. \\
+\mbox{\texttt{ in}}  & {\em high} & double \+: defining the upper limit of the random numbers. \\
+\hline
+\mbox{\texttt{ out}}  & {\em mat\+\_\+out} & \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} pointer whose values will be set to random numbers. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -520,13 +522,13 @@ Definition at line \mbox{\hyperlink{tensor__2d_8c_source_l00072}{72}} of file \m
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00072                                               \{}
+\DoxyCodeLine{00072                                                          \{}
 \DoxyCodeLine{00073     \textcolor{keywordflow}{if} (mat\_out == NULL)\{}
 \DoxyCodeLine{00074         \textcolor{keywordflow}{return} 1;}
 \DoxyCodeLine{00075     \}}
 \DoxyCodeLine{00076 }
 \DoxyCodeLine{00077     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
-\DoxyCodeLine{00078         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a4e4247a26be28cb685b4ebbfb0108f3e}{data}}[i] = scale*(rand() /2147483647.0);}
+\DoxyCodeLine{00078         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a4e4247a26be28cb685b4ebbfb0108f3e}{data}}[i] = low + (high-\/low)*(rand()/2147483647.0);}
 \DoxyCodeLine{00079     \}}
 \DoxyCodeLine{00080     \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{00081 \}}

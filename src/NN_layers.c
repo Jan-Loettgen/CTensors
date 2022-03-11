@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include "tensor_2d.h"
@@ -57,21 +58,23 @@ int dense_free(Dense_layer** dense_layer){
         return 1;
     }
 
-    mat_free((*dense_layer)->weights);
-    mat_free((*dense_layer)->bias);
-    mat_free((*dense_layer)->Y);
-    mat_free((*dense_layer)->Z);
+    mat_free(&((*dense_layer)->weights));
+    mat_free(&((*dense_layer)->bias));
+    mat_free(&((*dense_layer)->Y));
+    mat_free(&((*dense_layer)->Z));
     free(dense_layer);
 
     (*dense_layer) = NULL;
 
+    return 0;
+
 }
 
-int dense_set_rand(Dense_layer* dense_layer, int scale){
+int dense_set_rand(double low, double high,Dense_layer* dense_layer){
     if (dense_layer == NULL){
         return 1;
     }
-    mat_rand(dense_layer->weights, scale); //! sets weights to random values in the range [0, scale]
+    mat_rand(low, high, dense_layer->weights); //! sets weights to random values in the range [0, scale]
     mat_zeros(dense_layer->bias); //! sets bias of layer to 0.
 
     return 0;
@@ -79,10 +82,13 @@ int dense_set_rand(Dense_layer* dense_layer, int scale){
 
 // int dense_set();
 
-int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_out){
+int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_out, bool training){
+
+    if (dense_free == NULL || mat_in == NULL || mat_out == NULL){
+        return 1;
+    }
 
     int return_code;
-
     return_code = mat_mul(mat_in, dense_layer->weights, dense_layer->Y); /// X*W = Y
     if (return_code!=0){
         return 3;
@@ -95,7 +101,10 @@ int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_ou
     if (return_code!=0){
         return 3;
     }
+    return_code = mat_copy(dense_layer->Z, mat_out);
+    if (return_code !=0){
+        return 3;
+    }
 
-    mat_copy(dense_layer->Z, mat_out);
     return 0;
 }

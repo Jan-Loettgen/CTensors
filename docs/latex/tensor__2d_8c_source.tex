@@ -73,13 +73,13 @@
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00069}00069     \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00070}00070 \}}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00072}\mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{00072}} \textcolor{keywordtype}{int} \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\_rand}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out, \textcolor{keywordtype}{double} scale)\{}
+\DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00072}\mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{00072}} \textcolor{keywordtype}{int} \mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{mat\_rand}}(\textcolor{keywordtype}{double} low, \textcolor{keywordtype}{double} high, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out)\{}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00073}00073     \textcolor{keywordflow}{if} (mat\_out == NULL)\{}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00074}00074         \textcolor{keywordflow}{return} 1;}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00075}00075     \}}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00076}00076 }
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00077}00077     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} i=0; i < (mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a55ed2709aa79847a1dbd09e87e08deeb}{n\_elems}}); i++)\{}
-\DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00078}00078         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a4e4247a26be28cb685b4ebbfb0108f3e}{data}}[i] = scale*(rand() /2147483647.0);}
+\DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00078}00078         mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a4e4247a26be28cb685b4ebbfb0108f3e}{data}}[i] = low + (high-\/low)*(rand()/2147483647.0);}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00079}00079     \}}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00080}00080     \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{\Hypertarget{tensor__2d_8c_source_l00081}00081 \}}

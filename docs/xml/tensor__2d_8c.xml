@@ -150,38 +150,50 @@
         </inbodydescription>
         <location file="src/tensor_2d.c" line="61" column="5" bodyfile="src/tensor_2d.c" bodystart="61" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d_8c_1a1baab197f83282e2cefec25af573e4af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tensor__2d_8c_1a2b806e3d6872c2617c3c820b0337fdfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int mat_rand</definition>
-        <argsstring>(tensor_2d *mat_out, double scale)</argsstring>
+        <argsstring>(double low, double high, tensor_2d *mat_out)</argsstring>
         <name>mat_rand</name>
+        <param>
+          <type>double</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>high</declname>
+        </param>
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_out</declname>
         </param>
-        <param>
-          <type>double</type>
-          <declname>scale</declname>
-        </param>
         <briefdescription>
-<para>Sets all elements of input matrix to value in the range of [0, scale]. </para>
+<para>Sets all elements of input matrix to value in the range of [low, high]. </para>
         </briefdescription>
         <detaileddescription>
 <para>Note, random number allocate,on is not truly random and should not be used for crytography. Function uses &apos;rand()&apos; from &lt;stdlib.h&gt; and divivdes by 2147483647.0 to put numbers in the range of [0, 1]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="out">mat_out</parametername>
+<parametername direction="in">low</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>&apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; pointer whose values will be set to random numbers. </para>
+<para>double : defining the lower limit of the random numbers. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">scale</parametername>
+<parametername direction="in">high</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>double: Defines the uper limit of the range of random numbers. </para>
+<para>double : defining the upper limit of the random numbers. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>&apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; pointer whose values will be set to random numbers. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -698,13 +710,13 @@
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="tensor__2d_8c_1a1baab197f83282e2cefec25af573e4af" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1a1baab197f83282e2cefec25af573e4af" kindref="member">mat_rand</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scale){</highlight></codeline>
+<codeline lineno="72" refid="tensor__2d_8c_1a2b806e3d6872c2617c3c820b0337fdfd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1a2b806e3d6872c2617c3c820b0337fdfd" kindref="member">mat_rand</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>low,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>high,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL){</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>scale*(rand()<sp/>/2147483647.0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>low<sp/>+<sp/>(high-low)*(rand()/2147483647.0);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}</highlight></codeline>

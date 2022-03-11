@@ -184,38 +184,50 @@
         </inbodydescription>
         <location file="src/tensor_2d.h" line="58" column="5" bodyfile="src/tensor_2d.c" bodystart="61" bodyend="70" declfile="src/tensor_2d.h" declline="58" declcolumn="5"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d_8h_1a1baab197f83282e2cefec25af573e4af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tensor__2d_8h_1a2b806e3d6872c2617c3c820b0337fdfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int mat_rand</definition>
-        <argsstring>(tensor_2d *mat_out, double scale)</argsstring>
+        <argsstring>(double low, double high, tensor_2d *mat_out)</argsstring>
         <name>mat_rand</name>
+        <param>
+          <type>double</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>high</declname>
+        </param>
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_out</declname>
         </param>
-        <param>
-          <type>double</type>
-          <declname>scale</declname>
-        </param>
         <briefdescription>
-<para>Sets all elements of input matrix to value in the range of [0, scale]. </para>
+<para>Sets all elements of input matrix to value in the range of [low, high]. </para>
         </briefdescription>
         <detaileddescription>
 <para>Note, random number allocate,on is not truly random and should not be used for crytography. Function uses &apos;rand()&apos; from &lt;stdlib.h&gt; and divivdes by 2147483647.0 to put numbers in the range of [0, 1]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="out">mat_out</parametername>
+<parametername direction="in">low</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>&apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; pointer whose values will be set to random numbers. </para>
+<para>double : defining the lower limit of the random numbers. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">scale</parametername>
+<parametername direction="in">high</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>double: Defines the uper limit of the range of random numbers. </para>
+<para>double : defining the upper limit of the random numbers. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>&apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; pointer whose values will be set to random numbers. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -225,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="70" column="5" bodyfile="src/tensor_2d.c" bodystart="72" bodyend="81" declfile="src/tensor_2d.h" declline="70" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="71" column="5" bodyfile="src/tensor_2d.c" bodystart="72" bodyend="81" declfile="src/tensor_2d.h" declline="71" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1a957359600527bb5755783f637bcedbb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -257,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="80" column="5" bodyfile="src/tensor_2d.c" bodystart="83" bodyend="97" declfile="src/tensor_2d.h" declline="80" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="81" column="5" bodyfile="src/tensor_2d.c" bodystart="83" bodyend="97" declfile="src/tensor_2d.h" declline="81" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1adeaac7723f2ea3c6d7019ba1c3faabd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -287,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="88" column="5" bodyfile="src/tensor_2d.c" bodystart="99" bodyend="111" declfile="src/tensor_2d.h" declline="88" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="89" column="5" bodyfile="src/tensor_2d.c" bodystart="99" bodyend="111" declfile="src/tensor_2d.h" declline="89" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1a9ae20928f936d462d68cf5b1596283e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -342,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="100" column="5" bodyfile="src/tensor_2d.c" bodystart="113" bodyend="128" declfile="src/tensor_2d.h" declline="100" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="101" column="5" bodyfile="src/tensor_2d.c" bodystart="113" bodyend="128" declfile="src/tensor_2d.h" declline="101" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1a737a62b14085e7e309f3b1ffe1eb26dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -398,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="114" column="5" bodyfile="src/tensor_2d.c" bodystart="130" bodyend="145" declfile="src/tensor_2d.h" declline="114" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="115" column="5" bodyfile="src/tensor_2d.c" bodystart="130" bodyend="145" declfile="src/tensor_2d.h" declline="115" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1a574ba2646f2cf52aec9655161f3d9607" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -454,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="131" column="5" bodyfile="src/tensor_2d.c" bodystart="147" bodyend="168" declfile="src/tensor_2d.h" declline="131" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="132" column="5" bodyfile="src/tensor_2d.c" bodystart="147" bodyend="168" declfile="src/tensor_2d.h" declline="132" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1a7f8ce2f8aaa0c61e84c9ab72e1a4cef0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -497,7 +509,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="143" column="5" bodyfile="src/tensor_2d.c" bodystart="170" bodyend="185" declfile="src/tensor_2d.h" declline="143" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="144" column="5" bodyfile="src/tensor_2d.c" bodystart="170" bodyend="185" declfile="src/tensor_2d.h" declline="144" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1ab29c9ef88f94cc1ec4d680df1937cd07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -540,7 +552,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="152" column="5" bodyfile="src/tensor_2d.c" bodystart="187" bodyend="201" declfile="src/tensor_2d.h" declline="152" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="153" column="5" bodyfile="src/tensor_2d.c" bodystart="187" bodyend="201" declfile="src/tensor_2d.h" declline="153" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1acd1ed3b8431bd34db8454fc20d2e9254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -594,7 +606,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="166" column="5" bodyfile="src/tensor_2d.c" bodystart="203" bodyend="216" declfile="src/tensor_2d.h" declline="166" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="167" column="5" bodyfile="src/tensor_2d.c" bodystart="203" bodyend="216" declfile="src/tensor_2d.h" declline="167" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1ada02f47e919e61813c57d8b990ed4ce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -653,7 +665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="194" column="5" bodyfile="src/tensor_2d.c" bodystart="217" bodyend="230" declfile="src/tensor_2d.h" declline="194" declcolumn="5"/>
+        <location file="src/tensor_2d.h" line="195" column="5" bodyfile="src/tensor_2d.c" bodystart="217" bodyend="230" declfile="src/tensor_2d.h" declline="195" declcolumn="5"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -689,27 +701,27 @@
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1ae908690f3acf39314e6bf3f944f5ca98" kindref="member">mat_zeros</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a1baab197f83282e2cefec25af573e4af" kindref="member">mat_rand</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>scale);</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a957359600527bb5755783f637bcedbb8" kindref="member">mat_eye</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1adeaac7723f2ea3c6d7019ba1c3faabd5" kindref="member">mat_print</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a9ae20928f936d462d68cf5b1596283e2" kindref="member">mat_add</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a737a62b14085e7e309f3b1ffe1eb26dc" kindref="member">mat_sub</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a574ba2646f2cf52aec9655161f3d9607" kindref="member">mat_mul</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a7f8ce2f8aaa0c61e84c9ab72e1a4cef0" kindref="member">mat_transpose</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1ab29c9ef88f94cc1ec4d680df1937cd07" kindref="member">mat_copy</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1acd1ed3b8431bd34db8454fc20d2e9254" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1ada02f47e919e61813c57d8b990ed4ce0" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var);</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a2b806e3d6872c2617c3c820b0337fdfd" kindref="member">mat_rand</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>low,<sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>high,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a957359600527bb5755783f637bcedbb8" kindref="member">mat_eye</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1adeaac7723f2ea3c6d7019ba1c3faabd5" kindref="member">mat_print</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a9ae20928f936d462d68cf5b1596283e2" kindref="member">mat_add</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a737a62b14085e7e309f3b1ffe1eb26dc" kindref="member">mat_sub</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a574ba2646f2cf52aec9655161f3d9607" kindref="member">mat_mul</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1a7f8ce2f8aaa0c61e84c9ab72e1a4cef0" kindref="member">mat_transpose</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1ab29c9ef88f94cc1ec4d680df1937cd07" kindref="member">mat_copy</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1acd1ed3b8431bd34db8454fc20d2e9254" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8h_1ada02f47e919e61813c57d8b990ed4ce0" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="src/tensor_2d.h"/>
   </compounddef>

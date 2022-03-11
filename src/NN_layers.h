@@ -11,6 +11,7 @@
 
 #ifndef DENSE_LAYER_H
 #define DENSE_LAYER_H
+#include <stdbool.h>
 #include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
 
 /**
@@ -50,30 +51,29 @@ Dense_layer* dense_make(unsigned int num_neurons, unsigned int num_inputs, char 
 int dense_free(Dense_layer** dense_layer);
 
 /**
- * @brief This functions sets the weights of the input dense layer to random values in the range [0, scale], biases are set to 0.
+ * @brief Function sets weights of dense layers to random values in the range of low, high. Biases are set to 0.
  * 
- * @param[in] dense_layer 
- * @param[out] scale
+ * @param low Lower limit of the random number generation
+ * @param high Upper limit of random number generation
+ * @param dense_layer Dense_layer pointer whose weights should be set to 0.
  * @return int 
  */
-int dense_set_rand(Dense_layer* Ddnse_layer, int scale);
+int dense_set_rand(double low, double high,Dense_layer* dense_layer);
 
 /**
- * @brief 
+ * @brief Function used to make a dense layer forward pass.
  * 
- * @param Dense_layer 
- * @return int 
- */
-int dense_set(Dense_layer* dense_layer);
-
-/**
- * @brief 
+ * input 'tensor_2d' with multiple inputs stacked along columns, and multiple batch inputs along rows.
+ * input shape should be (batch_size, number of inputs).
  * 
- * @param Dense_layer 
- * @param mat_in 
- * @param mat_out 
- * @return int 
+ * output 'tensor_2d' a matrix to which to write the final layer outputs, shape should be (1, num_neurons).
+ * 
+ * @param dense_layer A pointer to the 'Dense_layer' struct making the forward pass.
+ * @param mat_in A pointer to a tensor of inputs, inputs should be stacked along columns
+ * @param mat_out A pointer to a output tensor to which to write the final layer outputs.
+ * @param training A boolean flag that indicates whether the layer should keep track of gradients for this forward pass.
+ * @return int : 0 if sucessful, 1 : if the dereferenced input pointers point to NULL, 3 if one of the underlying matrix operations fails.
  */
-int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_out);
+int dense_forward(Dense_layer* dense_layer, tensor_2d* mat_in, tensor_2d* mat_out, bool training);
 
 #endif

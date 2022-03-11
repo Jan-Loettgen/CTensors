@@ -96,9 +96,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae908690f3acf39314e6bf3f944f5ca98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d_8c.html#ae908690f3acf39314e6bf3f944f5ca98">mat_zeros</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
 <tr class="memdesc:ae908690f3acf39314e6bf3f944f5ca98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all elements of input matrix to zero.  <a href="tensor__2d_8c.html#ae908690f3acf39314e6bf3f944f5ca98">More...</a><br /></td></tr>
 <tr class="separator:ae908690f3acf39314e6bf3f944f5ca98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1baab197f83282e2cefec25af573e4af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d_8c.html#a1baab197f83282e2cefec25af573e4af">mat_rand</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out, double scale)</td></tr>
-<tr class="memdesc:a1baab197f83282e2cefec25af573e4af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all elements of input matrix to value in the range of [0, scale].  <a href="tensor__2d_8c.html#a1baab197f83282e2cefec25af573e4af">More...</a><br /></td></tr>
-<tr class="separator:a1baab197f83282e2cefec25af573e4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b806e3d6872c2617c3c820b0337fdfd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d_8c.html#a2b806e3d6872c2617c3c820b0337fdfd">mat_rand</a> (double low, double high, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
+<tr class="memdesc:a2b806e3d6872c2617c3c820b0337fdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all elements of input matrix to value in the range of [low, high].  <a href="tensor__2d_8c.html#a2b806e3d6872c2617c3c820b0337fdfd">More...</a><br /></td></tr>
+<tr class="separator:a2b806e3d6872c2617c3c820b0337fdfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a957359600527bb5755783f637bcedbb8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d_8c.html#a957359600527bb5755783f637bcedbb8">mat_eye</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
 <tr class="memdesc:a957359600527bb5755783f637bcedbb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an input matrix and sets its elements to that of an identiy matrix of the same size.  <a href="tensor__2d_8c.html#a957359600527bb5755783f637bcedbb8">More...</a><br /></td></tr>
 <tr class="separator:a957359600527bb5755783f637bcedbb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -678,8 +678,8 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a1baab197f83282e2cefec25af573e4af" name="a1baab197f83282e2cefec25af573e4af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1baab197f83282e2cefec25af573e4af">&#9670;&nbsp;</a></span>mat_rand()</h2>
+<a id="a2b806e3d6872c2617c3c820b0337fdfd" name="a2b806e3d6872c2617c3c820b0337fdfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b806e3d6872c2617c3c820b0337fdfd">&#9670;&nbsp;</a></span>mat_rand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -687,14 +687,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">int mat_rand </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td>
-          <td class="paramname"><em>mat_out</em>, </td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>low</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>scale</em>&#160;</td>
+          <td class="paramname"><em>high</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtensor__2d.html">tensor_2d</a> *&#160;</td>
+          <td class="paramname"><em>mat_out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -704,25 +710,26 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets all elements of input matrix to value in the range of [0, scale]. </p>
+<p>Sets all elements of input matrix to value in the range of [low, high]. </p>
 <p >Note, random number allocate,on is not truly random and should not be used for crytography. Function uses 'rand()' from &lt;stdlib.h&gt; and divivdes by 2147483647.0 to put numbers in the range of [0, 1]</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">low</td><td>double : defining the lower limit of the random numbers. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">high</td><td>double : defining the upper limit of the random numbers. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">mat_out</td><td>'<a class="el" href="structtensor__2d.html" title="This struct implements a 2 dimensional tensor to represent a matrix.">tensor_2d</a>' pointer whose values will be set to random numbers. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">scale</td><td>double: Defines the uper limit of the range of random numbers. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="tensor__2d_8c_source.html#l00072">72</a> of file <a class="el" href="tensor__2d_8c_source.html">tensor_2d.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                              {</div>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                         {</div>
 <div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (mat_out == NULL){</div>
 <div class="line"><span class="lineno">   74</span>        <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">   75</span>    }</div>
 <div class="line"><span class="lineno">   76</span> </div>
 <div class="line"><span class="lineno">   77</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i=0; i &lt; (mat_out-&gt;<a class="code hl_variable" href="structtensor__2d.html#a55ed2709aa79847a1dbd09e87e08deeb">n_elems</a>); i++){</div>
-<div class="line"><span class="lineno">   78</span>        mat_out-&gt;<a class="code hl_variable" href="structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e">data</a>[i] = scale*(rand() /2147483647.0);</div>
+<div class="line"><span class="lineno">   78</span>        mat_out-&gt;<a class="code hl_variable" href="structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e">data</a>[i] = low + (high-low)*(rand()/2147483647.0);</div>
 <div class="line"><span class="lineno">   79</span>    }</div>
 <div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   81</span>}</div>

@@ -52,10 +52,11 @@ int main(){
     tensor_2d* mat_in = mat_make(1, 10);
     mat_zeros(mat_in);
     tensor_2d* mat_out = mat_make(1, 4);
-    Dense_layer* dense_layer = dense_init(4, 10, "relu");
-    dense_set_rand(dense_layer);
+    mat_rand(-100, 25, mat_out);
+    //Dense_layer* dense_layer = dense_init(4, 10, "relu");
+    //dense_set_rand(dense_layer);
 
-    dense_forward(dense_layer,mat_in, mat_out);
+    //sdense_forward(dense_layer,mat_in, mat_out);
 
     mat_print(mat_out);
 
