@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tensor_5f2d_0',['tensor_2d',['../tensor__2d_8h.html#a30070caaa998b683c5bbc96cc0c7b337',1,'tensor_2d():&#160;tensor_2d.h'],['../tensor__2d__new__mats_8h.html#a30070caaa998b683c5bbc96cc0c7b337',1,'tensor_2d():&#160;tensor_2d_new_mats.h']]]
+  ['dense_5flayer_0',['Dense_layer',['../NN__layers_8h.html#a4edd615f3270dcf9bde0e66edd549e38',1,'NN_layers.h']]]
 ];

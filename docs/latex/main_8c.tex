@@ -3,11 +3,9 @@
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}tensor\+\_\+2d.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}tensor\+\_\+2d\+\_\+threaded.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}NN\+\_\+layers.\+h\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
-\item 
-double \mbox{\hyperlink{main_8c_ac41ccea697e346f2e1a8451a7633797b}{Re\+Lu}} (double d)
 \item 
 void $\ast$ \mbox{\hyperlink{main_8c_ac85965540442908b58fb8d90546dc5d0}{Sum\+\_\+mat}} (double d, int reset, void $\ast$out\+\_\+var)
 \item 
@@ -43,60 +41,27 @@ Definition in file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 
 
-Definition at line \mbox{\hyperlink{main_8c_source_l00059}{59}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definition at line \mbox{\hyperlink{main_8c_source_l00050}{50}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00059           \{}
-\DoxyCodeLine{00060     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat1 = \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\_rand}}(5, 9);}
-\DoxyCodeLine{00061 }
-\DoxyCodeLine{00062     \textcolor{keywordtype}{double} sum = 0;}
-\DoxyCodeLine{00063     \textcolor{keywordtype}{double}* sum\_ptr = \&sum;}
-\DoxyCodeLine{00064 }
-\DoxyCodeLine{00065     \mbox{\hyperlink{tensor__2d_8c_ada02f47e919e61813c57d8b990ed4ce0}{mat\_apply\_func\_2}}(\&\mbox{\hyperlink{main_8c_ac85965540442908b58fb8d90546dc5d0}{Sum\_mat}}, mat1, sum\_ptr);}
-\DoxyCodeLine{00066     printf(\textcolor{stringliteral}{"{}sum of matrix : \%f\(\backslash\)n"{}},*sum\_ptr);}
-\DoxyCodeLine{00067 }
-\DoxyCodeLine{00068     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat2 = \mbox{\hyperlink{tensor__2d_8c_a1baab197f83282e2cefec25af573e4af}{mat\_rand}}(5, 5);}
-\DoxyCodeLine{00069 }
-\DoxyCodeLine{00070     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_c = \mbox{\hyperlink{tensor__2d__threaded_8c_a0a77f99c45633f5aae091384070a1307}{mat\_subtract\_T}}(mat1, mat2);}
-\DoxyCodeLine{00071 }
-\DoxyCodeLine{00072     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_d = \mbox{\hyperlink{tensor__2d__threaded_8c_ae43ea7fdeaf2fc2a0718aafd6050e315}{mat\_mul\_T}}(mat1, mat2);}
-\DoxyCodeLine{00073 }
-\DoxyCodeLine{00074 }
-\DoxyCodeLine{00075     \textcolor{comment}{// mat\_print(mat2);}}
-\DoxyCodeLine{00076     \textcolor{comment}{// mat\_print(mat\_d);}}
-\DoxyCodeLine{00077 }
-\DoxyCodeLine{00078     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat1);}
-\DoxyCodeLine{00079     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat2);}
-\DoxyCodeLine{00080     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat\_c);}
-\DoxyCodeLine{00081     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&mat\_d);}
-\DoxyCodeLine{00082 }
-\DoxyCodeLine{00083     printf(\textcolor{stringliteral}{"{}\(\backslash\)n exiting \(\backslash\)n"{}});}
-\DoxyCodeLine{00084     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{00085 }
-\DoxyCodeLine{00086 \}}
-
-\end{DoxyCode}
-\mbox{\Hypertarget{main_8c_ac41ccea697e346f2e1a8451a7633797b}\label{main_8c_ac41ccea697e346f2e1a8451a7633797b}} 
-\index{main.c@{main.c}!ReLu@{ReLu}}
-\index{ReLu@{ReLu}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{ReLu()}{ReLu()}}
-{\footnotesize\ttfamily double Re\+Lu (\begin{DoxyParamCaption}\item[{double}]{d }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{main_8c_source_l00035}{35}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00035                      \{}
-\DoxyCodeLine{00036     \textcolor{keywordflow}{if} (d< 0.0)\{}
-\DoxyCodeLine{00037         \textcolor{keywordflow}{return} 0.0;}
-\DoxyCodeLine{00038     \}}
-\DoxyCodeLine{00039     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00040         \textcolor{keywordflow}{return} d;}
-\DoxyCodeLine{00041     \}}
-\DoxyCodeLine{00042 \}}
+\DoxyCodeLine{00050           \{}
+\DoxyCodeLine{00051     }
+\DoxyCodeLine{00052     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_in = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, 10);}
+\DoxyCodeLine{00053     \mbox{\hyperlink{tensor__2d_8c_ae908690f3acf39314e6bf3f944f5ca98}{mat\_zeros}}(mat\_in);}
+\DoxyCodeLine{00054     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, 4);}
+\DoxyCodeLine{00055     \mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{mat\_rand}}(-\/100, 25, mat\_out);}
+\DoxyCodeLine{00056     \textcolor{comment}{//Dense\_layer* dense\_layer = dense\_init(4, 10, "{}relu"{});}}
+\DoxyCodeLine{00057     \textcolor{comment}{//dense\_set\_rand(dense\_layer);}}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059     \textcolor{comment}{//sdense\_forward(dense\_layer,mat\_in, mat\_out);}}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \mbox{\hyperlink{tensor__2d_8c_adeaac7723f2ea3c6d7019ba1c3faabd5}{mat\_print}}(mat\_out);}
+\DoxyCodeLine{00062 }
+\DoxyCodeLine{00063     printf(\textcolor{stringliteral}{"{}\(\backslash\)n exiting \(\backslash\)n"{}});}
+\DoxyCodeLine{00064     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8c_ac85965540442908b58fb8d90546dc5d0}\label{main_8c_ac85965540442908b58fb8d90546dc5d0}} 
@@ -107,22 +72,22 @@ Definition at line \mbox{\hyperlink{main_8c_source_l00035}{35}} of file \mbox{\h
 
 
 
-Definition at line \mbox{\hyperlink{main_8c_source_l00044}{44}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definition at line \mbox{\hyperlink{main_8c_source_l00035}{35}} of file \mbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00044                                                  \{}
-\DoxyCodeLine{00045     \textcolor{keyword}{static} \textcolor{keywordtype}{double} sum = 0;}
-\DoxyCodeLine{00046     sum += d;}
-\DoxyCodeLine{00047 }
-\DoxyCodeLine{00048     \textcolor{keywordflow}{if} (reset==1)\{}
-\DoxyCodeLine{00049         *((\textcolor{keywordtype}{double}*)out\_var) = sum;}
-\DoxyCodeLine{00050         sum = 0;}
-\DoxyCodeLine{00051         \textcolor{keywordflow}{return} NULL;}
-\DoxyCodeLine{00052     \}}
-\DoxyCodeLine{00053     \textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00054         \textcolor{keywordflow}{return} NULL;}
-\DoxyCodeLine{00055     \}}
-\DoxyCodeLine{00056 \}}
+\DoxyCodeLine{00035                                                  \{}
+\DoxyCodeLine{00036     \textcolor{keyword}{static} \textcolor{keywordtype}{double} sum = 0;}
+\DoxyCodeLine{00037     sum += d;}
+\DoxyCodeLine{00038 }
+\DoxyCodeLine{00039     \textcolor{keywordflow}{if} (reset==1)\{}
+\DoxyCodeLine{00040         *((\textcolor{keywordtype}{double}*)out\_var) = sum;}
+\DoxyCodeLine{00041         sum = 0;}
+\DoxyCodeLine{00042         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00043     \}}
+\DoxyCodeLine{00044     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00045         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00046     \}}
+\DoxyCodeLine{00047 \}}
 
 \end{DoxyCode}

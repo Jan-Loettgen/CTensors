@@ -48,9 +48,9 @@
         </inbodydescription>
         <location file="src/tensor_2d.h" line="21" column="19" bodyfile="src/tensor_2d.h" bodystart="21" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" prot="public" static="no" mutable="no">
         <type>double *</type>
-        <definition>double * tensor_2d::data</definition>
+        <definition>double* tensor_2d::data</definition>
         <argsstring></argsstring>
         <name>data</name>
         <qualifiedname>tensor_2d::data</qualifiedname>
@@ -71,7 +71,7 @@
     </detaileddescription>
     <location file="src/tensor_2d.h" line="18" column="1" bodyfile="src/tensor_2d.h" bodystart="18" bodyend="24"/>
     <listofallmembers>
-      <member refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>data</name></member>
+      <member refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>data</name></member>
       <member refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_cols</name></member>
       <member refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_elems</name></member>
       <member refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" prot="public" virt="non-virtual"><scope>tensor_2d</scope><name>n_rows</name></member>

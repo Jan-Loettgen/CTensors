@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data_0',['data',['../structtensor__2d.html#a6492607aca3c85d57b8bcc4326db876d',1,'tensor_2d']]]
+  ['bias_0',['bias',['../structDense__layer.html#a31225d6adccfa475c2c9614789aaaea9',1,'Dense_layer']]]
 ];

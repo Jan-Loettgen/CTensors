@@ -1,0 +1,295 @@
+\hypertarget{NN__layers_8h}{}\doxysection{NN\+\_\+layers.\+h File Reference}
+\label{NN__layers_8h}\index{NN\_layers.h@{NN\_layers.h}}
+
+
+This file contains the declaration of functions and structs of various neural network layer types.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tensor\+\_\+2d.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}}
+\begin{DoxyCompactList}\small\item\em this library is necessary as it provides the backend matrix functionality required for a neural network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} \mbox{\hyperlink{NN__layers_8h_a4edd615f3270dcf9bde0e66edd549e38}{Dense\+\_\+layer}}
+\begin{DoxyCompactList}\small\item\em this library is necessary as it provides the backend matrix functionality required for a neural network. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$ \mbox{\hyperlink{NN__layers_8h_ad57cc00b888a6e34dd7cda77f0859c47}{dense\+\_\+make}} (unsigned int num\+\_\+neurons, unsigned int num\+\_\+inputs, char activation\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function returns a dense layer struct instance, this function is used to initalise a dense layer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{NN__layers_8h_a29b58829b8032d6455095a97ee40e160}{dense\+\_\+free}} (\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$$\ast$dense\+\_\+layer)
+\begin{DoxyCompactList}\small\item\em This function is used to free the memory allocated for a dense layer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{NN__layers_8h_a02ed8661062be087e1407077387478c2}{dense\+\_\+set\+\_\+rand}} (double low, double high, \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$dense\+\_\+layer)
+\begin{DoxyCompactList}\small\item\em Function sets weights of dense layers to random values in the range of low, high. Biases are set to 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{NN__layers_8h_a1c0547d8e31b12285bfcee00339e96c4}{dense\+\_\+forward}} (\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$dense\+\_\+layer, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+in, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out, bool training)
+\begin{DoxyCompactList}\small\item\em Function used to make a dense layer forward pass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the declaration of functions and structs of various neural network layer types. 
+
+\begin{DoxyAuthor}{Author}
+Jan Luca Loettgen (\href{mailto:janlucaloettgen@gmail.com}{\texttt{ janlucaloettgen@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+10-\/03-\/2022
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{NN__layers_8h_source}{NN\+\_\+layers.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{NN__layers_8h_a4edd615f3270dcf9bde0e66edd549e38}\label{NN__layers_8h_a4edd615f3270dcf9bde0e66edd549e38}} 
+\index{NN\_layers.h@{NN\_layers.h}!Dense\_layer@{Dense\_layer}}
+\index{Dense\_layer@{Dense\_layer}!NN\_layers.h@{NN\_layers.h}}
+\doxysubsubsection{\texorpdfstring{Dense\_layer}{Dense\_layer}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}}}
+
+
+
+this library is necessary as it provides the backend matrix functionality required for a neural network. 
+
+This struct defines a Dense layer.
+
+A dense layer is a neural network layer where all neurons are connected to all neurons in the previous layer. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{NN__layers_8h_a1c0547d8e31b12285bfcee00339e96c4}\label{NN__layers_8h_a1c0547d8e31b12285bfcee00339e96c4}} 
+\index{NN\_layers.h@{NN\_layers.h}!dense\_forward@{dense\_forward}}
+\index{dense\_forward@{dense\_forward}!NN\_layers.h@{NN\_layers.h}}
+\doxysubsubsection{\texorpdfstring{dense\_forward()}{dense\_forward()}}
+{\footnotesize\ttfamily int dense\+\_\+forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$}]{dense\+\_\+layer,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+in,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+out,  }\item[{bool}]{training }\end{DoxyParamCaption})}
+
+
+
+Function used to make a dense layer forward pass. 
+
+input \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} with multiple inputs stacked along columns, and multiple batch inputs along rows. input shape should be (batch\+\_\+size, number of inputs).
+
+output \textquotesingle{}\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}}\textquotesingle{} a matrix to which to write the final layer outputs, shape should be (1, num\+\_\+neurons).
+
+
+\begin{DoxyParams}{Parameters}
+{\em dense\+\_\+layer} & A pointer to the \textquotesingle{}\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}}\textquotesingle{} struct making the forward pass. \\
+\hline
+{\em mat\+\_\+in} & A pointer to a tensor of inputs, inputs should be stacked along columns \\
+\hline
+{\em mat\+\_\+out} & A pointer to a output tensor to which to write the final layer outputs. \\
+\hline
+{\em training} & A boolean flag that indicates whether the layer should keep track of gradients for this forward pass. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointers point to NULL, 3 if one of the underlying matrix operations fails. 
+\end{DoxyReturn}
+X$\ast$W = Y
+
+Y + B = Y
+
+f(\+Y) = Z
+
+Definition at line \mbox{\hyperlink{NN__layers_8c_source_l00085}{85}} of file \mbox{\hyperlink{NN__layers_8c_source}{NN\+\_\+layers.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085                                                                                                  \{}
+\DoxyCodeLine{00086 }
+\DoxyCodeLine{00087     \textcolor{keywordflow}{if} (\mbox{\hyperlink{NN__layers_8c_a29b58829b8032d6455095a97ee40e160}{dense\_free}} == NULL || mat\_in == NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{00088         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00089     \}}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091     \textcolor{keywordtype}{int} return\_code;}
+\DoxyCodeLine{00092     return\_code = \mbox{\hyperlink{tensor__2d_8c_a574ba2646f2cf52aec9655161f3d9607}{mat\_mul}}(mat\_in, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}}, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}}); }
+\DoxyCodeLine{00093     \textcolor{keywordflow}{if} (return\_code!=0)\{}
+\DoxyCodeLine{00094         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{00095     \}}
+\DoxyCodeLine{00096     return\_code = \mbox{\hyperlink{tensor__2d_8c_a9ae20928f936d462d68cf5b1596283e2}{mat\_add}}(dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}}, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}}, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}});}
+\DoxyCodeLine{00097     \textcolor{keywordflow}{if} (return\_code!=0)\{}
+\DoxyCodeLine{00098         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{00099     \}}
+\DoxyCodeLine{00100     return\_code = dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{activation\_ptr}}(dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}}, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}});}
+\DoxyCodeLine{00101     \textcolor{keywordflow}{if} (return\_code!=0)\{}
+\DoxyCodeLine{00102         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{00103     \}}
+\DoxyCodeLine{00104     return\_code = \mbox{\hyperlink{tensor__2d_8c_ab29c9ef88f94cc1ec4d680df1937cd07}{mat\_copy}}(dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}}, mat\_out);}
+\DoxyCodeLine{00105     \textcolor{keywordflow}{if} (return\_code !=0)\{}
+\DoxyCodeLine{00106         \textcolor{keywordflow}{return} 3;}
+\DoxyCodeLine{00107     \}}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00110 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{NN__layers_8h_a29b58829b8032d6455095a97ee40e160}\label{NN__layers_8h_a29b58829b8032d6455095a97ee40e160}} 
+\index{NN\_layers.h@{NN\_layers.h}!dense\_free@{dense\_free}}
+\index{dense\_free@{dense\_free}!NN\_layers.h@{NN\_layers.h}}
+\doxysubsubsection{\texorpdfstring{dense\_free()}{dense\_free()}}
+{\footnotesize\ttfamily int dense\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$$\ast$}]{dense\+\_\+layer }\end{DoxyParamCaption})}
+
+
+
+This function is used to free the memory allocated for a dense layer. 
+
+This function is the counter part to the function \textquotesingle{}dense\+\_\+make\textquotesingle{}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dense\+\_\+layer} & A pointer to a pointer to a dense layer that is to be freed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointer points to NULL. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{NN__layers_8c_source_l00056}{56}} of file \mbox{\hyperlink{NN__layers_8c_source}{NN\+\_\+layers.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056                                          \{}
+\DoxyCodeLine{00057     \textcolor{keywordflow}{if} (*dense\_layer == NULL)\{}
+\DoxyCodeLine{00058         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00059     \}}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&((*dense\_layer)-\/>weights));}
+\DoxyCodeLine{00062     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&((*dense\_layer)-\/>bias));}
+\DoxyCodeLine{00063     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&((*dense\_layer)-\/>Y));}
+\DoxyCodeLine{00064     \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&((*dense\_layer)-\/>Z));}
+\DoxyCodeLine{00065     free(dense\_layer);}
+\DoxyCodeLine{00066 }
+\DoxyCodeLine{00067     (*dense\_layer) = NULL;}
+\DoxyCodeLine{00068 }
+\DoxyCodeLine{00069     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{NN__layers_8h_ad57cc00b888a6e34dd7cda77f0859c47}\label{NN__layers_8h_ad57cc00b888a6e34dd7cda77f0859c47}} 
+\index{NN\_layers.h@{NN\_layers.h}!dense\_make@{dense\_make}}
+\index{dense\_make@{dense\_make}!NN\_layers.h@{NN\_layers.h}}
+\doxysubsubsection{\texorpdfstring{dense\_make()}{dense\_make()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$ dense\+\_\+make (\begin{DoxyParamCaption}\item[{unsigned int}]{num\+\_\+neurons,  }\item[{unsigned int}]{num\+\_\+inputs,  }\item[{char}]{activation\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Function returns a dense layer struct instance, this function is used to initalise a dense layer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em num\+\_\+neurons} & unsigned int \+: Number of neurons in this dense layer \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+\_\+inputs} & unsigned int \+: number of inputs, required to create weights of this layer to inputs. \\
+\hline
+\mbox{\texttt{ in}}  & {\em activation} & function pointer int$\ast$(func\+\_\+ptr)$\ast$(mat\+\_\+in, mat\+\_\+out), a pointer to the activation function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dense\+\_\+layer$\ast$ A struct defining the dense layer 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{NN__layers_8c_source_l00010}{10}} of file \mbox{\hyperlink{NN__layers_8c_source}{NN\+\_\+layers.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010                                                                                              \{}
+\DoxyCodeLine{00011     \mbox{\hyperlink{structDense__layer}{Dense\_layer}}* dense\_layer = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structDense__layer}{Dense\_layer}}));}
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013     \textcolor{keywordflow}{if} (strcmp(activation, \textcolor{stringliteral}{"{}relu"{}}) == 0)\{}
+\DoxyCodeLine{00014         dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{activation\_ptr}} = \&\mbox{\hyperlink{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}{relu}};}
+\DoxyCodeLine{00015     \}}
+\DoxyCodeLine{00016     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strcmp(activation, \textcolor{stringliteral}{"{}linear"{}}) == 0)\{}
+\DoxyCodeLine{00017         dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{activation\_ptr}} = \&\mbox{\hyperlink{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}{linear}};}
+\DoxyCodeLine{00018     \}}
+\DoxyCodeLine{00019     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00020         free(dense\_layer);}
+\DoxyCodeLine{00021         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00022     \}}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00024     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}{num\_neurons}} = num\_neurons;}
+\DoxyCodeLine{00025     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a6b2e070659ff1714333c86beba2d779c}{num\_inputs}} = num\_inputs;}
+\DoxyCodeLine{00026 }
+\DoxyCodeLine{00027     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}} = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(num\_inputs, num\_neurons);}
+\DoxyCodeLine{00028     \textcolor{keywordflow}{if} (dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}} == NULL)\{}
+\DoxyCodeLine{00029         free(dense\_layer);}
+\DoxyCodeLine{00030         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00031     \}}
+\DoxyCodeLine{00032     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}} = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, num\_neurons);}
+\DoxyCodeLine{00033     \textcolor{keywordflow}{if} (dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}} == NULL)\{}
+\DoxyCodeLine{00034         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}});}
+\DoxyCodeLine{00035         free(dense\_layer);}
+\DoxyCodeLine{00036         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00037     \}}
+\DoxyCodeLine{00038     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}} = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, num\_neurons);}
+\DoxyCodeLine{00039     \textcolor{keywordflow}{if} (dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}} == NULL)\{}
+\DoxyCodeLine{00040         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}});}
+\DoxyCodeLine{00041         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}});}
+\DoxyCodeLine{00042         free(dense\_layer);}
+\DoxyCodeLine{00043         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00044     \}}
+\DoxyCodeLine{00045     dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}} = \mbox{\hyperlink{tensor__2d_8c_a2667b0018203aabb8f0427b382d17f04}{mat\_make}}(1, num\_neurons);}
+\DoxyCodeLine{00046     \textcolor{keywordflow}{if} (dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}} == NULL)\{}
+\DoxyCodeLine{00047         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}});}
+\DoxyCodeLine{00048         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}});}
+\DoxyCodeLine{00049         \mbox{\hyperlink{tensor__2d_8c_ad153f4d7a7d83c0ede5ebf3217fcb02d}{mat\_free}}(\&dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}});}
+\DoxyCodeLine{00050         free(dense\_layer);}
+\DoxyCodeLine{00051         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00052     \}}
+\DoxyCodeLine{00053     \textcolor{keywordflow}{return} dense\_layer;}
+\DoxyCodeLine{00054 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{NN__layers_8h_a02ed8661062be087e1407077387478c2}\label{NN__layers_8h_a02ed8661062be087e1407077387478c2}} 
+\index{NN\_layers.h@{NN\_layers.h}!dense\_set\_rand@{dense\_set\_rand}}
+\index{dense\_set\_rand@{dense\_set\_rand}!NN\_layers.h@{NN\_layers.h}}
+\doxysubsubsection{\texorpdfstring{dense\_set\_rand()}{dense\_set\_rand()}}
+{\footnotesize\ttfamily int dense\+\_\+set\+\_\+rand (\begin{DoxyParamCaption}\item[{double}]{low,  }\item[{double}]{high,  }\item[{\mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} $\ast$}]{dense\+\_\+layer }\end{DoxyParamCaption})}
+
+
+
+Function sets weights of dense layers to random values in the range of low, high. Biases are set to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em low} & Lower limit of the random number generation \\
+\hline
+{\em high} & Upper limit of random number generation \\
+\hline
+{\em dense\+\_\+layer} & \mbox{\hyperlink{structDense__layer}{Dense\+\_\+layer}} pointer whose weights should be set to 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+sets weights to random values in the range \mbox{[}0, scale\mbox{]}
+
+sets bias of layer to 0.
+
+Definition at line \mbox{\hyperlink{NN__layers_8c_source_l00073}{73}} of file \mbox{\hyperlink{NN__layers_8c_source}{NN\+\_\+layers.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073                                                                     \{}
+\DoxyCodeLine{00074     \textcolor{keywordflow}{if} (dense\_layer == NULL)\{}
+\DoxyCodeLine{00075         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00076     \}}
+\DoxyCodeLine{00077     \mbox{\hyperlink{tensor__2d_8c_a2b806e3d6872c2617c3c820b0337fdfd}{mat\_rand}}(low, high, dense\_layer-\/>\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}}); }
+\DoxyCodeLine{00078     \mbox{\hyperlink{tensor__2d_8c_ae908690f3acf39314e6bf3f944f5ca98}{mat\_zeros}}(dense\_layer-\/>\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}}); }
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00081 \}}
+
+\end{DoxyCode}

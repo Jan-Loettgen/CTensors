@@ -75,14 +75,12 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="tensor__2d__threaded_8h_source.html">tensor_2d_threaded.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="NN__layers_8h_source.html">NN_layers.h</a>&quot;</code><br />
 </div>
 <p><a href="main_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac41ccea697e346f2e1a8451a7633797b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac41ccea697e346f2e1a8451a7633797b">ReLu</a> (double d)</td></tr>
-<tr class="separator:ac41ccea697e346f2e1a8451a7633797b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac85965540442908b58fb8d90546dc5d0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac85965540442908b58fb8d90546dc5d0">Sum_mat</a> (double d, int reset, void *out_var)</td></tr>
 <tr class="separator:ac85965540442908b58fb8d90546dc5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
@@ -111,70 +109,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00059">59</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>          {</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat1 = <a class="code hl_function" href="tensor__2d_8c.html#a1baab197f83282e2cefec25af573e4af">mat_rand</a>(5, 9);</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordtype">double</span> sum = 0;</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordtype">double</span>* sum_ptr = &amp;sum;</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <a class="code hl_function" href="tensor__2d_8c.html#ada02f47e919e61813c57d8b990ed4ce0">mat_apply_func_2</a>(&amp;<a class="code hl_function" href="main_8c.html#ac85965540442908b58fb8d90546dc5d0">Sum_mat</a>, mat1, sum_ptr);</div>
-<div class="line"><span class="lineno">   66</span>    printf(<span class="stringliteral">&quot;sum of matrix : %f\n&quot;</span>,*sum_ptr);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat2 = <a class="code hl_function" href="tensor__2d_8c.html#a1baab197f83282e2cefec25af573e4af">mat_rand</a>(5, 5);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat_c = <a class="code hl_function" href="tensor__2d__threaded_8c.html#a0a77f99c45633f5aae091384070a1307">mat_subtract_T</a>(mat1, mat2);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat_d = <a class="code hl_function" href="tensor__2d__threaded_8c.html#ae43ea7fdeaf2fc2a0718aafd6050e315">mat_mul_T</a>(mat1, mat2);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>    <span class="comment">// mat_print(mat2);</span></div>
-<div class="line"><span class="lineno">   76</span>    <span class="comment">// mat_print(mat_d);</span></div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>    <a class="code hl_function" href="tensor__2d_8c.html#ad153f4d7a7d83c0ede5ebf3217fcb02d">mat_free</a>(&amp;mat1);</div>
-<div class="line"><span class="lineno">   79</span>    <a class="code hl_function" href="tensor__2d_8c.html#ad153f4d7a7d83c0ede5ebf3217fcb02d">mat_free</a>(&amp;mat2);</div>
-<div class="line"><span class="lineno">   80</span>    <a class="code hl_function" href="tensor__2d_8c.html#ad153f4d7a7d83c0ede5ebf3217fcb02d">mat_free</a>(&amp;mat_c);</div>
-<div class="line"><span class="lineno">   81</span>    <a class="code hl_function" href="tensor__2d_8c.html#ad153f4d7a7d83c0ede5ebf3217fcb02d">mat_free</a>(&amp;mat_d);</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    printf(<span class="stringliteral">&quot;\n exiting \n&quot;</span>);</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>}</div>
-<div class="ttc" id="amain_8c_html_ac85965540442908b58fb8d90546dc5d0"><div class="ttname"><a href="main_8c.html#ac85965540442908b58fb8d90546dc5d0">Sum_mat</a></div><div class="ttdeci">void * Sum_mat(double d, int reset, void *out_var)</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00044">main.c:44</a></div></div>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00050">50</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>          {</div>
+<div class="line"><span class="lineno">   51</span>    </div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat_in = <a class="code hl_function" href="tensor__2d_8c.html#a2667b0018203aabb8f0427b382d17f04">mat_make</a>(1, 10);</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_function" href="tensor__2d_8c.html#ae908690f3acf39314e6bf3f944f5ca98">mat_zeros</a>(mat_in);</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat_out = <a class="code hl_function" href="tensor__2d_8c.html#a2667b0018203aabb8f0427b382d17f04">mat_make</a>(1, 4);</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_function" href="tensor__2d_8c.html#a2b806e3d6872c2617c3c820b0337fdfd">mat_rand</a>(-100, 25, mat_out);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="comment">//Dense_layer* dense_layer = dense_init(4, 10, &quot;relu&quot;);</span></div>
+<div class="line"><span class="lineno">   57</span>    <span class="comment">//dense_set_rand(dense_layer);</span></div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="comment">//sdense_forward(dense_layer,mat_in, mat_out);</span></div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_function" href="tensor__2d_8c.html#adeaac7723f2ea3c6d7019ba1c3faabd5">mat_print</a>(mat_out);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    printf(<span class="stringliteral">&quot;\n exiting \n&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>}</div>
 <div class="ttc" id="astructtensor__2d_html"><div class="ttname"><a href="structtensor__2d.html">tensor_2d</a></div><div class="ttdoc">This struct implements a 2 dimensional tensor to represent a matrix.</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8h_source.html#l00018">tensor_2d.h:18</a></div></div>
-<div class="ttc" id="atensor__2d_8c_html_a1baab197f83282e2cefec25af573e4af"><div class="ttname"><a href="tensor__2d_8c.html#a1baab197f83282e2cefec25af573e4af">mat_rand</a></div><div class="ttdeci">int mat_rand(tensor_2d *mat_out, double scale)</div><div class="ttdoc">Sets all elements of input matrix to value in the range of [0, scale].</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00072">tensor_2d.c:72</a></div></div>
-<div class="ttc" id="atensor__2d_8c_html_ad153f4d7a7d83c0ede5ebf3217fcb02d"><div class="ttname"><a href="tensor__2d_8c.html#ad153f4d7a7d83c0ede5ebf3217fcb02d">mat_free</a></div><div class="ttdeci">int mat_free(tensor_2d **mat_ptr)</div><div class="ttdoc">Function takes in a pointer to a pointer to a matrix, and frees the memory of 'tensor_2d' struct Func...</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00048">tensor_2d.c:48</a></div></div>
-<div class="ttc" id="atensor__2d_8c_html_ada02f47e919e61813c57d8b990ed4ce0"><div class="ttname"><a href="tensor__2d_8c.html#ada02f47e919e61813c57d8b990ed4ce0">mat_apply_func_2</a></div><div class="ttdeci">int mat_apply_func_2(void(func)(double d, int reset, void *out_var), tensor_2d *mat, void *out_var)</div><div class="ttdoc">Function applies input function to all elements of of the input matrix.</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00195">tensor_2d.c:195</a></div></div>
-<div class="ttc" id="atensor__2d__threaded_8c_html_a0a77f99c45633f5aae091384070a1307"><div class="ttname"><a href="tensor__2d__threaded_8c.html#a0a77f99c45633f5aae091384070a1307">mat_subtract_T</a></div><div class="ttdeci">tensor_2d * mat_subtract_T(tensor_2d *mat_a, tensor_2d *mat_b)</div><div class="ttdoc">Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithrea...</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d__threaded_8c_source.html#l00098">tensor_2d_threaded.c:98</a></div></div>
-<div class="ttc" id="atensor__2d__threaded_8c_html_ae43ea7fdeaf2fc2a0718aafd6050e315"><div class="ttname"><a href="tensor__2d__threaded_8c.html#ae43ea7fdeaf2fc2a0718aafd6050e315">mat_mul_T</a></div><div class="ttdeci">tensor_2d * mat_mul_T(tensor_2d *mat_a, tensor_2d *mat_b)</div><div class="ttdoc">Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix....</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d__threaded_8c_source.html#l00159">tensor_2d_threaded.c:159</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ac41ccea697e346f2e1a8451a7633797b" name="ac41ccea697e346f2e1a8451a7633797b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac41ccea697e346f2e1a8451a7633797b">&#9670;&nbsp;</a></span>ReLu()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ReLu </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>d</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00035">35</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>                     {</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (d&lt; 0.0){</div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> 0.0;</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span> d;</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>}</div>
+<div class="ttc" id="atensor__2d_8c_html_a2667b0018203aabb8f0427b382d17f04"><div class="ttname"><a href="tensor__2d_8c.html#a2667b0018203aabb8f0427b382d17f04">mat_make</a></div><div class="ttdeci">tensor_2d * mat_make(unsigned int num_rows, unsigned int num_cols)</div><div class="ttdoc">Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses mallo...</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00010">tensor_2d.c:10</a></div></div>
+<div class="ttc" id="atensor__2d_8c_html_a2b806e3d6872c2617c3c820b0337fdfd"><div class="ttname"><a href="tensor__2d_8c.html#a2b806e3d6872c2617c3c820b0337fdfd">mat_rand</a></div><div class="ttdeci">int mat_rand(double low, double high, tensor_2d *mat_out)</div><div class="ttdoc">Sets all elements of input matrix to value in the range of [low, high].</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00072">tensor_2d.c:72</a></div></div>
+<div class="ttc" id="atensor__2d_8c_html_adeaac7723f2ea3c6d7019ba1c3faabd5"><div class="ttname"><a href="tensor__2d_8c.html#adeaac7723f2ea3c6d7019ba1c3faabd5">mat_print</a></div><div class="ttdeci">int mat_print(tensor_2d *mat)</div><div class="ttdoc">Function used to print all the elements of a matrix to the terminal.</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00099">tensor_2d.c:99</a></div></div>
+<div class="ttc" id="atensor__2d_8c_html_ae908690f3acf39314e6bf3f944f5ca98"><div class="ttname"><a href="tensor__2d_8c.html#ae908690f3acf39314e6bf3f944f5ca98">mat_zeros</a></div><div class="ttdeci">int mat_zeros(tensor_2d *mat_out)</div><div class="ttdoc">Sets all elements of input matrix to zero.</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00061">tensor_2d.c:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -210,20 +167,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00044">44</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>                                                 {</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> sum = 0;</div>
-<div class="line"><span class="lineno">   46</span>    sum += d;</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (reset==1){</div>
-<div class="line"><span class="lineno">   49</span>        *((<span class="keywordtype">double</span>*)out_var) = sum;</div>
-<div class="line"><span class="lineno">   50</span>        sum = 0;</div>
-<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">else</span>{</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-<div class="line"><span class="lineno">   56</span>}</div>
+<p class="definition">Definition at line <a class="el" href="main_8c_source.html#l00035">35</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                 {</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keyword">static</span> <span class="keywordtype">double</span> sum = 0;</div>
+<div class="line"><span class="lineno">   37</span>    sum += d;</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (reset==1){</div>
+<div class="line"><span class="lineno">   40</span>        *((<span class="keywordtype">double</span>*)out_var) = sum;</div>
+<div class="line"><span class="lineno">   41</span>        sum = 0;</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">else</span>{</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="line"><span class="lineno">   47</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

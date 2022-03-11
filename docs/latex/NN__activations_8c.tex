@@ -1,0 +1,94 @@
+\hypertarget{NN__activations_8c}{}\doxysection{NN\+\_\+activations.\+c File Reference}
+\label{NN__activations_8c}\index{NN\_activations.c@{NN\_activations.c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}tensor\+\_\+2d.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}{relu}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
+\begin{DoxyCompactList}\small\item\em this library is necessary as it provides the backend matrix functionality required for a neural network. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}{linear}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Linear activation function, which just copies the contents of the \textquotesingle{}mat\textquotesingle{} matrix into the \textquotesingle{}mat\+\_\+out\textquotesingle{} matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}\label{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}} 
+\index{NN\_activations.c@{NN\_activations.c}!linear@{linear}}
+\index{linear@{linear}!NN\_activations.c@{NN\_activations.c}}
+\doxysubsubsection{\texorpdfstring{linear()}{linear()}}
+{\footnotesize\ttfamily int linear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+Linear activation function, which just copies the contents of the \textquotesingle{}mat\textquotesingle{} matrix into the \textquotesingle{}mat\+\_\+out\textquotesingle{} matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat} & input matrix whose elements are copied. \\
+\hline
+\mbox{\texttt{ out}}  & {\em mat\+\_\+out} & matrix to which the input matrix \textquotesingle{}mat\textquotesingle{} elements are copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointer points to NULL, 2 if input matrices have different dimensions. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{NN__activations_8c_source_l00025}{25}} of file \mbox{\hyperlink{NN__activations_8c_source}{NN\+\_\+activations.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025                                               \{}
+\DoxyCodeLine{00026     \textcolor{keywordflow}{if} (mat==NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{00027         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00028     \}}
+\DoxyCodeLine{00029     \textcolor{keywordflow}{if} (mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}|| mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00030         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{00031     \}}
+\DoxyCodeLine{00032 }
+\DoxyCodeLine{00033     \mbox{\hyperlink{tensor__2d_8c_ab29c9ef88f94cc1ec4d680df1937cd07}{mat\_copy}}(mat, mat\_out);}
+\DoxyCodeLine{00034     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00035 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}\label{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}} 
+\index{NN\_activations.c@{NN\_activations.c}!relu@{relu}}
+\index{relu@{relu}!NN\_activations.c@{NN\_activations.c}}
+\doxysubsubsection{\texorpdfstring{relu()}{relu()}}
+{\footnotesize\ttfamily int relu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat,  }\item[{\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$}]{mat\+\_\+out }\end{DoxyParamCaption})}
+
+
+
+this library is necessary as it provides the backend matrix functionality required for a neural network. 
+
+Rectified linear function, any elements in the \textquotesingle{}mat\textquotesingle{} matrix that are less than 0.\+0 are set to 0.\+0 in the mat\+\_\+out matrix.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mat} & input matrix to whose elements the relu function is applied. \\
+\hline
+\mbox{\texttt{ out}}  & {\em mat\+\_\+out} & The ouput matrix, its elements are the result of applying the relu function to the input matrix \textquotesingle{}mat\textquotesingle{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int \+: 0 if sucessful, 1 \+: if the dereferenced input pointer points to NULL, 2 if input matrices have different dimensions. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{NN__activations_8c_source_l00013}{13}} of file \mbox{\hyperlink{NN__activations_8c_source}{NN\+\_\+activations.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013                                             \{}
+\DoxyCodeLine{00014     \textcolor{keywordflow}{if} (mat==NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{00015         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00016     \}}
+\DoxyCodeLine{00017     \textcolor{keywordflow}{if} (mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}|| mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{00018         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{00019     \}}
+\DoxyCodeLine{00020     \mbox{\hyperlink{tensor__2d_8c_acd1ed3b8431bd34db8454fc20d2e9254}{mat\_apply\_func}}(\&\_relu, mat, mat\_out);}
+\DoxyCodeLine{00021     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00022 }
+\DoxyCodeLine{00023 \}}
+
+\end{DoxyCode}

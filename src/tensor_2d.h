@@ -58,16 +58,17 @@ int mat_free(tensor_2d** mat_ptr);
 int mat_zeros(tensor_2d* mat_out);
 
 /**
- * @brief Sets all elements of input matrix to value in the range of [0, scale].
+ * @brief Sets all elements of input matrix to value in the range of [low, high].
  * 
  * Note, random number allocate,on is not truly random and should not be used for crytography.
  * Function uses 'rand()' from <stdlib.h> and divivdes by 2147483647.0 to put numbers in the range of [0, 1]
  * 
+ * @param[in] low double : defining the lower limit of the random numbers.
+ * @param[in] high double : defining the upper limit of the random numbers.
  * @param[out] mat_out 'tensor_2d' pointer whose values will be set to random numbers.
- * @param[in] scale double: Defines the uper limit of the range of random numbers.
  * @return int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL. 
  */
-int mat_rand(tensor_2d* mat_out, double scale);
+int mat_rand(double low, double high, tensor_2d* mat_out);
 
 /**
  * @brief Takes an input matrix and sets its elements to that of an identiy matrix of the same size.

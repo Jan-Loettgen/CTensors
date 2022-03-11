@@ -69,13 +69,13 @@ int mat_zeros(tensor_2d* mat_out){
     return 0;
 }
 
-int mat_rand(tensor_2d* mat_out, double scale){
+int mat_rand(double low, double high, tensor_2d* mat_out){
     if (mat_out == NULL){
         return 1;
     }
 
     for (unsigned long i=0; i < (mat_out->n_elems); i++){
-        mat_out->data[i] = scale*(rand() /2147483647.0);
+        mat_out->data[i] = low + (high-low)*(rand()/2147483647.0);
     }
     return 0;
 }

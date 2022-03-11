@@ -3,10 +3,12 @@
   <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
     <compoundname>src</compoundname>
     <innerfile refid="main_8c">main.c</innerfile>
+    <innerfile refid="NN__activations_8c">NN_activations.c</innerfile>
+    <innerfile refid="NN__activations_8h">NN_activations.h</innerfile>
+    <innerfile refid="NN__layers_8c">NN_layers.c</innerfile>
+    <innerfile refid="NN__layers_8h">NN_layers.h</innerfile>
     <innerfile refid="tensor__2d_8c">tensor_2d.c</innerfile>
     <innerfile refid="tensor__2d_8h">tensor_2d.h</innerfile>
-    <innerfile refid="tensor__2d__new__mats_8c">tensor_2d_new_mats.c</innerfile>
-    <innerfile refid="tensor__2d__new__mats_8h">tensor_2d_new_mats.h</innerfile>
     <innerfile refid="tensor__2d__threaded_8c">tensor_2d_threaded.c</innerfile>
     <innerfile refid="tensor__2d__threaded_8h">tensor_2d_threaded.h</innerfile>
     <briefdescription>

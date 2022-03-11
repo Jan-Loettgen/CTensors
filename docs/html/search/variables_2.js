@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['length_0',['length',['../structarray__op__args.html#a9d50a6471ff7d40764a6a7d59806db50',1,'array_op_args']]]
+  ['data_0',['data',['../structtensor__2d.html#a4e4247a26be28cb685b4ebbfb0108f3e',1,'tensor_2d']]]
 ];
