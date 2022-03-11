@@ -1,5 +1,18 @@
+/**
+ * @file tensor_2d_threaded.h
+ * @author Jan Luca Loettgen (janlucaloettgen@gmail.com)
+ * @brief This file contains the declaration of functions that are threaded versions of their counter parts defined in "tensor_2d.c".
+ * @version 0.1
+ * @date 10-03-2022
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef TENSOR_2D_THREADED_H
 #define TENSOR_2D_THREADED_H
+
+#include "tensor_2d.h" //! this library is necessary as it provides the backend matrix functionality required for a neural network.
 
 /**
  * @brief Function adds two input matricies and reutrns a new matrix, addition is multithreaded.

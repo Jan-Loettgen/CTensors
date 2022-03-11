@@ -5,8 +5,8 @@
 #include "tensor_2d.h"
 #include "tensor_2d_threaded.h"
 
-#define MAX_NUM_THREADS 13 /// Maximum number of threads allowed to exist simultaneously.
-#define MIN_BATCH 32 /// Minmum number of operations that a single thread should do.
+#define MAX_NUM_THREADS 13 //! Maximum number of threads allowed to exist simultaneously.
+#define MIN_BATCH 32 //! Minmum number of operations that a single thread should do.
 
 typedef struct array_op_args{
     double* arr_1;

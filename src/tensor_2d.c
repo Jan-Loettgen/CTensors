@@ -4,8 +4,7 @@
 
 #include "tensor_2d.h"
 
-//corresponds to a matrix of 16384 x 16384, will use 0.25 GB of RAM
-#define MAX_NUM_ELEMENTS 268435456
+#define MAX_NUM_ELEMENTS 268435456 //!corresponds to a matrix of 16384 x 16384, will use 0.25 GB of RAM
 
 tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     tensor_2d* mat = malloc(sizeof(tensor_2d));
@@ -15,7 +14,8 @@ tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     }
 
     unsigned long long ull_num_elems = num_rows*num_cols;
-    //limit because unsigned long cannot hold a number greater than 4294967295.
+    
+    //!limit because unsigned long cannot hold a number greater than 4294967295.
     if (ull_num_elems > 4294967295){
         printf("Requested matrix with %lld elements.\n", ull_num_elems);
         printf("Maximum possible number of elements is: %ld\n", 4294967295);
@@ -23,7 +23,7 @@ tensor_2d* mat_make(unsigned int num_rows, unsigned int num_cols) {
     }
 
     unsigned long num_elems = num_rows*num_cols;
-    //limit specfied in #define MAX_NUM_ELEMENTS.
+    //!limit specfied in #define MAX_NUM_ELEMENTS.
     if (num_elems > MAX_NUM_ELEMENTS){
         printf("Requested matrix with %ld elements.\n", num_elems);
         printf("Maximum possible number of elements is: %d\n", MAX_NUM_ELEMENTS);
