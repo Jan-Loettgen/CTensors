@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tensor_5f2d_0',['tensor_2d',['../structtensor__2d.html',1,'']]]
+  ['dense_5flayer_0',['Dense_layer',['../structDense__layer.html',1,'']]]
 ];

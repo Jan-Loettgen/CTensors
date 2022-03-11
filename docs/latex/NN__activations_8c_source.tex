@@ -1,0 +1,41 @@
+\hypertarget{NN__activations_8c_source}{}\doxysection{NN\+\_\+activations.\+c}
+\label{NN__activations_8c_source}\index{NN\_activations.c@{NN\_activations.c}}
+\mbox{\hyperlink{NN__activations_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00001}00001 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tensor__2d_8h}{tensor\_2d.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00004}00004 \textcolor{keyword}{static} \textcolor{keywordtype}{double} \_relu(\textcolor{keywordtype}{double} d)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00005}00005     \textcolor{keywordflow}{if} (d< 0.0)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00006}00006         \textcolor{keywordflow}{return} 0.0;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00007}00007     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00008}00008     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00009}00009         \textcolor{keywordflow}{return} d;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00010}00010     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00011}00011 \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00013}\mbox{\hyperlink{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}{00013}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__activations_8c_a9751908cb376a60abef0cfa5ce502177}{relu}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00014}00014     \textcolor{keywordflow}{if} (mat==NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00015}00015         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00016}00016     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00017}00017     \textcolor{keywordflow}{if} (mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}|| mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00018}00018         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00019}00019     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00020}00020     \mbox{\hyperlink{tensor__2d_8c_acd1ed3b8431bd34db8454fc20d2e9254}{mat\_apply\_func}}(\&\_relu, mat, mat\_out);}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00021}00021     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00023}00023 \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00025}\mbox{\hyperlink{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}{00025}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__activations_8c_a8b078f5708697759ed1d4a3ed591c58d}{linear}}(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00026}00026     \textcolor{keywordflow}{if} (mat==NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00027}00027         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00029}00029     \textcolor{keywordflow}{if} (mat-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a74f3fe7324753175d7a4af46c6588d38}{n\_cols}}|| mat-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}} != mat\_out-\/>\mbox{\hyperlink{structtensor__2d_a809ce78f21bd51f42dc21a0881e0eb33}{n\_rows}})\{}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00030}00030         \textcolor{keywordflow}{return} 2;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00031}00031     \}}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00033}00033     \mbox{\hyperlink{tensor__2d_8c_ab29c9ef88f94cc1ec4d680df1937cd07}{mat\_copy}}(mat, mat\_out);}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00034}00034     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{NN__activations_8c_source_l00035}00035 \}}
+
+\end{DoxyCode}

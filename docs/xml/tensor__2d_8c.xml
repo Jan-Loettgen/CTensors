@@ -61,7 +61,7 @@
           <declname>num_cols</declname>
         </param>
         <briefdescription>
-<para>Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in <ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">tensor_2d.data</ref>. </para>
+<para>Function reutrns a pointer to a matrix, with specfied number of rows and columns. Function uses malloc to allocate memory for a &apos;<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>&apos; sturct which acts as a 2 dimensional matrix. The actual matrix elemetns are stroed in <ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">tensor_2d.data</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para>Note matrix variables are note initalised to any specfic value!!! Maximum allowed matrix size is specfied by &apos;MAX_NUM_ELEMENTS&apos; in &apos;<ref refid="tensor__2d_8c" kindref="compound">tensor_2d.c</ref>&apos; as 268435456. Corresponding to a matrix of 16384 rows and 16384 columns, using 0.25GB of ram, to store.</para>
@@ -310,11 +310,11 @@
         </inbodydescription>
         <location file="src/tensor_2d.c" line="113" column="5" bodyfile="src/tensor_2d.c" bodystart="113" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d_8c_1a85133ecfd0e55bf15e2b35fbefd741fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tensor__2d_8c_1a737a62b14085e7e309f3b1ffe1eb26dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
-        <definition>int mat_subtract</definition>
+        <definition>int mat_sub</definition>
         <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b, tensor_2d *mat_out)</argsstring>
-        <name>mat_subtract</name>
+        <name>mat_sub</name>
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_a</declname>
@@ -463,7 +463,50 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.c" line="170" column="5" bodyfile="src/tensor_2d.c" bodystart="170" bodyend="182"/>
+        <location file="src/tensor_2d.c" line="170" column="5" bodyfile="src/tensor_2d.c" bodystart="170" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mat_copy</definition>
+        <argsstring>(tensor_2d *mat, tensor_2d *mat_out)</argsstring>
+        <name>mat_copy</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
+        </param>
+        <briefdescription>
+<para>Function copies contents of the input &apos;mat&apos; matrix into the &apos;mat_out&apos; matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrices have wrong dimensions. <linebreak/>
+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d.c" line="187" column="5" bodyfile="src/tensor_2d.c" bodystart="187" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -517,7 +560,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.c" line="184" column="5" bodyfile="src/tensor_2d.c" bodystart="184" bodyend="194"/>
+        <location file="src/tensor_2d.c" line="203" column="5" bodyfile="src/tensor_2d.c" bodystart="203" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -576,7 +619,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.c" line="195" column="5" bodyfile="src/tensor_2d.c" bodystart="195" bodyend="208"/>
+        <location file="src/tensor_2d.c" line="217" column="5" bodyfile="src/tensor_2d.c" bodystart="217" bodyend="230"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -627,7 +670,7 @@
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>=<sp/>data;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref><sp/>=<sp/>data;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
@@ -650,7 +693,7 @@
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal">}</highlight></codeline>
@@ -661,7 +704,7 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>scale*(rand()<sp/>/2147483647.0);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>scale*(rand()<sp/>/2147483647.0);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}</highlight></codeline>
@@ -673,10 +716,10 @@
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>%<sp/>(mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>+1)<sp/>==<sp/>0){</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>1.0;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -688,7 +731,7 @@
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>);<sp/>i++){</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%f\t&quot;</highlight><highlight class="normal">,<sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%f\t&quot;</highlight><highlight class="normal">,<sp/>mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]);</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((i+1)<sp/>%<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>==<sp/>0){</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -708,12 +751,12 @@
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>+<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>+<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i];</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="128"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130" refid="tensor__2d_8c_1a85133ecfd0e55bf15e2b35fbefd741fc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1a85133ecfd0e55bf15e2b35fbefd741fc" kindref="member">mat_subtract</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="130" refid="tensor__2d_8c_1a737a62b14085e7e309f3b1ffe1eb26dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1a737a62b14085e7e309f3b1ffe1eb26dc" kindref="member">mat_sub</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -725,7 +768,7 @@
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>-<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>-<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i];</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="145"><highlight class="normal">}</highlight></codeline>
@@ -746,7 +789,7 @@
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col=0;<sp/>col&lt;mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_index<sp/>=<sp/>row*mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>+col;</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=0;<sp/>k&lt;mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>k++){</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[mat_index]<sp/>+=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[(row*mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>)+k]*mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[(mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>*k)+col];</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[mat_index]<sp/>+=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[(row*mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>)+k]*mat_b-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[(mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>*k)+col];</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -757,41 +800,63 @@
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col=<sp/>0;<sp/>col&lt;mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row<sp/>=0;<sp/>row&lt;mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row*mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>+<sp/>col]<sp/>=<sp/>mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row+col*mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>];</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>||<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>){</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col=<sp/>0;<sp/>col&lt;mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row<sp/>=0;<sp/>row&lt;mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[row*mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>+<sp/>col]<sp/>=<sp/>mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[row+col*mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>];</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="184" refid="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]<sp/>=<sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i]);</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="195" refid="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var){</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL)<sp/>{</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>-1)){</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i],<sp/>1,<sp/>out_var);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[i],<sp/>0,<sp/>out_var);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" kindref="member">mat_copy</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>||<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>){</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" kindref="member">mat_apply_func</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>||<sp/>mat-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>){</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]<sp/>=<sp/>func(mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i]);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217" refid="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" kindref="member">mat_apply_func_2</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(func)(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>d,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>reset,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var),<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>out_var){</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL||<sp/>func==NULL)<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i&lt;mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>;<sp/>i++){</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>(mat-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>-1)){</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i],<sp/>1,<sp/>out_var);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>func(mat-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>[i],<sp/>0,<sp/>out_var);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="src/tensor_2d.c"/>
   </compounddef>

@@ -1,0 +1,31 @@
+\hypertarget{NN__layers_8h_source}{}\doxysection{NN\+\_\+layers.\+h}
+\label{NN__layers_8h_source}\index{NN\_layers.h@{NN\_layers.h}}
+\mbox{\hyperlink{NN__layers_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef DENSE\_LAYER\_H}}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00002}00002 \textcolor{preprocessor}{\#define DENSE\_LAYER\_H}}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{tensor__2d_8h}{tensor\_2d.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00004}00004 \textcolor{comment}{//\#include "{}NN\_layers.c"{}}}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00006}\mbox{\hyperlink{structDense__layer}{00006}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structDense__layer}{Dense\_layer}}\{}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00007}\mbox{\hyperlink{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}{00007}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{structDense__layer_ac76aa362e051cccf8e6f7ed93a2379a6}{num\_neurons}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00008}\mbox{\hyperlink{structDense__layer_a6b2e070659ff1714333c86beba2d779c}{00008}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{structDense__layer_a6b2e070659ff1714333c86beba2d779c}{num\_inputs}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00009}\mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{00009}}     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{structDense__layer_ae7f1c485520fb725f0549420905c8240}{weights}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00010}\mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{00010}}     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{structDense__layer_a31225d6adccfa475c2c9614789aaaea9}{bias}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00011}\mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{00011}}     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{structDense__layer_a7443971fc4303ae79f5e8134fe2283d7}{Y}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00012}\mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{00012}}     \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* \mbox{\hyperlink{structDense__layer_ae1520651f0835910fe8ce3a05b16cdfd}{Z}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00013}\mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{00013}}     int (*\mbox{\hyperlink{structDense__layer_a40d2787799fb771ef9b2192fa0de4678}{activation\_ptr}})(\mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out);}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00015}\mbox{\hyperlink{NN__layers_8h_a4edd615f3270dcf9bde0e66edd549e38}{00015}} \}\mbox{\hyperlink{NN__layers_8h_a4edd615f3270dcf9bde0e66edd549e38}{Dense\_layer}};}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00017}00017 \mbox{\hyperlink{structDense__layer}{Dense\_layer}}* \mbox{\hyperlink{NN__layers_8h_a80a33d520a9591339962cc53f35870fa}{dense\_init}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_neurons, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num\_inputs, \textcolor{keywordtype}{char} activation[]);}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00019}00019 \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__layers_8h_a35a56aad2e82e3168efe853c304b09a0}{dense\_set\_rand}}(\mbox{\hyperlink{structDense__layer}{Dense\_layer}}* \mbox{\hyperlink{structDense__layer}{Dense\_layer}});}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00021}\mbox{\hyperlink{NN__layers_8h_acc793cbc52e6a5e76f0bb0d3f8cfee18}{00021}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__layers_8h_acc793cbc52e6a5e76f0bb0d3f8cfee18}{dense\_set}}(\mbox{\hyperlink{structDense__layer}{Dense\_layer}}* \mbox{\hyperlink{structDense__layer}{Dense\_layer}});}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00023}00023 \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__layers_8h_a148e505411c3d9614c516650004b98b1}{dense\_forward}}(\mbox{\hyperlink{structDense__layer}{Dense\_layer}}* \mbox{\hyperlink{structDense__layer}{Dense\_layer}}, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_in, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out);}
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{NN__layers_8h_source_l00025}00025 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['relu_0',['ReLu',['../main_8c.html#ac41ccea697e346f2e1a8451a7633797b',1,'main.c']]]
+  ['linear_0',['linear',['../NN__activations_8c.html#a8b078f5708697759ed1d4a3ed591c58d',1,'linear(tensor_2d *mat, tensor_2d *mat_out):&#160;NN_activations.c'],['../NN__activations_8h.html#a8b078f5708697759ed1d4a3ed591c58d',1,'linear(tensor_2d *mat, tensor_2d *mat_out):&#160;NN_activations.c']]]
 ];

@@ -11,16 +11,45 @@
     <member refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kind="variable"><name>arr_out</name></member>
     <member refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kind="variable"><name>length</name></member>
   </compound>
+  <compound refid="structDense__layer" kind="struct"><name>Dense_layer</name>
+    <member refid="structDense__layer_1ac76aa362e051cccf8e6f7ed93a2379a6" kind="variable"><name>num_neurons</name></member>
+    <member refid="structDense__layer_1a6b2e070659ff1714333c86beba2d779c" kind="variable"><name>num_inputs</name></member>
+    <member refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kind="variable"><name>weights</name></member>
+    <member refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kind="variable"><name>bias</name></member>
+    <member refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kind="variable"><name>Y</name></member>
+    <member refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kind="variable"><name>Z</name></member>
+    <member refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kind="variable"><name>activation_ptr</name></member>
+  </compound>
   <compound refid="structtensor__2d" kind="struct"><name>tensor_2d</name>
     <member refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kind="variable"><name>n_rows</name></member>
     <member refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kind="variable"><name>n_cols</name></member>
     <member refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kind="variable"><name>n_elems</name></member>
-    <member refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kind="variable"><name>data</name></member>
+    <member refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kind="variable"><name>data</name></member>
   </compound>
   <compound refid="main_8c" kind="file"><name>main.c</name>
-    <member refid="main_8c_1ac41ccea697e346f2e1a8451a7633797b" kind="function"><name>ReLu</name></member>
     <member refid="main_8c_1ac85965540442908b58fb8d90546dc5d0" kind="function"><name>Sum_mat</name></member>
     <member refid="main_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="NN__activations_8c" kind="file"><name>NN_activations.c</name>
+    <member refid="NN__activations_8c_1afe38609d02287f652ec0152710ba2fc6" kind="function"><name>_relu</name></member>
+    <member refid="NN__activations_8c_1a9751908cb376a60abef0cfa5ce502177" kind="function"><name>relu</name></member>
+    <member refid="NN__activations_8c_1a8b078f5708697759ed1d4a3ed591c58d" kind="function"><name>linear</name></member>
+  </compound>
+  <compound refid="NN__activations_8h" kind="file"><name>NN_activations.h</name>
+    <member refid="NN__activations_8h_1a9751908cb376a60abef0cfa5ce502177" kind="function"><name>relu</name></member>
+    <member refid="NN__activations_8h_1a8b078f5708697759ed1d4a3ed591c58d" kind="function"><name>linear</name></member>
+  </compound>
+  <compound refid="NN__layers_8c" kind="file"><name>NN_layers.c</name>
+    <member refid="NN__layers_8c_1a80a33d520a9591339962cc53f35870fa" kind="function"><name>dense_init</name></member>
+    <member refid="NN__layers_8c_1aa8baa0f75d579f6f4196b46e4ba315a9" kind="function"><name>dense_set_rand</name></member>
+    <member refid="NN__layers_8c_1abeccd1b1d72eaf2d37c2367838c83e90" kind="function"><name>dense_forward</name></member>
+  </compound>
+  <compound refid="NN__layers_8h" kind="file"><name>NN_layers.h</name>
+    <member refid="NN__layers_8h_1a4edd615f3270dcf9bde0e66edd549e38" kind="typedef"><name>Dense_layer</name></member>
+    <member refid="NN__layers_8h_1a80a33d520a9591339962cc53f35870fa" kind="function"><name>dense_init</name></member>
+    <member refid="NN__layers_8h_1a35a56aad2e82e3168efe853c304b09a0" kind="function"><name>dense_set_rand</name></member>
+    <member refid="NN__layers_8h_1acc793cbc52e6a5e76f0bb0d3f8cfee18" kind="function"><name>dense_set</name></member>
+    <member refid="NN__layers_8h_1a148e505411c3d9614c516650004b98b1" kind="function"><name>dense_forward</name></member>
   </compound>
   <compound refid="tensor__2d_8c" kind="file"><name>tensor_2d.c</name>
     <member refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" kind="define"><name>MAX_NUM_ELEMENTS</name></member>
@@ -31,9 +60,10 @@
     <member refid="tensor__2d_8c_1a957359600527bb5755783f637bcedbb8" kind="function"><name>mat_eye</name></member>
     <member refid="tensor__2d_8c_1adeaac7723f2ea3c6d7019ba1c3faabd5" kind="function"><name>mat_print</name></member>
     <member refid="tensor__2d_8c_1a9ae20928f936d462d68cf5b1596283e2" kind="function"><name>mat_add</name></member>
-    <member refid="tensor__2d_8c_1a85133ecfd0e55bf15e2b35fbefd741fc" kind="function"><name>mat_subtract</name></member>
+    <member refid="tensor__2d_8c_1a737a62b14085e7e309f3b1ffe1eb26dc" kind="function"><name>mat_sub</name></member>
     <member refid="tensor__2d_8c_1a574ba2646f2cf52aec9655161f3d9607" kind="function"><name>mat_mul</name></member>
     <member refid="tensor__2d_8c_1a7f8ce2f8aaa0c61e84c9ab72e1a4cef0" kind="function"><name>mat_transpose</name></member>
+    <member refid="tensor__2d_8c_1ab29c9ef88f94cc1ec4d680df1937cd07" kind="function"><name>mat_copy</name></member>
     <member refid="tensor__2d_8c_1acd1ed3b8431bd34db8454fc20d2e9254" kind="function"><name>mat_apply_func</name></member>
     <member refid="tensor__2d_8c_1ada02f47e919e61813c57d8b990ed4ce0" kind="function"><name>mat_apply_func_2</name></member>
   </compound>
@@ -46,57 +76,26 @@
     <member refid="tensor__2d_8h_1a957359600527bb5755783f637bcedbb8" kind="function"><name>mat_eye</name></member>
     <member refid="tensor__2d_8h_1adeaac7723f2ea3c6d7019ba1c3faabd5" kind="function"><name>mat_print</name></member>
     <member refid="tensor__2d_8h_1a9ae20928f936d462d68cf5b1596283e2" kind="function"><name>mat_add</name></member>
-    <member refid="tensor__2d_8h_1a85133ecfd0e55bf15e2b35fbefd741fc" kind="function"><name>mat_subtract</name></member>
+    <member refid="tensor__2d_8h_1a737a62b14085e7e309f3b1ffe1eb26dc" kind="function"><name>mat_sub</name></member>
     <member refid="tensor__2d_8h_1a574ba2646f2cf52aec9655161f3d9607" kind="function"><name>mat_mul</name></member>
     <member refid="tensor__2d_8h_1a7f8ce2f8aaa0c61e84c9ab72e1a4cef0" kind="function"><name>mat_transpose</name></member>
+    <member refid="tensor__2d_8h_1ab29c9ef88f94cc1ec4d680df1937cd07" kind="function"><name>mat_copy</name></member>
     <member refid="tensor__2d_8h_1acd1ed3b8431bd34db8454fc20d2e9254" kind="function"><name>mat_apply_func</name></member>
     <member refid="tensor__2d_8h_1ada02f47e919e61813c57d8b990ed4ce0" kind="function"><name>mat_apply_func_2</name></member>
   </compound>
-  <compound refid="tensor__2d__new__mats_8c" kind="file"><name>tensor_2d_new_mats.c</name>
-    <member refid="tensor__2d__new__mats_8c_1a63649d1769e1ed482025cd15b43da0f7" kind="define"><name>MAX_NUM_ELEMENTS</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a2667b0018203aabb8f0427b382d17f04" kind="function"><name>mat_make</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a4606c74f1350372fa806e5340a306c8d" kind="function"><name>mat_free</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a2e48decd51acbf6052f329afd73a7b62" kind="function"><name>mat_zeros</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a419db8572c739622856797b4ef5bb774" kind="function"><name>mat_rand</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a786d57917d0fdd9432535e5417b226c2" kind="function"><name>mat_eye</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a232262bdac25fd0050311a169295e6dd" kind="function"><name>mat_print</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a181ad0d19991f5c417348074aa6ab024" kind="function"><name>mat_add</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a56437a4f9cc912cc6220a7eb196b16b4" kind="function"><name>mat_subtract</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a25cfc6241cfda028cce32d38560615f5" kind="function"><name>mat_mul</name></member>
-    <member refid="tensor__2d__new__mats_8c_1adf72c3e45e20cd4fd957d5143f7221f2" kind="function"><name>mat_transpose</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a1bda238a30984dea1d4d126231339abe" kind="function"><name>mat_apply_func</name></member>
-    <member refid="tensor__2d__new__mats_8c_1a0ebced190c4ef85b6e7b5adfe4fd9c08" kind="function"><name>mat_apply_func_2</name></member>
-  </compound>
-  <compound refid="tensor__2d__new__mats_8h" kind="file"><name>tensor_2d_new_mats.h</name>
-    <member refid="tensor__2d__new__mats_8h_1a30070caaa998b683c5bbc96cc0c7b337" kind="typedef"><name>tensor_2d</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a2667b0018203aabb8f0427b382d17f04" kind="function"><name>mat_make</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a4606c74f1350372fa806e5340a306c8d" kind="function"><name>mat_free</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a2e48decd51acbf6052f329afd73a7b62" kind="function"><name>mat_zeros</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a419db8572c739622856797b4ef5bb774" kind="function"><name>mat_rand</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a786d57917d0fdd9432535e5417b226c2" kind="function"><name>mat_eye</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a232262bdac25fd0050311a169295e6dd" kind="function"><name>mat_print</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a181ad0d19991f5c417348074aa6ab024" kind="function"><name>mat_add</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a56437a4f9cc912cc6220a7eb196b16b4" kind="function"><name>mat_subtract</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a25cfc6241cfda028cce32d38560615f5" kind="function"><name>mat_mul</name></member>
-    <member refid="tensor__2d__new__mats_8h_1adf72c3e45e20cd4fd957d5143f7221f2" kind="function"><name>mat_transpose</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a1bda238a30984dea1d4d126231339abe" kind="function"><name>mat_apply_func</name></member>
-    <member refid="tensor__2d__new__mats_8h_1a0ebced190c4ef85b6e7b5adfe4fd9c08" kind="function"><name>mat_apply_func_2</name></member>
-  </compound>
   <compound refid="tensor__2d__threaded_8c" kind="file"><name>tensor_2d_threaded.c</name>
-    <member refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kind="define"><name>NUM_THREADS</name></member>
+    <member refid="tensor__2d__threaded_8c_1a5747ce5beae65002b9ee2c4a4cf8c329" kind="define"><name>MAX_NUM_THREADS</name></member>
+    <member refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" kind="define"><name>MIN_BATCH</name></member>
     <member refid="tensor__2d__threaded_8c_1aca78a11d086ce891f7a8b9db2d9ed2d7" kind="typedef"><name>array_op_args</name></member>
     <member refid="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" kind="typedef"><name>array_mat_mul_args</name></member>
     <member refid="tensor__2d__threaded_8c_1afd7d806ed29a0e5a74481e8f93710390" kind="function"><name>array_add</name></member>
-    <member refid="tensor__2d__threaded_8c_1a3297fdae3fbc4a0f8a36f5de24b7994b" kind="function"><name>mat_add_T</name></member>
-    <member refid="tensor__2d__threaded_8c_1a9676f723a641b8ef801bc9e4e74cefdf" kind="function"><name>array_subtract</name></member>
-    <member refid="tensor__2d__threaded_8c_1a0a77f99c45633f5aae091384070a1307" kind="function"><name>mat_subtract_T</name></member>
-    <member refid="tensor__2d__threaded_8c_1a491292479442169a29134d3325bb6e9d" kind="function"><name>array_mat_mul</name></member>
-    <member refid="tensor__2d__threaded_8c_1ae43ea7fdeaf2fc2a0718aafd6050e315" kind="function"><name>mat_mul_T</name></member>
+    <member refid="tensor__2d__threaded_8c_1abe4111a664e1d9e5ed11203805b028bc" kind="function"><name>mat_add_T</name></member>
+    <member refid="tensor__2d__threaded_8c_1aa1628ffe30da59141a8dd94b163b789e" kind="function"><name>array_sub</name></member>
+    <member refid="tensor__2d__threaded_8c_1a08e1c83173e87219ea158bed8099571b" kind="function"><name>mat_sub_T</name></member>
   </compound>
   <compound refid="tensor__2d__threaded_8h" kind="file"><name>tensor_2d_threaded.h</name>
-    <member refid="tensor__2d__threaded_8h_1a3297fdae3fbc4a0f8a36f5de24b7994b" kind="function"><name>mat_add_T</name></member>
-    <member refid="tensor__2d__threaded_8h_1a0a77f99c45633f5aae091384070a1307" kind="function"><name>mat_subtract_T</name></member>
-    <member refid="tensor__2d__threaded_8h_1ae43ea7fdeaf2fc2a0718aafd6050e315" kind="function"><name>mat_mul_T</name></member>
+    <member refid="tensor__2d__threaded_8h_1abe4111a664e1d9e5ed11203805b028bc" kind="function"><name>mat_add_T</name></member>
+    <member refid="tensor__2d__threaded_8h_1a08e1c83173e87219ea158bed8099571b" kind="function"><name>mat_sub_T</name></member>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
   </compound>

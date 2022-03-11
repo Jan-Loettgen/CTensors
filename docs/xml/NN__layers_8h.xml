@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="NN__layers_8h" kind="file" language="C++">
+    <compoundname>NN_layers.h</compoundname>
+    <includes refid="tensor__2d_8h" local="yes">tensor_2d.h</includes>
+    <includedby refid="NN__layers_8c" local="yes">NN_layers.c</includedby>
+    <includedby refid="main_8c" local="yes">main.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>NN_layers.h</label>
+        <link refid="NN__layers_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tensor_2d.h</label>
+        <link refid="tensor__2d_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>NN_layers.c</label>
+        <link refid="NN__layers_8c"/>
+      </node>
+      <node id="1">
+        <label>NN_layers.h</label>
+        <link refid="NN__layers_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>main.c</label>
+        <link refid="main_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structDense__layer" prot="public">Dense_layer</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="NN__layers_8h_1a4edd615f3270dcf9bde0e66edd549e38" prot="public" static="no">
+        <type>struct <ref refid="structDense__layer" kindref="compound">Dense_layer</ref></type>
+        <definition>typedef struct Dense_layer Dense_layer</definition>
+        <argsstring></argsstring>
+        <name>Dense_layer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_layers.h" line="15" column="12"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="NN__layers_8h_1a80a33d520a9591339962cc53f35870fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
+        <definition>Dense_layer * dense_init</definition>
+        <argsstring>(unsigned int num_neurons, unsigned int num_inputs, char activation[])</argsstring>
+        <name>dense_init</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_neurons</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>num_inputs</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>activation</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_layers.h" line="17" column="13" bodyfile="src/NN_layers.c" bodystart="9" bodyend="53" declfile="src/NN_layers.h" declline="17" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__layers_8h_1a35a56aad2e82e3168efe853c304b09a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int dense_set_rand</definition>
+        <argsstring>(Dense_layer *Dense_layer)</argsstring>
+        <name>dense_set_rand</name>
+        <param>
+          <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
+          <declname>Dense_layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>sets weights to random values between 0 and 0.1</para>
+<para>sets bias of layer to 0.</para>
+        </inbodydescription>
+        <location file="src/NN_layers.h" line="19" column="5" bodyfile="src/NN_layers.c" bodystart="55" bodyend="63" declfile="src/NN_layers.h" declline="19" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__layers_8h_1acc793cbc52e6a5e76f0bb0d3f8cfee18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int dense_set</definition>
+        <argsstring>(Dense_layer *Dense_layer)</argsstring>
+        <name>dense_set</name>
+        <param>
+          <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
+          <declname>Dense_layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_layers.h" line="21" column="5" declfile="src/NN_layers.h" declline="21" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__layers_8h_1a148e505411c3d9614c516650004b98b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int dense_forward</definition>
+        <argsstring>(Dense_layer *Dense_layer, tensor_2d *mat_in, tensor_2d *mat_out)</argsstring>
+        <name>dense_forward</name>
+        <param>
+          <type><ref refid="structDense__layer" kindref="compound">Dense_layer</ref> *</type>
+          <declname>Dense_layer</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_in</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>X*W = Y</para>
+<para>Y + B = Y</para>
+<para>f(Y) = Z</para>
+        </inbodydescription>
+        <location file="src/NN_layers.h" line="23" column="5" bodyfile="src/NN_layers.c" bodystart="67" bodyend="86" declfile="src/NN_layers.h" declline="23" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>DENSE_LAYER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DENSE_LAYER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;NN_layers.c&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="structDense__layer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>{</highlight></codeline>
+<codeline lineno="7" refid="structDense__layer_1ac76aa362e051cccf8e6f7ed93a2379a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structDense__layer_1ac76aa362e051cccf8e6f7ed93a2379a6" kindref="member">num_neurons</ref>;</highlight></codeline>
+<codeline lineno="8" refid="structDense__layer_1a6b2e070659ff1714333c86beba2d779c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structDense__layer_1a6b2e070659ff1714333c86beba2d779c" kindref="member">num_inputs</ref>;</highlight></codeline>
+<codeline lineno="9" refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structDense__layer_1ae7f1c485520fb725f0549420905c8240" kindref="member">weights</ref>;</highlight></codeline>
+<codeline lineno="10" refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structDense__layer_1a31225d6adccfa475c2c9614789aaaea9" kindref="member">bias</ref>;</highlight></codeline>
+<codeline lineno="11" refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structDense__layer_1a7443971fc4303ae79f5e8134fe2283d7" kindref="member">Y</ref>;</highlight></codeline>
+<codeline lineno="12" refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kindref="member">Z</ref>;</highlight></codeline>
+<codeline lineno="13" refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>int<sp/>(*<ref refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kindref="member">activation_ptr</ref>)(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="NN__layers_8h_1a4edd615f3270dcf9bde0e66edd549e38" refkind="member"><highlight class="normal">}<ref refid="NN__layers_8h_1a4edd615f3270dcf9bde0e66edd549e38" kindref="member">Dense_layer</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="NN__layers_8h_1a80a33d520a9591339962cc53f35870fa" kindref="member">dense_init</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_neurons,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_inputs,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>activation[]);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8h_1a35a56aad2e82e3168efe853c304b09a0" kindref="member">dense_set_rand</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="NN__layers_8h_1acc793cbc52e6a5e76f0bb0d3f8cfee18" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8h_1acc793cbc52e6a5e76f0bb0d3f8cfee18" kindref="member">dense_set</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__layers_8h_1a148e505411c3d9614c516650004b98b1" kindref="member">dense_forward</ref>(<ref refid="structDense__layer" kindref="compound">Dense_layer</ref>*<sp/><ref refid="structDense__layer" kindref="compound">Dense_layer</ref>,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_in,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/NN_layers.h"/>
+  </compounddef>
+</doxygen>

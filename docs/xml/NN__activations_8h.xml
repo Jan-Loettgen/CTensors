@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="NN__activations_8h" kind="file" language="C++">
+    <compoundname>NN_activations.h</compoundname>
+    <includes refid="tensor__2d_8h" local="yes">tensor_2d.h</includes>
+    <includedby refid="NN__layers_8c" local="yes">NN_layers.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>NN_activations.h</label>
+        <link refid="NN__activations_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tensor_2d.h</label>
+        <link refid="tensor__2d_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>NN_activations.h</label>
+        <link refid="NN__activations_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>NN_layers.c</label>
+        <link refid="NN__layers_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="NN__activations_8h_1a9751908cb376a60abef0cfa5ce502177" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int relu</definition>
+        <argsstring>(tensor_2d *mat, tensor_2d *mat_out)</argsstring>
+        <name>relu</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
+        </param>
+        <briefdescription>
+<para>this library is necessary as it provides the backend matrix functionality required for a neural network. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Rectified linear function, any elements in the &apos;mat&apos; matrix that are less than 0.0 are set to 0.0 in the mat_out matrix.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input matrix to whose elements the relu function is applied. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ouput matrix, its elements are the result of applying the relu function to the input matrix &apos;mat&apos;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrices have different dimensions. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_activations.h" line="24" column="5" bodyfile="src/NN_activations.c" bodystart="13" bodyend="23" declfile="src/NN_activations.h" declline="24" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__activations_8h_1a8b078f5708697759ed1d4a3ed591c58d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int linear</definition>
+        <argsstring>(tensor_2d *mat, tensor_2d *mat_out)</argsstring>
+        <name>linear</name>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
+        </param>
+        <briefdescription>
+<para>Linear activation function, which just copies the contents of the &apos;mat&apos; matrix into the &apos;mat_out&apos; matrix. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">mat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input matrix whose elements are copied. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">mat_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>matrix to which the input matrix &apos;mat&apos; elements are copied. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int : 0 if sucessful, 1 : if the dereferenced input pointer points to NULL, 2 if input matrices have different dimensions. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_activations.h" line="34" column="5" bodyfile="src/NN_activations.c" bodystart="25" bodyend="35" declfile="src/NN_activations.h" declline="34" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This file contains the function declarations of activation functions that can be used in layers defined in &apos;<ref refid="NN__layers_8h" kindref="compound">NN_layers.h</ref>&apos;. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jan Luca Loettgen (<ulink url="mailto:janlucaloettgen@gmail.com">janlucaloettgen@gmail.com</ulink>)</para>
+</simplesect>
+<simplesect kind="version"><para>0.1 </para>
+</simplesect>
+<simplesect kind="date"><para>10-03-2022</para>
+</simplesect>
+<simplesect kind="copyright"><para>Copyright (c) 2022 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NN_ACTIVATIONS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NN_ACTIVATIONS_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__activations_8h_1a9751908cb376a60abef0cfa5ce502177" kindref="member">relu</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__activations_8h_1a8b078f5708697759ed1d4a3ed591c58d" kindref="member">linear</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/NN_activations.h"/>
+  </compounddef>
+</doxygen>

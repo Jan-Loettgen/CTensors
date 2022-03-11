@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ctensors_20documentation_0',['CTensors Documentation',['../index.html',1,'']]]
+  ['bias_0',['bias',['../structDense__layer.html#a31225d6adccfa475c2c9614789aaaea9',1,'Dense_layer']]]
 ];

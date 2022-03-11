@@ -43,8 +43,8 @@
     <innerclass refid="structarray__op__args" prot="public">array_op_args</innerclass>
     <innerclass refid="structarray__mat__mul__args" prot="public">array_mat_mul_args</innerclass>
       <sectiondef kind="define">
-      <memberdef kind="define" id="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" prot="public" static="no">
-        <name>NUM_THREADS</name>
+      <memberdef kind="define" id="tensor__2d__threaded_8c_1a5747ce5beae65002b9ee2c4a4cf8c329" prot="public" static="no">
+        <name>MAX_NUM_THREADS</name>
         <initializer>13</initializer>
         <briefdescription>
         </briefdescription>
@@ -53,6 +53,17 @@
         <inbodydescription>
         </inbodydescription>
         <location file="src/tensor_2d_threaded.c" line="8" column="9" bodyfile="src/tensor_2d_threaded.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" prot="public" static="no">
+        <name>MIN_BATCH</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tensor_2d_threaded.c" line="9" column="9" bodyfile="src/tensor_2d_threaded.c" bodystart="9" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
@@ -67,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="15" column="15"/>
+        <location file="src/tensor_2d_threaded.c" line="16" column="15"/>
       </memberdef>
       <memberdef kind="typedef" id="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" prot="public" static="no">
         <type>struct <ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref></type>
@@ -80,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="21" column="19"/>
+        <location file="src/tensor_2d_threaded.c" line="22" column="19"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -99,12 +110,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="23" column="13" bodyfile="src/tensor_2d_threaded.c" bodystart="23" bodyend="37"/>
+        <location file="src/tensor_2d_threaded.c" line="24" column="13" bodyfile="src/tensor_2d_threaded.c" bodystart="24" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d__threaded_8c_1a3297fdae3fbc4a0f8a36f5de24b7994b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
-        <definition>tensor_2d * mat_add_T</definition>
-        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
+      <memberdef kind="function" id="tensor__2d__threaded_8c_1abe4111a664e1d9e5ed11203805b028bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mat_add_T</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b, tensor_2d *mat_out)</argsstring>
         <name>mat_add_T</name>
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
@@ -113,6 +124,10 @@
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_b</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
         </param>
         <briefdescription>
 <para>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_add&apos; function. </para>
@@ -142,13 +157,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="39" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="39" bodyend="79"/>
+        <location file="src/tensor_2d_threaded.c" line="40" column="5" bodyfile="src/tensor_2d_threaded.c" bodystart="40" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d__threaded_8c_1a9676f723a641b8ef801bc9e4e74cefdf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tensor__2d__threaded_8c_1aa1628ffe30da59141a8dd94b163b789e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void *</type>
-        <definition>static void * array_subtract</definition>
+        <definition>static void * array_sub</definition>
         <argsstring>(void *args_ptr)</argsstring>
-        <name>array_subtract</name>
+        <name>array_sub</name>
         <param>
           <type>void *</type>
           <declname>args_ptr</declname>
@@ -159,13 +174,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="81" column="13" bodyfile="src/tensor_2d_threaded.c" bodystart="81" bodyend="96"/>
+        <location file="src/tensor_2d_threaded.c" line="85" column="13" bodyfile="src/tensor_2d_threaded.c" bodystart="85" bodyend="100"/>
       </memberdef>
-      <memberdef kind="function" id="tensor__2d__threaded_8c_1a0a77f99c45633f5aae091384070a1307" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
-        <definition>tensor_2d * mat_subtract_T</definition>
-        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
-        <name>mat_subtract_T</name>
+      <memberdef kind="function" id="tensor__2d__threaded_8c_1a08e1c83173e87219ea158bed8099571b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mat_sub_T</definition>
+        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b, tensor_2d *mat_out)</argsstring>
+        <name>mat_sub_T</name>
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_a</declname>
@@ -173,6 +188,10 @@
         <param>
           <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
           <declname>mat_b</declname>
+        </param>
+        <param>
+          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
+          <declname>mat_out</declname>
         </param>
         <briefdescription>
 <para>Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix &apos;mat_b&apos; from matrix &apos;mat_a&apos; and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_subtract&apos; function. </para>
@@ -202,67 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="98" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="98" bodyend="138"/>
-      </memberdef>
-      <memberdef kind="function" id="tensor__2d__threaded_8c_1a491292479442169a29134d3325bb6e9d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void *</type>
-        <definition>static void * array_mat_mul</definition>
-        <argsstring>(void *args_ptr)</argsstring>
-        <name>array_mat_mul</name>
-        <param>
-          <type>void *</type>
-          <declname>args_ptr</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="140" column="13" bodyfile="src/tensor_2d_threaded.c" bodystart="140" bodyend="157"/>
-      </memberdef>
-      <memberdef kind="function" id="tensor__2d__threaded_8c_1ae43ea7fdeaf2fc2a0718aafd6050e315" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
-        <definition>tensor_2d * mat_mul_T</definition>
-        <argsstring>(tensor_2d *mat_a, tensor_2d *mat_b)</argsstring>
-        <name>mat_mul_T</name>
-        <param>
-          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
-          <declname>mat_a</declname>
-        </param>
-        <param>
-          <type><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref> *</type>
-          <declname>mat_b</declname>
-        </param>
-        <briefdescription>
-<para>Function that performs threaded matrix calculation of the input matricies, and reutrns a new matrix. Performs standard matrix multiplication in the order &apos;mat_a&apos; * &apos;mat_b&apos;. The multiplication is row threaded for matrix &apos;mat_a&apos;, meaning each thread computes one of the rows of the output matrix. This may decrease computation time, for matricies with a large number of rows, relative to the function &apos;mat_mul&apos;. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Note function returns NULL if number of columns in matrix &apos;mat_a&apos; is not equal to Number of rows in matrix &apos;mat_b&apos;, or if either input matrix is a NULL pointer.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">mat_a</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A pointer to a matrix </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">mat_b</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A pointer to a different matrix </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>tensor_2d* A pointer to a new matrix, whose elements are the results of the matrix multiplication &apos;mat_a&apos; * &apos;mat_b&apos; </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/tensor_2d_threaded.c" line="159" column="11" bodyfile="src/tensor_2d_threaded.c" bodystart="159" bodyend="198"/>
+        <location file="src/tensor_2d_threaded.c" line="102" column="5" bodyfile="src/tensor_2d_threaded.c" bodystart="102" bodyend="146"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -277,197 +236,210 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d__threaded_8h" kindref="compound">tensor_2d_threaded.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8" refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_THREADS<sp/>13</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10" refid="structarray__op__args" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>{</highlight></codeline>
-<codeline lineno="11" refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
-<codeline lineno="12" refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
-<codeline lineno="13" refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
-<codeline lineno="14" refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
-<codeline lineno="15" refid="tensor__2d__threaded_8c_1aca78a11d086ce891f7a8b9db2d9ed2d7" refkind="member"><highlight class="normal">}<sp/><ref refid="tensor__2d__threaded_8c_1aca78a11d086ce891f7a8b9db2d9ed2d7" kindref="member">array_op_args</ref>;</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17" refid="structarray__mat__mul__args" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref>{</highlight></codeline>
-<codeline lineno="18" refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" kindref="member">arr</ref>;</highlight></codeline>
-<codeline lineno="19" refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>;</highlight></codeline>
-<codeline lineno="20" refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref>;</highlight></codeline>
-<codeline lineno="21" refid="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" refkind="member"><highlight class="normal">}<ref refid="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" kindref="member">array_mat_mul_args</ref>;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>array_add(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr){</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*<sp/>args<sp/>=<sp/>(<ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*)args_ptr;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_1<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_2<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_out<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr_1<sp/>==<sp/>NULL<sp/>||<sp/>arr_2<sp/>==<sp/>NULL<sp/>||<sp/>arr_out<sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;length;<sp/>i++){</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr_out[i]<sp/>=<sp/>arr_1[i]<sp/>+<sp/>arr_2[i];</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="tensor__2d__threaded_8c_1a3297fdae3fbc4a0f8a36f5de24b7994b" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8c_1a3297fdae3fbc4a0f8a36f5de24b7994b" kindref="member">mat_add_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==NULL){</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>,<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>];</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>batch<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args_arr[<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>];</highlight></codeline>
+<codeline lineno="8" refid="tensor__2d__threaded_8c_1a5747ce5beae65002b9ee2c4a4cf8c329" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_THREADS<sp/>13<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MIN_BATCH<sp/>32<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="structarray__op__args" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>{</highlight></codeline>
+<codeline lineno="12" refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
+<codeline lineno="13" refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
+<codeline lineno="14" refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
+<codeline lineno="16" refid="tensor__2d__threaded_8c_1aca78a11d086ce891f7a8b9db2d9ed2d7" refkind="member"><highlight class="normal">}<sp/><ref refid="tensor__2d__threaded_8c_1aca78a11d086ce891f7a8b9db2d9ed2d7" kindref="member">array_op_args</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="structarray__mat__mul__args" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref>{</highlight></codeline>
+<codeline lineno="19" refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" kindref="member">arr</ref>;</highlight></codeline>
+<codeline lineno="20" refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>;</highlight></codeline>
+<codeline lineno="21" refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref>;</highlight></codeline>
+<codeline lineno="22" refid="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" refkind="member"><highlight class="normal">}<ref refid="tensor__2d__threaded_8c_1a70eb961a476aa58a32264d34dea7b43d" kindref="member">array_mat_mul_args</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>array_add(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr){</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*<sp/>args<sp/>=<sp/>(<ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*)args_ptr;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_1<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_2<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_out<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr_1<sp/>==<sp/>NULL<sp/>||<sp/>arr_2<sp/>==<sp/>NULL<sp/>||<sp/>arr_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;length;<sp/>i++){</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr_out[i]<sp/>=<sp/>arr_1[i]<sp/>+<sp/>arr_2[i];</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="tensor__2d__threaded_8c_1abe4111a664e1d9e5ed11203805b028bc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__threaded_8c_1abe4111a664e1d9e5ed11203805b028bc" kindref="member">mat_add_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>){</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>batch<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/<ref refid="tensor__2d__threaded_8c_1a5747ce5beae65002b9ee2c4a4cf8c329" kindref="member">MAX_NUM_THREADS</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(batch&lt;<ref refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" kindref="member">MIN_BATCH</ref>){</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch<sp/>=<sp/><ref refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" kindref="member">MIN_BATCH</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref><sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref><sp/>=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref><sp/>=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/><ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>-1){</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch+mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>%<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_threads<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/batch;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args_arr[num_threads];</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref><sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref><sp/>=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref><sp/>=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>num_threads-1){</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch+mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>%num_threads;</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[i]<sp/>=<sp/>args;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[i]);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[i]),<sp/>NULL,<sp/>array_add,<sp/>args_ptr);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[i],<sp/>NULL);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[i]<sp/>=<sp/>args;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[num_threads];</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[i]);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[i]),<sp/>NULL,<sp/>array_add,<sp/>args_ptr);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>array_subtract(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr){</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*<sp/>args<sp/>=<sp/>(<ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*)args_ptr;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_1<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_2<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_out<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr_1<sp/>==<sp/>NULL<sp/>||<sp/>arr_2<sp/>==<sp/>NULL<sp/>||<sp/>arr_out<sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[i],<sp/>NULL);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>array_sub(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr){</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*<sp/>args<sp/>=<sp/>(<ref refid="structarray__op__args" kindref="compound">array_op_args</ref>*)args_ptr;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_1<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_2<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref>;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>arr_out<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>length<sp/>=<sp/>args-&gt;<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref>;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;length;<sp/>i++){</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr_out[i]<sp/>=<sp/>arr_1[i]<sp/>-<sp/>arr_2[i];</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98" refid="tensor__2d__threaded_8c_1a0a77f99c45633f5aae091384070a1307" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8c_1a0a77f99c45633f5aae091384070a1307" kindref="member">mat_subtract_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==NULL){</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>,<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>);</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>];</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>batch<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args_arr[<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>];</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref><sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref><sp/>=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref><sp/>=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>+<sp/>i*batch;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/><ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>-1){</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch+mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>%<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[i]<sp/>=<sp/>args;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[i]);</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[i]),<sp/>NULL,<sp/>array_subtract,<sp/>args_ptr);</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="tensor__2d__threaded_8c_1a7735206bdfad487588bba2126b806ab7" kindref="member">NUM_THREADS</ref>;<sp/>i++){</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[i],<sp/>NULL);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
-<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>array_mat_mul(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr){</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref>*<sp/>args<sp/>=<sp/>(<ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref>*)<sp/>args_ptr;</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args-&gt;<ref refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" kindref="member">arr</ref><sp/>==<sp/>NULL<sp/>||args-&gt;<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref><sp/>==<sp/>NULL||<sp/>args-&gt;<ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref><sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col<sp/>=<sp/>0;<sp/>col&lt;<sp/>args-&gt;<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>;<sp/>col++){</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(args-&gt;<ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref>)[col]<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>args-&gt;<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>i++)<sp/>{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(args-&gt;<ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref>)[col]<sp/>+=<sp/>args-&gt;<ref refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" kindref="member">arr</ref>[i]<sp/>*<sp/>args-&gt;<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[col<sp/>+<sp/>i*args-&gt;<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref>-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>];</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159" refid="tensor__2d__threaded_8c_1ae43ea7fdeaf2fc2a0718aafd6050e315" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d__threaded_8c_1ae43ea7fdeaf2fc2a0718aafd6050e315" kindref="member">mat_mul_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b){</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==NULL){</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out<sp/>=<sp/><ref refid="tensor__2d_8c_1ae908690f3acf39314e6bf3f944f5ca98" kindref="member">mat_zeros</ref>(mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>,<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>);</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_out<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(mat_a-&gt;n_rows<sp/>&lt;<sp/>NUM_THREADS)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>num_threads<sp/>=<sp/>mat_a-&gt;n_rows;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>else{</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>num_threads<sp/>=<sp/>NUM_THREADS;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>];</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref><sp/>args_arr[mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>];</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row=0;<sp/>row&lt;mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarray__mat__mul__args" kindref="compound">array_mat_mul_args</ref><sp/>args;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__mat__mul__args_1a06fbdde7fca4cd3be5d7d25c72ce636b" kindref="member">arr</ref><sp/>=<sp/>&amp;(mat_a-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row*mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>]);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__mat__mul__args_1a1387f2e09d7a18b51692c3fc4d44486e" kindref="member">mat</ref><sp/>=<sp/>mat_b;</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__mat__mul__args_1a70f1c4c2f583f4f48da867563148d512" kindref="member">arr_out</ref><sp/>=<sp/>&amp;(mat_out-&gt;<ref refid="structtensor__2d_1a6492607aca3c85d57b8bcc4326db876d" kindref="member">data</ref>[row*mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>]);</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[row]<sp/>=<sp/>args;</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//consider<sp/>combing<sp/>these<sp/>later</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row=0;<sp/>row&lt;mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[row]);</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[row]),<sp/>NULL,<sp/>array_mat_mul,<sp/>args_ptr);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row=0;<sp/>row&lt;mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>;<sp/>row++){</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[row],<sp/>NULL);</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mat_out;</highlight></codeline>
-<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(arr_1<sp/>==<sp/>NULL<sp/>||<sp/>arr_2<sp/>==<sp/>NULL<sp/>||<sp/>arr_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;length;<sp/>i++){</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>arr_out[i]<sp/>=<sp/>arr_1[i]<sp/>-<sp/>arr_2[i];</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="tensor__2d__threaded_8c_1a08e1c83173e87219ea158bed8099571b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="tensor__2d__threaded_8c_1a08e1c83173e87219ea158bed8099571b" kindref="member">mat_sub_T</ref>(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_a,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_b,<sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat_out){</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL||<sp/>mat_out<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kindref="member">n_cols</ref>){</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>||<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref><sp/>!=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kindref="member">n_rows</ref>){</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>batch<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/<ref refid="tensor__2d__threaded_8c_1a5747ce5beae65002b9ee2c4a4cf8c329" kindref="member">MAX_NUM_THREADS</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(batch&lt;<ref refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" kindref="member">MIN_BATCH</ref>){</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch<sp/>=<sp/><ref refid="tensor__2d__threaded_8c_1a9c87b4139720114585489c5a9b792801" kindref="member">MIN_BATCH</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_threads<sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>/batch;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args_arr[num_threads];</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structarray__op__args" kindref="compound">array_op_args</ref><sp/>args;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1aafe6b04ac054443a9526cd9ededecf83" kindref="member">arr_1</ref><sp/>=<sp/>mat_a-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a82e13449271d083fbdd32c94f567789c" kindref="member">arr_2</ref><sp/>=<sp/>mat_b-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref><sp/>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a5695b4a702cd818e9602f73110df476e" kindref="member">arr_out</ref><sp/>=<sp/>mat_out-&gt;<ref refid="structtensor__2d_1a4e4247a26be28cb685b4ebbfb0108f3e" kindref="member">data</ref>+<sp/>i*batch;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>==<sp/>num_threads-1){</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch+mat_a-&gt;<ref refid="structtensor__2d_1a55ed2709aa79847a1dbd09e87e08deeb" kindref="member">n_elems</ref>%num_threads;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structarray__op__args_1a9d50a6471ff7d40764a6a7d59806db50" kindref="member">length</ref><sp/>=<sp/>batch;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[i]<sp/>=<sp/>args;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[num_threads];</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[i]);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[i]),<sp/>NULL,<sp/>array_sub,<sp/>args_ptr);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;num_threads;<sp/>i++){</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[i],<sp/>NULL);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="comment">//<sp/>static<sp/>void*<sp/>array_mat_mul(void*<sp/>args_ptr){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>array_mat_mul_args*<sp/>args<sp/>=<sp/>(array_mat_mul_args*)<sp/>args_ptr;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(args<sp/>==<sp/>NULL)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(args-&gt;arr<sp/>==<sp/>NULL<sp/>||args-&gt;mat<sp/>==<sp/>NULL||<sp/>args-&gt;arr_out<sp/>==<sp/>NULL){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>col<sp/>=<sp/>0;<sp/>col&lt;<sp/>args-&gt;mat-&gt;n_cols;<sp/>col++){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(args-&gt;arr_out)[col]<sp/>=<sp/>0.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>args-&gt;mat-&gt;n_rows;<sp/>i++)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(args-&gt;arr_out)[col]<sp/>+=<sp/>args-&gt;arr[i]<sp/>*<sp/>args-&gt;mat-&gt;data[col<sp/>+<sp/>i*args-&gt;mat-&gt;n_cols];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>return<sp/>NULL;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="comment">//<sp/>int<sp/>mat_mul_T(tensor_2d*<sp/>mat_a,<sp/>tensor_2d*<sp/>mat_b,<sp/>tensor_2d*<sp/>mat_out){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(mat_a<sp/>==<sp/>NULL<sp/>||<sp/>mat_b<sp/>==<sp/>NULL<sp/>||<sp/>mat_out<sp/>==<sp/>NULL){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>1;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(mat_a-&gt;n_cols<sp/>!=<sp/>mat_b-&gt;n_rows){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(mat_out-&gt;n_rows<sp/>!=<sp/>mat_a-&gt;n_rows<sp/>||<sp/>mat_out-&gt;n_cols<sp/>!=<sp/>mat_b-&gt;n_cols){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>2;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>pthread_t<sp/>threads[mat_a-&gt;n_rows];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>array_mat_mul_args<sp/>args_arr[mat_a-&gt;n_rows];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>row=0;<sp/>row&lt;mat_a-&gt;n_rows;<sp/>row++){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array_mat_mul_args<sp/>args;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.arr<sp/>=<sp/>&amp;(mat_a-&gt;data[row*mat_a-&gt;n_cols]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.mat<sp/>=<sp/>mat_b;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.arr_out<sp/>=<sp/>&amp;(mat_out-&gt;data[row*mat_out-&gt;n_cols]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args_arr[row]<sp/>=<sp/>args;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>if<sp/>(mat_a-&gt;n_rows<sp/>&lt;<sp/>NUM_THREADS)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>num_threads<sp/>=<sp/>mat_a-&gt;n_rows;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>else{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>unsigned<sp/>int<sp/>num_threads<sp/>=<sp/>NUM_THREADS;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>int<sp/>active_threads<sp/>=<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>row=0;<sp/>row&lt;mat_a-&gt;n_rows;<sp/>row++){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(active_threads&lt;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void*<sp/>args_ptr<sp/>=<sp/>&amp;(args_arr[row]);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_create(&amp;(threads[row]),<sp/>NULL,<sp/>array_mat_mul,<sp/>args_ptr);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>for<sp/>(unsigned<sp/>int<sp/>row=0;<sp/>row&lt;mat_a-&gt;n_rows;<sp/>row++){</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pthread_join(threads[row],<sp/>NULL);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>return<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="src/tensor_2d_threaded.c"/>
   </compounddef>
