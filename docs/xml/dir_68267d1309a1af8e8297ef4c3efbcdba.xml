@@ -7,6 +7,8 @@
     <innerfile refid="NN__activations_8h">NN_activations.h</innerfile>
     <innerfile refid="NN__layers_8c">NN_layers.c</innerfile>
     <innerfile refid="NN__layers_8h">NN_layers.h</innerfile>
+    <innerfile refid="NN__models_8c">NN_models.c</innerfile>
+    <innerfile refid="NN__models_8h">NN_models.h</innerfile>
     <innerfile refid="tensor__2d_8c">tensor_2d.c</innerfile>
     <innerfile refid="tensor__2d_8h">tensor_2d.h</innerfile>
     <innerfile refid="tensor__2d__threaded_8c">tensor_2d_threaded.c</innerfile>

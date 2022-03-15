@@ -29,6 +29,8 @@
       <node id="6">
         <label>tensor_2d_threaded.h</label>
         <link refid="tensor__2d__threaded_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="4">
         <label>pthread.h</label>
@@ -130,9 +132,10 @@
           <declname>mat_out</declname>
         </param>
         <briefdescription>
-<para>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_add&apos; function. </para>
+<para>this library is necessary as it provides the backend matrix functionality required for a neural network. </para>
         </briefdescription>
         <detaileddescription>
+<para>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded &apos;mat_add&apos; function.</para>
 <para>Note function returns NULL if input matricis are NULL or of different dimensions.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>

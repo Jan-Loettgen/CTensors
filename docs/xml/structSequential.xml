@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="structSequential" kind="struct" language="C++" prot="public">
+    <compoundname>Sequential</compoundname>
+    <includes refid="NN__models_8h" local="no">NN_models.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structSequential_1ab2e1f5df9f28b729b80222fce41d6803" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Sequential::num_layers</definition>
+        <argsstring></argsstring>
+        <name>num_layers</name>
+        <qualifiedname>Sequential::num_layers</qualifiedname>
+        <briefdescription>
+<para>number of layers that this sequential struct has. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="20" column="9" bodyfile="src/NN_models.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSequential_1a930d26eb19a9a044e597c65bc6a0c199" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* Sequential::layers[MAX_NUM_LAYERS]</definition>
+        <argsstring>[MAX_NUM_LAYERS]</argsstring>
+        <name>layers</name>
+        <qualifiedname>Sequential::layers</qualifiedname>
+        <briefdescription>
+<para>A pointer to an array of pointers to layers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="21" column="10" bodyfile="src/NN_models.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structSequential_1a5763cfeca927c5f2b0f9955cd0e327d1" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Sequential::layer_types[10]</definition>
+        <argsstring>[10]</argsstring>
+        <name>layer_types</name>
+        <qualifiedname>Sequential::layer_types</qualifiedname>
+        <briefdescription>
+<para>Pointer to an array of pointers to strings, each string should correspond to the type of the corresponding layer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="22" column="16" bodyfile="src/NN_models.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/NN_models.h" line="19" column="1" bodyfile="src/NN_models.h" bodystart="19" bodyend="23"/>
+    <listofallmembers>
+      <member refid="structSequential_1a5763cfeca927c5f2b0f9955cd0e327d1" prot="public" virt="non-virtual"><scope>Sequential</scope><name>layer_types</name></member>
+      <member refid="structSequential_1a930d26eb19a9a044e597c65bc6a0c199" prot="public" virt="non-virtual"><scope>Sequential</scope><name>layers</name></member>
+      <member refid="structSequential_1ab2e1f5df9f28b729b80222fce41d6803" prot="public" virt="non-virtual"><scope>Sequential</scope><name>num_layers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -30,7 +30,7 @@ typedef struct \mbox{\hyperlink{structarray__mat__mul__args}{array\+\_\+mat\+\_\
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{tensor__2d__threaded_8c_abe4111a664e1d9e5ed11203805b028bc}{mat\+\_\+add\+\_\+T}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
-\begin{DoxyCompactList}\small\item\em Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+add\textquotesingle{} function. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em this library is necessary as it provides the backend matrix functionality required for a neural network. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{tensor__2d__threaded_8c_a08e1c83173e87219ea158bed8099571b}{mat\+\_\+sub\+\_\+T}} (\mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+a, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+b, \mbox{\hyperlink{structtensor__2d}{tensor\+\_\+2d}} $\ast$mat\+\_\+out)
 \begin{DoxyCompactList}\small\item\em Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix \textquotesingle{}mat\+\_\+b\textquotesingle{} from matrix \textquotesingle{}mat\+\_\+a\textquotesingle{} and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+subtract\textquotesingle{} function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -82,7 +82,9 @@ Definition at line \mbox{\hyperlink{tensor__2d__threaded_8c_source_l00009}{9}} o
 
 
 
-Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+add\textquotesingle{} function. 
+this library is necessary as it provides the backend matrix functionality required for a neural network. 
+
+Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded \textquotesingle{}mat\+\_\+add\textquotesingle{} function.
 
 Note function returns NULL if input matricis are NULL or of different dimensions.
 

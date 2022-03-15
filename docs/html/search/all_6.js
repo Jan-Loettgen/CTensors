@@ -7,6 +7,9 @@ var searchData=
   ['nn_5factivations_2eh_4',['NN_activations.h',['../NN__activations_8h.html',1,'']]],
   ['nn_5flayers_2ec_5',['NN_layers.c',['../NN__layers_8c.html',1,'']]],
   ['nn_5flayers_2eh_6',['NN_layers.h',['../NN__layers_8h.html',1,'']]],
-  ['num_5finputs_7',['num_inputs',['../structDense__layer.html#a6b2e070659ff1714333c86beba2d779c',1,'Dense_layer']]],
-  ['num_5fneurons_8',['num_neurons',['../structDense__layer.html#ac76aa362e051cccf8e6f7ed93a2379a6',1,'Dense_layer']]]
+  ['nn_5fmodels_2ec_7',['NN_models.c',['../NN__models_8c.html',1,'']]],
+  ['nn_5fmodels_2eh_8',['NN_models.h',['../NN__models_8h.html',1,'']]],
+  ['num_5finputs_9',['num_inputs',['../structDense__layer.html#a6b2e070659ff1714333c86beba2d779c',1,'Dense_layer']]],
+  ['num_5flayers_10',['num_layers',['../structSequential.html#ab2e1f5df9f28b729b80222fce41d6803',1,'Sequential']]],
+  ['num_5fneurons_11',['num_neurons',['../structDense__layer.html#ac76aa362e051cccf8e6f7ed93a2379a6',1,'Dense_layer']]]
 ];

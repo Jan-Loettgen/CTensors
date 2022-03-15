@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="src/tensor_2d.c" line="8" column="9" bodyfile="src/tensor_2d.c" bodystart="8" bodyend="-1"/>
+        <location file="src/tensor_2d.c" line="7" column="9" bodyfile="src/tensor_2d.c" bodystart="7" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -87,8 +87,10 @@
 </para>
         </detaileddescription>
         <inbodydescription>
+<para>limit because unsigned long cannot hold a number greater than 4294967295.</para>
+<para>limit specfied in #define MAX_NUM_ELEMENTS.</para>
         </inbodydescription>
-        <location file="src/tensor_2d.c" line="10" column="11" bodyfile="src/tensor_2d.c" bodystart="10" bodyend="46"/>
+        <location file="src/tensor_2d.c" line="9" column="11" bodyfile="src/tensor_2d.c" bodystart="9" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8c_1ad153f4d7a7d83c0ede5ebf3217fcb02d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -645,18 +647,17 @@
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tensor__2d_8h" kindref="compound">tensor_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//corresponds<sp/>to<sp/>a<sp/>matrix<sp/>of<sp/>16384<sp/>x<sp/>16384,<sp/>will<sp/>use<sp/>0.25<sp/>GB<sp/>of<sp/>RAM</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8" refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_ELEMENTS<sp/>268435456</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10" refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols)<sp/>{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>));</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ull_num_elems<sp/>=<sp/>num_rows*num_cols;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//limit<sp/>because<sp/>unsigned<sp/>long<sp/>cannot<sp/>hold<sp/>a<sp/>number<sp/>greater<sp/>than<sp/>4294967295.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_ELEMENTS<sp/>268435456<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" refkind="member"><highlight class="normal"><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/><ref refid="tensor__2d_8c_1a2667b0018203aabb8f0427b382d17f04" kindref="member">mat_make</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_rows,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cols)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>*<sp/>mat<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="structtensor__2d" kindref="compound">tensor_2d</ref>));</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mat<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>ull_num_elems<sp/>=<sp/>num_rows*num_cols;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ull_num_elems<sp/>&gt;<sp/>4294967295){</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Requested<sp/>matrix<sp/>with<sp/>%lld<sp/>elements.\n&quot;</highlight><highlight class="normal">,<sp/>ull_num_elems);</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Maximum<sp/>possible<sp/>number<sp/>of<sp/>elements<sp/>is:<sp/>%ld\n&quot;</highlight><highlight class="normal">,<sp/>4294967295);</highlight></codeline>
@@ -664,7 +665,6 @@
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>num_elems<sp/>=<sp/>num_rows*num_cols;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//limit<sp/>specfied<sp/>in<sp/>#define<sp/>MAX_NUM_ELEMENTS.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_elems<sp/>&gt;<sp/><ref refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" kindref="member">MAX_NUM_ELEMENTS</ref>){</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Requested<sp/>matrix<sp/>with<sp/>%ld<sp/>elements.\n&quot;</highlight><highlight class="normal">,<sp/>num_elems);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Maximum<sp/>possible<sp/>number<sp/>of<sp/>elements<sp/>is:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" kindref="member">MAX_NUM_ELEMENTS</ref>);</highlight></codeline>

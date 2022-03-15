@@ -1,0 +1,27 @@
+\hypertarget{NN__models_8h_source}{}\doxysection{NN\+\_\+models.\+h}
+\label{NN__models_8h_source}\index{NN\_models.h@{NN\_models.h}}
+\mbox{\hyperlink{NN__models_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00012}00012 \textcolor{preprocessor}{\#ifndef NN\_MODEL\_H}}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00013}00013 \textcolor{preprocessor}{\#define NN\_MODEL\_H}}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00015}00015 \textcolor{preprocessor}{\#define MAX\_NUM\_LAYERS 100 }}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00017}\mbox{\hyperlink{NN__models_8h_a7db2b454954f37ad8e24d486df865bba}{00017}} \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{NN__layers_8h}{NN\_layers.h}}"{}} }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00019}\mbox{\hyperlink{structSequential}{00019}} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structSequential}{Sequential}}\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00020}\mbox{\hyperlink{structSequential_ab2e1f5df9f28b729b80222fce41d6803}{00020}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{structSequential_ab2e1f5df9f28b729b80222fce41d6803}{num\_layers}}; }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00021}\mbox{\hyperlink{structSequential_a930d26eb19a9a044e597c65bc6a0c199}{00021}}     \textcolor{keywordtype}{void}* \mbox{\hyperlink{structSequential_a930d26eb19a9a044e597c65bc6a0c199}{layers}}[\mbox{\hyperlink{NN__models_8h_a7db2b454954f37ad8e24d486df865bba}{MAX\_NUM\_LAYERS}}]; }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00022}\mbox{\hyperlink{structSequential_a5763cfeca927c5f2b0f9955cd0e327d1}{00022}}     \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{structSequential_a5763cfeca927c5f2b0f9955cd0e327d1}{layer\_types}}[10]; }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00023}\mbox{\hyperlink{NN__models_8h_a74a95dce541485a9a59a80f888e83168}{00023}} \}\mbox{\hyperlink{NN__models_8h_a74a95dce541485a9a59a80f888e83168}{Sequential}};}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00025}00025 \mbox{\hyperlink{structSequential}{Sequential}}* \mbox{\hyperlink{NN__models_8h_ab40c32eab78c7f4301241cf7a4cd433a}{sequential\_make}}();}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00027}\mbox{\hyperlink{NN__models_8h_ad2e088061c3b11f4683d0d67e4cf6083}{00027}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__models_8h_ad2e088061c3b11f4683d0d67e4cf6083}{sequential\_free}}(\mbox{\hyperlink{structSequential}{Sequential}}* sequential);}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00029}\mbox{\hyperlink{NN__models_8h_a8a2e5d0c30407686b45c169035a681e9}{00029}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__models_8h_a8a2e5d0c30407686b45c169035a681e9}{sequential\_push}}(\mbox{\hyperlink{structSequential}{Sequential}}* sequential, \textcolor{keywordtype}{void}* layer);}
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{NN__models_8h_source_l00031}00031 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

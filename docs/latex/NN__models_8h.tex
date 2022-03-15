@@ -1,0 +1,92 @@
+\hypertarget{NN__models_8h}{}\doxysection{NN\+\_\+models.\+h File Reference}
+\label{NN__models_8h}\index{NN\_models.h@{NN\_models.h}}
+{\ttfamily \#include \char`\"{}NN\+\_\+layers.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSequential}{Sequential}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{NN__models_8h_a7db2b454954f37ad8e24d486df865bba}{MAX\+\_\+\+NUM\+\_\+\+LAYERS}}~100
+\begin{DoxyCompactList}\small\item\em maximmum number of layers that a sequential object can ahve. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structSequential}{Sequential}} \mbox{\hyperlink{NN__models_8h_a74a95dce541485a9a59a80f888e83168}{Sequential}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSequential}{Sequential}} $\ast$ \mbox{\hyperlink{NN__models_8h_ab40c32eab78c7f4301241cf7a4cd433a}{sequential\+\_\+make}} ()
+\item 
+int \mbox{\hyperlink{NN__models_8h_ad2e088061c3b11f4683d0d67e4cf6083}{sequential\+\_\+free}} (\mbox{\hyperlink{structSequential}{Sequential}} $\ast$sequential)
+\item 
+int \mbox{\hyperlink{NN__models_8h_a8a2e5d0c30407686b45c169035a681e9}{sequential\+\_\+push}} (\mbox{\hyperlink{structSequential}{Sequential}} $\ast$sequential, void $\ast$layer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{NN__models_8h_a7db2b454954f37ad8e24d486df865bba}\label{NN__models_8h_a7db2b454954f37ad8e24d486df865bba}} 
+\index{NN\_models.h@{NN\_models.h}!MAX\_NUM\_LAYERS@{MAX\_NUM\_LAYERS}}
+\index{MAX\_NUM\_LAYERS@{MAX\_NUM\_LAYERS}!NN\_models.h@{NN\_models.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_NUM\_LAYERS}{MAX\_NUM\_LAYERS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+NUM\+\_\+\+LAYERS~100}
+
+
+
+maximmum number of layers that a sequential object can ahve. 
+
+this dependency is required for management of the layers. 
+
+Definition at line \mbox{\hyperlink{NN__models_8h_source_l00017}{17}} of file \mbox{\hyperlink{NN__models_8h_source}{NN\+\_\+models.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{NN__models_8h_a74a95dce541485a9a59a80f888e83168}\label{NN__models_8h_a74a95dce541485a9a59a80f888e83168}} 
+\index{NN\_models.h@{NN\_models.h}!Sequential@{Sequential}}
+\index{Sequential@{Sequential}!NN\_models.h@{NN\_models.h}}
+\doxysubsubsection{\texorpdfstring{Sequential}{Sequential}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSequential}{Sequential}} \mbox{\hyperlink{structSequential}{Sequential}}}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{NN__models_8h_ad2e088061c3b11f4683d0d67e4cf6083}\label{NN__models_8h_ad2e088061c3b11f4683d0d67e4cf6083}} 
+\index{NN\_models.h@{NN\_models.h}!sequential\_free@{sequential\_free}}
+\index{sequential\_free@{sequential\_free}!NN\_models.h@{NN\_models.h}}
+\doxysubsubsection{\texorpdfstring{sequential\_free()}{sequential\_free()}}
+{\footnotesize\ttfamily int sequential\+\_\+free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSequential}{Sequential}} $\ast$}]{sequential }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{NN__models_8h_ab40c32eab78c7f4301241cf7a4cd433a}\label{NN__models_8h_ab40c32eab78c7f4301241cf7a4cd433a}} 
+\index{NN\_models.h@{NN\_models.h}!sequential\_make@{sequential\_make}}
+\index{sequential\_make@{sequential\_make}!NN\_models.h@{NN\_models.h}}
+\doxysubsubsection{\texorpdfstring{sequential\_make()}{sequential\_make()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSequential}{Sequential}} $\ast$ sequential\+\_\+make (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{NN__models_8c_source_l00016}{16}} of file \mbox{\hyperlink{NN__models_8c_source}{NN\+\_\+models.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016                              \{}
+\DoxyCodeLine{00017     \mbox{\hyperlink{structSequential}{Sequential}}* sequential = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSequential}{Sequential}}));}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019     \textcolor{keywordflow}{if} (sequential == NULL)\{}
+\DoxyCodeLine{00020         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{00021     \}}
+\DoxyCodeLine{00022     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00023         \textcolor{keywordflow}{return} sequential;}
+\DoxyCodeLine{00024     \}}
+\DoxyCodeLine{00025 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{NN__models_8h_a8a2e5d0c30407686b45c169035a681e9}\label{NN__models_8h_a8a2e5d0c30407686b45c169035a681e9}} 
+\index{NN\_models.h@{NN\_models.h}!sequential\_push@{sequential\_push}}
+\index{sequential\_push@{sequential\_push}!NN\_models.h@{NN\_models.h}}
+\doxysubsubsection{\texorpdfstring{sequential\_push()}{sequential\_push()}}
+{\footnotesize\ttfamily int sequential\+\_\+push (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSequential}{Sequential}} $\ast$}]{sequential,  }\item[{void $\ast$}]{layer }\end{DoxyParamCaption})}
+

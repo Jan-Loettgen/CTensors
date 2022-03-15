@@ -73,18 +73,30 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>This file contains the declaration of functions that are threaded versions of their counter parts defined in "tensor_2d.c".  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="tensor__2d_8h_source.html">tensor_2d.h</a>&quot;</code><br />
+</div>
 <p><a href="tensor__2d__threaded_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abe4111a664e1d9e5ed11203805b028bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d__threaded_8h.html#abe4111a664e1d9e5ed11203805b028bc">mat_add_T</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_a, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_b, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
-<tr class="memdesc:abe4111a664e1d9e5ed11203805b028bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function.  <a href="tensor__2d__threaded_8h.html#abe4111a664e1d9e5ed11203805b028bc">More...</a><br /></td></tr>
+<tr class="memdesc:abe4111a664e1d9e5ed11203805b028bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">this library is necessary as it provides the backend matrix functionality required for a neural network.  <a href="tensor__2d__threaded_8h.html#abe4111a664e1d9e5ed11203805b028bc">More...</a><br /></td></tr>
 <tr class="separator:abe4111a664e1d9e5ed11203805b028bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08e1c83173e87219ea158bed8099571b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d__threaded_8h.html#a08e1c83173e87219ea158bed8099571b">mat_sub_T</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_a, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_b, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
 <tr class="memdesc:a08e1c83173e87219ea158bed8099571b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix 'mat_b' from matrix 'mat_a' and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_subtract' function.  <a href="tensor__2d__threaded_8h.html#a08e1c83173e87219ea158bed8099571b">More...</a><br /></td></tr>
 <tr class="separator:a08e1c83173e87219ea158bed8099571b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >This file contains the declaration of functions that are threaded versions of their counter parts defined in "tensor_2d.c". </p>
+<dl class="section author"><dt>Author</dt><dd>Jan Luca Loettgen (<a href="#" onclick="location.href='mai'+'lto:'+'jan'+'lu'+'cal'+'oe'+'ttg'+'en'+'@gm'+'ai'+'l.c'+'om'; return false;">janlu<span class="obfuscator">.nosp@m.</span>calo<span class="obfuscator">.nosp@m.</span>ettge<span class="obfuscator">.nosp@m.</span>n@gm<span class="obfuscator">.nosp@m.</span>ail.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10-03-2022</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="tensor__2d__threaded_8h_source.html">tensor_2d_threaded.h</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="abe4111a664e1d9e5ed11203805b028bc" name="abe4111a664e1d9e5ed11203805b028bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe4111a664e1d9e5ed11203805b028bc">&#9670;&nbsp;</a></span>mat_add_T()</h2>
 
@@ -117,7 +129,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function. </p>
+<p>this library is necessary as it provides the backend matrix functionality required for a neural network. </p>
+<p >Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function.</p>
 <p >Note function returns NULL if input matricis are NULL or of different dimensions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

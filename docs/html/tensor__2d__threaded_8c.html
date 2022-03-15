@@ -107,7 +107,7 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abe4111a664e1d9e5ed11203805b028bc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d__threaded_8c.html#abe4111a664e1d9e5ed11203805b028bc">mat_add_T</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_a, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_b, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
-<tr class="memdesc:abe4111a664e1d9e5ed11203805b028bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function.  <a href="tensor__2d__threaded_8c.html#abe4111a664e1d9e5ed11203805b028bc">More...</a><br /></td></tr>
+<tr class="memdesc:abe4111a664e1d9e5ed11203805b028bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">this library is necessary as it provides the backend matrix functionality required for a neural network.  <a href="tensor__2d__threaded_8c.html#abe4111a664e1d9e5ed11203805b028bc">More...</a><br /></td></tr>
 <tr class="separator:abe4111a664e1d9e5ed11203805b028bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08e1c83173e87219ea158bed8099571b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tensor__2d__threaded_8c.html#a08e1c83173e87219ea158bed8099571b">mat_sub_T</a> (<a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_a, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_b, <a class="el" href="structtensor__2d.html">tensor_2d</a> *mat_out)</td></tr>
 <tr class="memdesc:a08e1c83173e87219ea158bed8099571b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function subtracts second input matrix from first and reutrns a new matrix, subtraction is multithreaded. Function subtracts matrix 'mat_b' from matrix 'mat_a' and returns a new matrix of the same shape as the input matricies. The subtraction is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_subtract' function.  <a href="tensor__2d__threaded_8c.html#a08e1c83173e87219ea158bed8099571b">More...</a><br /></td></tr>
@@ -208,7 +208,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function. </p>
+<p>this library is necessary as it provides the backend matrix functionality required for a neural network. </p>
+<p >Function adds two input matricies and reutrns a new matrix, addition is multithreaded. Function adds two input matricies, of the same shape, and returns a new matrix of the same shape as the input matricies. The addition is multithreaded using pthreads, which may decrease computation time for large matricies relative to unthreaded 'mat_add' function.</p>
 <p >Note function returns NULL if input matricis are NULL or of different dimensions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

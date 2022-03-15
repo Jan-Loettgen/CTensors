@@ -9,6 +9,7 @@
     <includedby refid="main_8c" local="yes">main.c</includedby>
     <includedby refid="tensor__2d_8c" local="yes">tensor_2d.c</includedby>
     <includedby refid="tensor__2d__threaded_8c" local="yes">tensor_2d_threaded.c</includedby>
+    <includedby refid="tensor__2d__threaded_8h" local="yes">tensor_2d_threaded.h</includedby>
     <invincdepgraph>
       <node id="2">
         <label>NN_activations.c</label>
@@ -31,12 +32,24 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>NN_models.c</label>
+        <link refid="NN__models_8c"/>
       </node>
       <node id="6">
+        <label>NN_models.h</label>
+        <link refid="NN__models_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
         <label>main.c</label>
         <link refid="main_8c"/>
       </node>
-      <node id="7">
+      <node id="9">
         <label>tensor_2d.c</label>
         <link refid="tensor__2d_8c"/>
       </node>
@@ -51,16 +64,24 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
-      <node id="8">
+      <node id="10">
         <label>tensor_2d_threaded.c</label>
         <link refid="tensor__2d__threaded_8c"/>
+      </node>
+      <node id="11">
+        <label>tensor_2d_threaded.h</label>
+        <link refid="tensor__2d__threaded_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structtensor__2d" prot="public">tensor_2d</innerclass>
@@ -121,8 +142,10 @@
 </para>
         </detaileddescription>
         <inbodydescription>
+<para>limit because unsigned long cannot hold a number greater than 4294967295.</para>
+<para>limit specfied in #define MAX_NUM_ELEMENTS.</para>
         </inbodydescription>
-        <location file="src/tensor_2d.h" line="39" column="11" bodyfile="src/tensor_2d.c" bodystart="10" bodyend="46" declfile="src/tensor_2d.h" declline="39" declcolumn="11"/>
+        <location file="src/tensor_2d.h" line="39" column="11" bodyfile="src/tensor_2d.c" bodystart="9" bodyend="46" declfile="src/tensor_2d.h" declline="39" declcolumn="11"/>
       </memberdef>
       <memberdef kind="function" id="tensor__2d_8h_1ad153f4d7a7d83c0ede5ebf3217fcb02d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>

@@ -20,6 +20,11 @@
     <member refid="structDense__layer_1ae1520651f0835910fe8ce3a05b16cdfd" kind="variable"><name>Z</name></member>
     <member refid="structDense__layer_1a40d2787799fb771ef9b2192fa0de4678" kind="variable"><name>activation_ptr</name></member>
   </compound>
+  <compound refid="structSequential" kind="struct"><name>Sequential</name>
+    <member refid="structSequential_1ab2e1f5df9f28b729b80222fce41d6803" kind="variable"><name>num_layers</name></member>
+    <member refid="structSequential_1a930d26eb19a9a044e597c65bc6a0c199" kind="variable"><name>layers</name></member>
+    <member refid="structSequential_1a5763cfeca927c5f2b0f9955cd0e327d1" kind="variable"><name>layer_types</name></member>
+  </compound>
   <compound refid="structtensor__2d" kind="struct"><name>tensor_2d</name>
     <member refid="structtensor__2d_1a809ce78f21bd51f42dc21a0881e0eb33" kind="variable"><name>n_rows</name></member>
     <member refid="structtensor__2d_1a74f3fe7324753175d7a4af46c6588d38" kind="variable"><name>n_cols</name></member>
@@ -51,6 +56,18 @@
     <member refid="NN__layers_8h_1a29b58829b8032d6455095a97ee40e160" kind="function"><name>dense_free</name></member>
     <member refid="NN__layers_8h_1a02ed8661062be087e1407077387478c2" kind="function"><name>dense_set_rand</name></member>
     <member refid="NN__layers_8h_1a1c0547d8e31b12285bfcee00339e96c4" kind="function"><name>dense_forward</name></member>
+  </compound>
+  <compound refid="NN__models_8c" kind="file"><name>NN_models.c</name>
+    <member refid="NN__models_8c_1ab40c32eab78c7f4301241cf7a4cd433a" kind="function"><name>sequential_make</name></member>
+    <member refid="NN__models_8c_1a9effa64d6594c7cd6bb7d76717ee0901" kind="function"><name>sequential_free</name></member>
+    <member refid="NN__models_8c_1a8a2e5d0c30407686b45c169035a681e9" kind="function"><name>sequential_push</name></member>
+  </compound>
+  <compound refid="NN__models_8h" kind="file"><name>NN_models.h</name>
+    <member refid="NN__models_8h_1a7db2b454954f37ad8e24d486df865bba" kind="define"><name>MAX_NUM_LAYERS</name></member>
+    <member refid="NN__models_8h_1a74a95dce541485a9a59a80f888e83168" kind="typedef"><name>Sequential</name></member>
+    <member refid="NN__models_8h_1ab40c32eab78c7f4301241cf7a4cd433a" kind="function"><name>sequential_make</name></member>
+    <member refid="NN__models_8h_1ad2e088061c3b11f4683d0d67e4cf6083" kind="function"><name>sequential_free</name></member>
+    <member refid="NN__models_8h_1a8a2e5d0c30407686b45c169035a681e9" kind="function"><name>sequential_push</name></member>
   </compound>
   <compound refid="tensor__2d_8c" kind="file"><name>tensor_2d.c</name>
     <member refid="tensor__2d_8c_1a63649d1769e1ed482025cd15b43da0f7" kind="define"><name>MAX_NUM_ELEMENTS</name></member>

@@ -536,17 +536,19 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>tensor_2d* A pointer to a <a class="el" href="structtensor__2d.html" title="This struct implements a 2 dimensional tensor to represent a matrix.">tensor_2d</a> object that acts as a matrix. </dd></dl>
+<p >limit because unsigned long cannot hold a number greater than 4294967295.</p>
+<p >limit specfied in #define MAX_NUM_ELEMENTS.</p>
 
-<p class="definition">Definition at line <a class="el" href="tensor__2d_8c_source.html#l00010">10</a> of file <a class="el" href="tensor__2d_8c_source.html">tensor_2d.c</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                                  {</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>));</div>
-<div class="line"><span class="lineno">   12</span> </div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span> (mat == NULL){</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   15</span>    }</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> ull_num_elems = num_rows*num_cols;</div>
-<div class="line"><span class="lineno">   18</span>    <span class="comment">//limit because unsigned long cannot hold a number greater than 4294967295.</span></div>
+<p class="definition">Definition at line <a class="el" href="tensor__2d_8c_source.html#l00009">9</a> of file <a class="el" href="tensor__2d_8c_source.html">tensor_2d.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                                  {</div>
+<div class="line"><span class="lineno">   10</span>    <a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>* mat = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structtensor__2d.html">tensor_2d</a>));</div>
+<div class="line"><span class="lineno">   11</span> </div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">if</span> (mat == NULL){</div>
+<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><span class="lineno">   14</span>    }</div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> ull_num_elems = num_rows*num_cols;</div>
+<div class="line"><span class="lineno">   17</span>    </div>
 <div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (ull_num_elems &gt; 4294967295){</div>
 <div class="line"><span class="lineno">   20</span>        printf(<span class="stringliteral">&quot;Requested matrix with %lld elements.\n&quot;</span>, ull_num_elems);</div>
 <div class="line"><span class="lineno">   21</span>        printf(<span class="stringliteral">&quot;Maximum possible number of elements is: %ld\n&quot;</span>, 4294967295);</div>
@@ -554,7 +556,6 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>    }</div>
 <div class="line"><span class="lineno">   24</span> </div>
 <div class="line"><span class="lineno">   25</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> num_elems = num_rows*num_cols;</div>
-<div class="line"><span class="lineno">   26</span>    <span class="comment">//limit specfied in #define MAX_NUM_ELEMENTS.</span></div>
 <div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (num_elems &gt; <a class="code hl_define" href="tensor__2d_8c.html#a63649d1769e1ed482025cd15b43da0f7">MAX_NUM_ELEMENTS</a>){</div>
 <div class="line"><span class="lineno">   28</span>        printf(<span class="stringliteral">&quot;Requested matrix with %ld elements.\n&quot;</span>, num_elems);</div>
 <div class="line"><span class="lineno">   29</span>        printf(<span class="stringliteral">&quot;Maximum possible number of elements is: %d\n&quot;</span>, <a class="code hl_define" href="tensor__2d_8c.html#a63649d1769e1ed482025cd15b43da0f7">MAX_NUM_ELEMENTS</a>);</div>
@@ -576,7 +577,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> mat;</div>
 <div class="line"><span class="lineno">   46</span>}</div>
 <div class="ttc" id="astructtensor__2d_html"><div class="ttname"><a href="structtensor__2d.html">tensor_2d</a></div><div class="ttdoc">This struct implements a 2 dimensional tensor to represent a matrix.</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8h_source.html#l00018">tensor_2d.h:18</a></div></div>
-<div class="ttc" id="atensor__2d_8c_html_a63649d1769e1ed482025cd15b43da0f7"><div class="ttname"><a href="tensor__2d_8c.html#a63649d1769e1ed482025cd15b43da0f7">MAX_NUM_ELEMENTS</a></div><div class="ttdeci">#define MAX_NUM_ELEMENTS</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00008">tensor_2d.c:8</a></div></div>
+<div class="ttc" id="atensor__2d_8c_html_a63649d1769e1ed482025cd15b43da0f7"><div class="ttname"><a href="tensor__2d_8c.html#a63649d1769e1ed482025cd15b43da0f7">MAX_NUM_ELEMENTS</a></div><div class="ttdeci">#define MAX_NUM_ELEMENTS</div><div class="ttdef"><b>Definition:</b> <a href="tensor__2d_8c_source.html#l00007">tensor_2d.c:7</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

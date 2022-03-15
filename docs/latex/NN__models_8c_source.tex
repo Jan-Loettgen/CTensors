@@ -1,0 +1,31 @@
+\hypertarget{NN__models_8c_source}{}\doxysection{NN\+\_\+models.\+c}
+\label{NN__models_8c_source}\index{NN\_models.c@{NN\_models.c}}
+\mbox{\hyperlink{NN__models_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00013}00013 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{NN__models_8h}{NN\_models.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00014}00014 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00016}\mbox{\hyperlink{NN__models_8c_ab40c32eab78c7f4301241cf7a4cd433a}{00016}} \mbox{\hyperlink{structSequential}{Sequential}}* \mbox{\hyperlink{NN__models_8c_ab40c32eab78c7f4301241cf7a4cd433a}{sequential\_make}}()\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00017}00017     \mbox{\hyperlink{structSequential}{Sequential}}* sequential = malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structSequential}{Sequential}}));}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00019}00019     \textcolor{keywordflow}{if} (sequential == NULL)\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00020}00020         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00022}00022     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00023}00023         \textcolor{keywordflow}{return} sequential;}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00024}00024     \}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00027}\mbox{\hyperlink{NN__models_8c_a9effa64d6594c7cd6bb7d76717ee0901}{00027}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__models_8c_a9effa64d6594c7cd6bb7d76717ee0901}{sequential\_free}}(\mbox{\hyperlink{structSequential}{Sequential}}** sequential)\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00028}00028     \textcolor{keywordflow}{if} (*sequential == NULL)\{}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00029}00029         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00031}00031     free(*sequential);}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00032}00032     *sequential= NULL;}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00034}00034     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{NN__models_8c_source_l00036}\mbox{\hyperlink{NN__models_8c_a8a2e5d0c30407686b45c169035a681e9}{00036}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__models_8c_a8a2e5d0c30407686b45c169035a681e9}{sequential\_push}}(\mbox{\hyperlink{structSequential}{Sequential}}* sequential, \textcolor{keywordtype}{void}* layer);}
+
+\end{DoxyCode}

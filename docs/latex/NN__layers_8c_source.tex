@@ -88,7 +88,7 @@
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00084}00084 }
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00085}\mbox{\hyperlink{NN__layers_8c_a1c0547d8e31b12285bfcee00339e96c4}{00085}} \textcolor{keywordtype}{int} \mbox{\hyperlink{NN__layers_8c_a1c0547d8e31b12285bfcee00339e96c4}{dense\_forward}}(\mbox{\hyperlink{structDense__layer}{Dense\_layer}}* dense\_layer, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_in, \mbox{\hyperlink{structtensor__2d}{tensor\_2d}}* mat\_out, \textcolor{keywordtype}{bool} training)\{}
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00086}00086 }
-\DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00087}00087     \textcolor{keywordflow}{if} (\mbox{\hyperlink{NN__layers_8c_a29b58829b8032d6455095a97ee40e160}{dense\_free}} == NULL || mat\_in == NULL || mat\_out == NULL)\{}
+\DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00087}00087     \textcolor{keywordflow}{if} (dense\_layer == NULL || mat\_in == NULL || mat\_out == NULL)\{}
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00088}00088         \textcolor{keywordflow}{return} 1;}
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00089}00089     \}}
 \DoxyCodeLine{\Hypertarget{NN__layers_8c_source_l00090}00090 }

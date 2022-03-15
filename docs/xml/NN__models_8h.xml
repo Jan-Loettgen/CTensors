@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.4" xml:lang="en-US">
+  <compounddef id="NN__models_8h" kind="file" language="C++">
+    <compoundname>NN_models.h</compoundname>
+    <includes refid="NN__layers_8h" local="yes">NN_layers.h</includes>
+    <includedby refid="NN__models_8c" local="yes">NN_models.c</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>NN_layers.h</label>
+        <link refid="NN__layers_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>NN_models.h</label>
+        <link refid="NN__models_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>tensor_2d.h</label>
+        <link refid="tensor__2d_8h"/>
+      </node>
+      <node id="3">
+        <label>stdbool.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>NN_models.c</label>
+        <link refid="NN__models_8c"/>
+      </node>
+      <node id="1">
+        <label>NN_models.h</label>
+        <link refid="NN__models_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structSequential" prot="public">Sequential</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="NN__models_8h_1a7db2b454954f37ad8e24d486df865bba" prot="public" static="no">
+        <name>MAX_NUM_LAYERS</name>
+        <initializer>100</initializer>
+        <briefdescription>
+<para>maximmum number of layers that a sequential object can ahve. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>this dependency is required for management of the layers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="15" column="9" bodyfile="src/NN_models.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="NN__models_8h_1a74a95dce541485a9a59a80f888e83168" prot="public" static="no">
+        <type>struct <ref refid="structSequential" kindref="compound">Sequential</ref></type>
+        <definition>typedef struct Sequential Sequential</definition>
+        <argsstring></argsstring>
+        <name>Sequential</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="23" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="NN__models_8h_1ab40c32eab78c7f4301241cf7a4cd433a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structSequential" kindref="compound">Sequential</ref> *</type>
+        <definition>Sequential * sequential_make</definition>
+        <argsstring>()</argsstring>
+        <name>sequential_make</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="25" column="12" bodyfile="src/NN_models.c" bodystart="16" bodyend="25" declfile="src/NN_models.h" declline="25" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__models_8h_1ad2e088061c3b11f4683d0d67e4cf6083" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sequential_free</definition>
+        <argsstring>(Sequential *sequential)</argsstring>
+        <name>sequential_free</name>
+        <param>
+          <type><ref refid="structSequential" kindref="compound">Sequential</ref> *</type>
+          <declname>sequential</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="27" column="5" declfile="src/NN_models.h" declline="27" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="NN__models_8h_1a8a2e5d0c30407686b45c169035a681e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int sequential_push</definition>
+        <argsstring>(Sequential *sequential, void *layer)</argsstring>
+        <name>sequential_push</name>
+        <param>
+          <type><ref refid="structSequential" kindref="compound">Sequential</ref> *</type>
+          <declname>sequential</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/NN_models.h" line="29" column="5" declfile="src/NN_models.h" declline="29" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NN_MODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NN_MODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MAX_NUM_LAYERS<sp/>100<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="NN__models_8h_1a7db2b454954f37ad8e24d486df865bba" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="NN__layers_8h" kindref="compound">NN_layers.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="structSequential" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structSequential" kindref="compound">Sequential</ref>{</highlight></codeline>
+<codeline lineno="20" refid="structSequential_1ab2e1f5df9f28b729b80222fce41d6803" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSequential_1ab2e1f5df9f28b729b80222fce41d6803" kindref="member">num_layers</ref>;<sp/></highlight></codeline>
+<codeline lineno="21" refid="structSequential_1a930d26eb19a9a044e597c65bc6a0c199" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structSequential_1a930d26eb19a9a044e597c65bc6a0c199" kindref="member">layers</ref>[<ref refid="NN__models_8h_1a7db2b454954f37ad8e24d486df865bba" kindref="member">MAX_NUM_LAYERS</ref>];<sp/></highlight></codeline>
+<codeline lineno="22" refid="structSequential_1a5763cfeca927c5f2b0f9955cd0e327d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structSequential_1a5763cfeca927c5f2b0f9955cd0e327d1" kindref="member">layer_types</ref>[10];<sp/></highlight></codeline>
+<codeline lineno="23" refid="NN__models_8h_1a74a95dce541485a9a59a80f888e83168" refkind="member"><highlight class="normal">}<ref refid="NN__models_8h_1a74a95dce541485a9a59a80f888e83168" kindref="member">Sequential</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="structSequential" kindref="compound">Sequential</ref>*<sp/><ref refid="NN__models_8h_1ab40c32eab78c7f4301241cf7a4cd433a" kindref="member">sequential_make</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="NN__models_8h_1ad2e088061c3b11f4683d0d67e4cf6083" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__models_8h_1ad2e088061c3b11f4683d0d67e4cf6083" kindref="member">sequential_free</ref>(<ref refid="structSequential" kindref="compound">Sequential</ref>*<sp/>sequential);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="NN__models_8h_1a8a2e5d0c30407686b45c169035a681e9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="NN__models_8h_1a8a2e5d0c30407686b45c169035a681e9" kindref="member">sequential_push</ref>(<ref refid="structSequential" kindref="compound">Sequential</ref>*<sp/>sequential,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>layer);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="src/NN_models.h"/>
+  </compounddef>
+</doxygen>
