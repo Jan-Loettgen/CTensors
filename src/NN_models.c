@@ -24,12 +24,23 @@ Sequential* sequential_make(){
     }
 }
 
-int sequential_free(Sequential** sequential){
-    if (*sequential == NULL){
+int sequential_free(Sequential** sequential_ptr){
+    if (*sequential_ptr == NULL){
         return 1;
     }
-    free(*sequential);
-    *sequential= NULL;
+
+    for (int i=0; i<(*sequential_ptr)->num_layers; i++) {
+
+        if ((*sequential_ptr)->layer_types == "dense"){
+            dense_free((*sequential_ptr)->layers[i]);
+        }
+        else {
+            return 4;///< return code means that there was a layer of unknown type
+        }
+    }
+
+    free(*sequential_ptr);
+    *sequential_ptr= NULL;
 
     return 0;
 }
