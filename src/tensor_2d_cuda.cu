@@ -124,7 +124,7 @@ int mat_sub_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     cudaMemcpy(d_data_B, mat_b->data, size, cudaMemcpyHostToDevice);
 
     //kernal invocation
-    _array_sub_kernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_a->n_elems);
+    _array_sub_kernal<<<ceil(mat_out->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_a->n_elems);
 
     //copy device memory to host memory
     cudaMemcpy(mat_out->data, d_data_out, size, cudaMemcpyDeviceToHost);
@@ -153,8 +153,25 @@ int print_device_info(){
 }
 
 __global__
-void _mat_mul_kernal(float* data_a, float* data_b, float* data_out, unsigned int mat_a_num_rows, unsigned int mat_a_num_cols,unsigned int mat_b_num_cols){
-    
+void _mat_mul_kernal(float* data_a, float* data_b, float* data_out, unsigned int mat_a_num_rows, unsigned int mat_a_num_cols, unsigned int mat_b_num_cols){
+
+    unsigned int row = blockDim.y*blockIdx.y + threadIdx.y;
+    unsigned int col = blockDim.x*blockIdx.x + threadIdx.x;
+
+    printf("row : %u, col : %u\n", row, col);
+
+    if (row>mat_a_num_rows || col>mat_b_num_cols){
+        return;
+    }
+
+    float sum = 0;
+    unsigned int mat_a_index, mat_b_index;
+    for (unsigned int k = 0; k<mat_a_num_cols; k++){
+        mat_a_index = row*mat_a_num_cols + k;
+        mat_b_index = col + k*mat_b_num_cols;
+        sum += data_a[mat_a_index]*data_b[mat_b_index];
+    }
+    data_out[row + col*mat_b_num_cols] = sum;
 }
 
 
@@ -172,7 +189,7 @@ int mat_mul_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
 
     unsigned int size_a = mat_a->n_elems*sizeof(double);
     unsigned int size_b = mat_b->n_elems*sizeof(double);
-    unsigned int size_outa = mat_out->n_elems*sizeof(double);
+    unsigned int size_out = mat_out->n_elems*sizeof(double);
 
     //allocate device memory for arrays A, B, and output array.
     float *d_data_A, *d_data_B, *d_data_out;
@@ -188,7 +205,7 @@ int mat_mul_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
         return 101;
     }
 
-    cudaError_t err3 = cudaMalloc((void**) &d_data_out, size_outa);
+    cudaError_t err3 = cudaMalloc((void**) &d_data_out, size_out);
     if (err3 != cudaSuccess) {
         printf("%s in %s at line %d\n", cudaGetErrorString(err3),__FILE__,__LINE__);
         return 101;
@@ -199,15 +216,17 @@ int mat_mul_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     cudaMemcpy(d_data_B, mat_b->data, size_b, cudaMemcpyHostToDevice);
 
     //kernal invocation
-    _mat_mul_kernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_out->n_elems);
+    _mat_mul_kernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_a->n_rows, mat_a->n_cols, mat_b->n_cols);
 
     //copy device memory to host memory
-    cudaMemcpy(mat_out->data, d_data_out, size, cudaMemcpyDeviceToHost);
+    cudaMemcpy(mat_out->data, d_data_out, size_out, cudaMemcpyDeviceToHost);
 
     //free device memory
     cudaFree(d_data_A);
     cudaFree(d_data_B);
     cudaFree(d_data_out);
+
+    return 0;
 
 }
 
@@ -216,22 +235,22 @@ int main(){
     print_device_info();
 
 
-    // tensor_2d* mat_a = mat_make(24, 24);
-    // tensor_2d* mat_b = mat_make(24, 24);
-    // tensor_2d* mat_c = mat_make(24, 24);
+    tensor_2d* mat_a = mat_make(6, 6);
+    tensor_2d* mat_b = mat_make(6, 6);
+    tensor_2d* mat_c = mat_make(6, 6);
 
-    // mat_rand(0.0, 1.0, mat_a);
-    // mat_zeros(mat_b);
+    mat_rand(0.0, 1.0, mat_a);
+    mat_eye(mat_b);
 
-    // mat_add_C(mat_a, mat_b, mat_c);
+    mat_mul_C(mat_a, mat_b, mat_c);
 
-    // mat_print(mat_a);
-    // mat_print(mat_b);
-    // mat_print(mat_c);
+    mat_print(mat_a);
+    mat_print(mat_b);
+    mat_print(mat_c);
 
     // //free host memory
-    // mat_free(&mat_a);
-    // mat_free(&mat_b);
-    // mat_free(&mat_c);
+    mat_free(&mat_a);
+    mat_free(&mat_b);
+    mat_free(&mat_c);
     return 0;
 }
