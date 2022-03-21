@@ -4,6 +4,10 @@
         "tensor_2d_threaded.h": "c",
         "stdlib.h": "c",
         "nn_layer.h": "c",
-        "nn_activations.h": "c"
+        "nn_activations.h": "c",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp",
+        "utility": "cpp"
     }
 }

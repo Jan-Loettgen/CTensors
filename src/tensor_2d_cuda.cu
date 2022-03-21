@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include <cuda.h>
 
+extern "C" {
+
 #include "tensor_2d.h"
+
+}
 
 #define NUM_THREADS_PER_BLOCK 256.0
 
@@ -57,7 +61,7 @@ int mat_add_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
     cudaMemcpy(d_data_B, mat_b->data, size, cudaMemcpyHostToDevice);
 
     //kernal invocation
-    _arrayAddKernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_a->n_elems);
+    _array_add_kernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_a->n_elems);
 
     //copy device memory to host memory
     cudaMemcpy(mat_out->data, d_data_out, size, cudaMemcpyDeviceToHost);
@@ -135,41 +139,99 @@ int mat_sub_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
 __host__
 int print_device_info(){
     cudaDeviceProp dev_prop;
-    for (int i = 0; i < dev_count; i++) {
+    for (int i = 0; i < 1; i++) {
         cudaGetDeviceProperties(&dev_prop, i);
 
         printf("dev : %d, clockrate : %d\n", i+1, dev_prop.clockRate);
         printf("dev : %d, concurrentKernels : %d\n", i+1, dev_prop.concurrentKernels  );
         printf("dev : %d, max threads per dim : %d, %d, %d\n", i+1, dev_prop.maxThreadsDim[0],dev_prop.maxThreadsDim[1], dev_prop.maxThreadsDim[2]);
         printf("dev : %d, max Threads Per Block : %d\n", i+1, dev_prop.maxThreadsPerBlock);
-        printf("dev : %d, max grid siez per dim : %d, %d, %d\n", i+1, dev_prop.maxGridSize[0],dev_prop.maxGridSize[1], dev_prop.maxGridSize[2]);
+        printf("dev : %d, max grid siez per dim : %d, %d, %d\n", i+1, dev_prop.maxGridSize[4],dev_prop.maxGridSize[1], dev_prop.maxGridSize[2]);//futher investigation into the indecies is required.
         printf("dev : %d, warp size : %d\n", i+1, dev_prop.warpSize);
     }
     return 0;
 }
 
+__global__
+void _mat_mul_kernal(float* data_a, float* data_b, float* data_out, unsigned int mat_a_num_rows, unsigned int mat_a_num_cols,unsigned int mat_b_num_cols){
+    
+}
+
+
+__host__
+int mat_mul_C(tensor_2d* mat_a, tensor_2d* mat_b, tensor_2d* mat_out){
+        if (mat_a == NULL || mat_b == NULL || mat_out == NULL){
+        return 1;
+    }
+    if (mat_a->n_cols != mat_b->n_rows){
+        return 2;
+    }
+    if (mat_out->n_rows != mat_a->n_rows || mat_out->n_cols != mat_b->n_cols){
+        return 2;
+    }
+
+    unsigned int size_a = mat_a->n_elems*sizeof(double);
+    unsigned int size_b = mat_b->n_elems*sizeof(double);
+    unsigned int size_outa = mat_out->n_elems*sizeof(double);
+
+    //allocate device memory for arrays A, B, and output array.
+    float *d_data_A, *d_data_B, *d_data_out;
+    cudaError_t err1 = cudaMalloc((void**) &d_data_A, size_a);
+    if (err1 != cudaSuccess) {
+        printf("%s in %s at line %d\n", cudaGetErrorString(err1),__FILE__,__LINE__);
+        return 101;
+    }
+
+    cudaError_t err2 = cudaMalloc((void**) &d_data_B, size_b);
+    if (err2 != cudaSuccess) {
+        printf("%s in %s at line %d\n", cudaGetErrorString(err2),__FILE__,__LINE__);
+        return 101;
+    }
+
+    cudaError_t err3 = cudaMalloc((void**) &d_data_out, size_outa);
+    if (err3 != cudaSuccess) {
+        printf("%s in %s at line %d\n", cudaGetErrorString(err3),__FILE__,__LINE__);
+        return 101;
+    }
+
+    //copy contents of bariables h_A, and h_B to d_A, and d_B
+    cudaMemcpy(d_data_A, mat_a->data, size_a, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_data_B, mat_b->data, size_b, cudaMemcpyHostToDevice);
+
+    //kernal invocation
+    _mat_mul_kernal<<<ceil(mat_a->n_elems/NUM_THREADS_PER_BLOCK), NUM_THREADS_PER_BLOCK>>>(d_data_A, d_data_B, d_data_out, mat_out->n_elems);
+
+    //copy device memory to host memory
+    cudaMemcpy(mat_out->data, d_data_out, size, cudaMemcpyDeviceToHost);
+
+    //free device memory
+    cudaFree(d_data_A);
+    cudaFree(d_data_B);
+    cudaFree(d_data_out);
+
+}
 
 int main(){
 
+    print_device_info();
 
 
+    // tensor_2d* mat_a = mat_make(24, 24);
+    // tensor_2d* mat_b = mat_make(24, 24);
+    // tensor_2d* mat_c = mat_make(24, 24);
 
-    tensor_2d* mat_a = mat_make(24, 24);
-    tensor_2d* mat_b = mat_make(24, 24);
-    tensor_2d* mat_c = mat_make(24, 24);
+    // mat_rand(0.0, 1.0, mat_a);
+    // mat_zeros(mat_b);
 
-    mat_rand(0.0, 1.0, mat_a);
-    mat_zeros(mat_b);
+    // mat_add_C(mat_a, mat_b, mat_c);
 
-    mat_add_C(mat_a, mat_b, mat_c);
+    // mat_print(mat_a);
+    // mat_print(mat_b);
+    // mat_print(mat_c);
 
-    mat_print(mat_a);
-    mat_print(mat_b);
-    mat_print(mat_c);
-
-    //free host memory
-    mat_free(&mat_a);
-    mat_free(&mat_b);
-    mat_free(&mat_c);
+    // //free host memory
+    // mat_free(&mat_a);
+    // mat_free(&mat_b);
+    // mat_free(&mat_c);
     return 0;
 }
